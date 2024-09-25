@@ -11,7 +11,7 @@ const config: Config = {
   url: 'https://lemonade-lab.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs/',
+  baseUrl: '/alemonjs.docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -48,7 +48,7 @@ const config: Config = {
       title: 'Alemonjs',
       logo: {
         alt: 'Alemonjs Logo',
-        src: '/img/alemon.png'
+        src: 'img/alemon.png'
       },
       items: [
         {
@@ -90,11 +90,11 @@ const config: Config = {
           items: [
             {
               label: '简介',
-              to: '/docs/docs/intro'
+              to: '/alemonjs.docs/docs/intro'
             },
             {
               label: '开发文档',
-              to: '/docs/docs/category/开发文档'
+              to: '/alemonjs.docs/docs/category/开发文档'
             }
           ]
         },
