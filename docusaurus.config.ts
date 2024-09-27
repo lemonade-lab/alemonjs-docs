@@ -2,7 +2,17 @@ import { themes as prismThemes } from 'prism-react-renderer'
 import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
 
-const config: Config = {
+/**
+ *
+ * @param config
+ * @returns
+ */
+const defineConfig = (config: Config) => config
+
+/**
+ *
+ */
+export default defineConfig({
   title: 'AlemonJS',
   tagline: '阿柠檬，基于 JavaScript 所构建的跨平台开发框架',
   // favicon: 'img/favicon.ico',
@@ -121,14 +131,14 @@ const config: Config = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} LEMONADE | 津ICP备2023004480号`
+      // https://beian.miit.gov.cn/
+      copyright: `Copyright © ${new Date().getFullYear()} LEMONADE `
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula
     }
   } satisfies Preset.ThemeConfig,
-
   // themes: ['@docusaurus/theme-live-codeblock'],
   themes: [
     // ... Your other themes.
@@ -149,7 +159,6 @@ const config: Config = {
         searchResultContextMaxLength: 50
       }
     ]
-  ]
-}
-
-export default config
+  ],
+  stylesheets: []
+})
