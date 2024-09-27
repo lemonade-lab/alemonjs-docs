@@ -6,6 +6,7 @@ import HomepageFeatures from '@site/src/pages/HomepageFeatures'
 import Heading from '@theme/Heading'
 import styles from './index.module.css'
 import Header from './Footer'
+import TeamMemberCard from './TeamMemberCard'
 /**
  *
  * @returns
@@ -13,18 +14,25 @@ import Header from './Footer'
 const HomepageHeader = () => {
   const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs/intro">
-            阅读文档 - 5min ⏱️
-          </Link>
+    <header className={clsx(styles.homeInfoWrapper)}>
+      <img className={styles.homeImage} src="img/alemon.png" alt={siteConfig.title} />
+      <div className={styles.homeInfo}>
+        <div className={styles.homeText}>
+          <Heading as="h1" className={styles.homeTitle}>
+            {siteConfig.title}
+          </Heading>
+          <p className={styles.homeDescription}>{siteConfig.tagline}</p>
+          <p className={styles.homeActions}>
+            <Link className={clsx(styles.homeAction, styles.primary)} to="docs/category/开发文档">
+              💡 开发文档
+            </Link>
+            <Link className={clsx(styles.homeAction, styles.secondary)} to="docs/intro">
+              ℹ️ 介绍
+            </Link>
+          </p>
         </div>
       </div>
+      <hr className={styles.divider} />
     </header>
   )
 }
@@ -39,7 +47,17 @@ export default function Home(): JSX.Element {
     >
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <div className={styles.featureWrapper}>
+          <HomepageFeatures />
+        </div>
+        <div className={clsx(styles.teamSection)}>
+          <Heading as="h1" className="text--center">
+            我们的团队
+          </Heading>
+          <div className={clsx(styles.memberCards)}>
+            <TeamMemberCard />
+          </div>
+        </div>
       </main>
       <Header />
     </Layout>

@@ -30,3 +30,120 @@
   gap: 1rem;
   justify-content: center;
 }
+
+/* HomepageHeader */
+.homeInfoWrapper {
+  padding: 2rem 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.homeInfo {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  flex-direction: row; /* 水平布局 */
+  max-width: 1200px; /* 限制最大宽度 */
+  margin: 0 auto; /* 自动左右边距以居中 */
+}
+
+.homeText {
+  flex: 1; /* 使文本部分占据更多空间 */
+  text-align: left; /* 左侧对齐 */
+}
+
+.homeImage {
+  width: 270px; /* 根据需求调整大小 */
+  height: auto;
+  margin: 1rem;
+  margin-right: 30px;
+}
+
+.homeTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.homeDescription {
+  margin-bottom: 2rem; /* 保持与 Docusaurus 样式一致 */
+}
+
+.homeActions {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none; /* 默认不显示下划线 */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.homeAction {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.primary {
+  background-color: #3a8eeb;
+  color: white;
+}
+.primary:hover {
+  background-color: #2a6aeb; /* 悬停时背景颜色 */
+  color: white; /* 悬停时文字颜色保持可见 */
+}
+
+.secondary {
+  background-color: #ffffff;
+  color: #3a8eeb;
+  border: 1px solid #3a8eeb;
+}
+
+.secondary:hover {
+  background-color: #e0e0e0; /* 悬停时背景颜色 */
+  color: #3a8eeb; /* 保持文字颜色 */
+  text-decoration: none; /* 悬停时不添加下划线 */
+}
+
+.featureWrapper {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid var(--ifm-color-secondary-darkest); /* 顶部分割线 */
+  margin: 0 15px;
+}
+
+.teamSection {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.memberCards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.divider {
+  border: 0; /* 去掉默认边框 */
+  height: 1px; /* 设置分割线高度 */
+  background-color: #e0e0e0; /* 分割线颜色，可以根据需求调整 */
+  margin: 2rem 0; /* 上下外边距 */
+}
+
+@media screen and (max-width: 996px) {
+  .homeInfo {
+    flex-direction: column; /* 小屏幕下垂直排列 */
+    text-align: center; /* 文本居中 */
+  }
+
+  .homeImage {
+    margin-left: 0; /* 移除左侧间距 */
+    margin-top: 1rem; /* 给图像顶部添加间距以便有分隔 */
+  }
+}
