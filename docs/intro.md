@@ -13,32 +13,36 @@ sidebar_position: 1
 
 > 如果你是初学者。不用担心！理解教程和指南的内容只需要具备基础的 JavaScript 知识。
 
-## 项目模块
+## Ecosystem
 
-| Project                  | Status                                                  | Description       |
-| ------------------------ | ------------------------------------------------------- | ----------------- |
-| [alemonjs]               | [![alemonjs-s]][alemonjs-p]                             | 标准应用解析器    |
-| [@alemonjs/kook]         | [![@alemonjs/kook-s]][@alemonjs/kook-p]                 | KOOK 机器人连接   |
-| [@alemonjs/discord]      | [![@alemonjs/discord-s]][@alemonjs/discord-p]           | DC 公会机器人连接 |
-| [@alemonjs/qq-group-bot] | [![@alemonjs/qq-group-bot-s]][@alemonjs/qq-group-bot-p] | QQ 群机器人连接   |
-| [@alemonjs/qq-guild-bot] | [![@alemonjs/qq-guild-bot-s]][@alemonjs/qq-guild-bot-p] | QQ 频道机器人连接 |
-| [@alemonjs/qq]           | [![@alemonjs/qq-s]][@alemonjs/qq-p]                     | QQ 机器人连接     |
+| Project                  | Status                              | Description |
+| ------------------------ | ----------------------------------- | ----------- |
+| [alemonjs]               | [![alemonjs-s]][alemonjs-p]         | 核心处理包  |
+| [@alemonjs/kook]         | [![kook-s]][kook-p]                 | KOOK        |
+| [@alemonjs/discord]      | [![discord-s]][discord-p]           | Discord     |
+| [@alemonjs/qq-group-bot] | [![qq-group-bot-s]][qq-group-bot-p] | QQ 群       |
+| [@alemonjs/qq-guild-bot] | [![qq-guild-bot-s]][qq-guild-bot-p] | QQ 频道     |
+| [@alemonjs/qq]           | [![qq-s]][qq-p]                     | QQ          |
+| [@alemonjs/telegram]     | [![telegram-s]][telegram-p]         | telegram    |
 
-[alemonjs]: https://github.com/ningmengchongshui/alemonjs
+[alemonjs]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/alemonjs
 [alemonjs-s]: https://img.shields.io/npm/v/alemonjs.svg
 [alemonjs-p]: https://www.npmjs.com/package/alemonjs
 [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook
-[@alemonjs/kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg
-[@alemonjs/kook-p]: https://www.npmjs.com/package/@alemonjs/kook
+[kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg
+[kook-p]: https://www.npmjs.com/package/@alemonjs/kook
 [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord
-[@alemonjs/discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg
-[@alemonjs/discord-p]: https://www.npmjs.com/package/@alemonjs/discord
+[discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg
+[discord-p]: https://www.npmjs.com/package/@alemonjs/discord
 [@alemonjs/qq-group-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-group-bot
-[@alemonjs/qq-group-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-group-bot.svg
-[@alemonjs/qq-group-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-group-bot
+[qq-group-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-group-bot.svg
+[qq-group-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-group-bot
 [@alemonjs/qq-guild-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-guild-bot
-[@alemonjs/qq-guild-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-guild-bot.svg
-[@alemonjs/qq-guild-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-guild-bot
+[qq-guild-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-guild-bot.svg
+[qq-guild-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-guild-bot
 [@alemonjs/qq]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq
-[@alemonjs/qq-s]: https://img.shields.io/npm/v/@alemonjs/qq.svg
-[@alemonjs/qq-p]: https://www.npmjs.com/package/@alemonjs/qq
+[qq-s]: https://img.shields.io/npm/v/@alemonjs/qq.svg
+[qq-p]: https://www.npmjs.com/package/@alemonjs/telegram
+[@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram
+[telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg
+[telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram

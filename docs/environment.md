@@ -232,7 +232,9 @@ yum  install chromium -y
 请提前准备好开发对接的平台账户：
 
 - [QQ 开放平台](https://q.qq.com/#/)
+
 - [KOOK 平台](https://developer.kookapp.cn/doc/)
+
 - [DISCORD 平台](https://discord.com/developers/applications/)
 
 出现意外？阅读[常见问题](./x-other/3-common-problem.md)
