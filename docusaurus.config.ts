@@ -121,7 +121,7 @@ const config: Config = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} AlemonJS`
+      copyright: `Copyright © ${new Date().getFullYear()} LEMONADE | 津ICP备2023004480号`
     },
     prism: {
       theme: prismThemes.github,

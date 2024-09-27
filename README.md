@@ -10,11 +10,42 @@
 
 [阅读文档 https://alemonjs.com/](https://alemonjs.com/)
 
-
 - 本地部署
 
 ```sh
 git clone --depth=1  -b docs  https://github.com/lemonade-lab/alemonjs-docs.git
+```
+
+- nginx
+
+```conf
+worker_processes  1;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    server {
+        listen       80;
+        server_name  alemonjs.com;
+        location / {
+             return 301 https://$host;
+        }
+    }
+     server {
+         listen       443 ssl;
+         server_name  localhost;
+         ssl_certificate /usr/local/nginx/alemonjs.com_nginx/alemonjs.com_bundle.crt;
+         ssl_certificate_key /usr/local/nginx/alemonjs.com_nginx/alemonjs.com.key;
+         location / {
+            root   alemonjs-docs;
+            index  index.html index.htm;
+         }
+     }
+}
 ```
 
 ## 注意
