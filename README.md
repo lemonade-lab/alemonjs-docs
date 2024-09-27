@@ -10,6 +10,13 @@
 
 [阅读文档 https://alemonjs.com/](https://alemonjs.com/)
 
+
+- 本地部署
+
+```sh
+git clone --depth=1  -b docs  https://github.com/lemonade-lab/alemonjs-docs.git
+```
+
 ## 注意
 
 请勿提交任何非法内容
