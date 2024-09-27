@@ -24,7 +24,7 @@ const teamMembers: TeamMember[] = [
     githubUrl: 'https://github.com/whrgg'
   },
   {
-    avatar: 'https://avatars.githubusercontent.com/u/74760542?v=4',
+    avatar: 'https://avatars.githubusercontent.com/u/113702528?v=4',
     name: 'CCCdk',
     role: '前端',
     githubUrl: 'https://github.com/CCCdk'
