@@ -3,20 +3,20 @@ import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
 
 const config: Config = {
-  title: 'Alemonjs',
+  title: 'AlemonJS',
   tagline: '阿柠檬，基于 JavaScript 所构建的跨平台开发框架',
   // favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://lemonade-lab.github.io',
+  url: 'https://alemonjs.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/alemonjs.docs/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'lemonade-lab', // Usually your GitHub org/user name.
-  projectName: 'alemonjs.docs', // Usually your repo name.
+  projectName: 'alemonjs-docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -32,7 +32,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/lemonade-lab/alemonjs.docs/tree/main/'
+          editUrl: 'https://github.com/lemonade-lab/alemonjs-docs/tree/main/'
         },
         theme: {
           customCss: './src/css/custom.css'
@@ -45,9 +45,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Alemonjs',
+      title: 'AlemonJS',
       logo: {
-        alt: 'Alemonjs Logo',
+        alt: 'AlemonJS Logo',
         src: 'img/alemon.png'
       },
       items: [
@@ -60,7 +60,7 @@ const config: Config = {
         {
           position: 'left',
           label: 'Edit DOCS',
-          href: 'https://github.com/lemonade-lab/alemonjs.docs/blob/main/docs/intro.md'
+          href: 'https://github.com/lemonade-lab/alemonjs-docs/blob/main/docs/intro.md'
         },
         {
           position: 'right',
@@ -75,7 +75,7 @@ const config: Config = {
         {
           position: 'right',
           href: 'https://github.com/lemonade-lab/alemonjs',
-          label: 'Alemonjs Code'
+          label: 'AlemonJS Code'
         }
       ]
     },
@@ -90,11 +90,11 @@ const config: Config = {
           items: [
             {
               label: '简介',
-              to: '/alemonjs.docs/docs/intro'
+              to: '/docs/intro'
             },
             {
               label: '开发文档',
-              to: '/alemonjs.docs/docs/category/开发文档'
+              to: '/docs/category/开发文档'
             }
           ]
         },
@@ -121,7 +121,7 @@ const config: Config = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Alemonjs`
+      copyright: `Copyright © ${new Date().getFullYear()} AlemonJS`
     },
     prism: {
       theme: prismThemes.github,
