@@ -90,8 +90,8 @@ export default defineConfig({
           label: '源码'
         },
         {
-          type: 'localeDropdown',
-          position: 'right'
+          position: 'right',
+          type: 'localeDropdown'
         }
       ]
     },

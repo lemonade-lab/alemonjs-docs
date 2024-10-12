@@ -44,6 +44,15 @@
   }
 }
 
+@media (min-width: 540px) {
+  .navbar__link {
+    display: flex;
+  }
+  .dropdown > .navbar__link:after {
+    margin: auto;
+  }
+}
+
 @media (max-width: 1004px) {
   .navbar__search-input {
     width: 10em;
