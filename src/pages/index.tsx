@@ -54,14 +54,6 @@ export default function Home(): JSX.Element {
         <div className={styles.featureWrapper}>
           <HomepageFeatures />
         </div>
-        <div className={clsx(styles.teamSection)}>
-          <Heading as="h1" className="text--center">
-            <Translate>我们的团队</Translate>
-          </Heading>
-          <div className="container-max">
-            <TeamMemberCard />
-          </div>
-        </div>
       </main>
       {/* <Header /> */}
     </Layout>

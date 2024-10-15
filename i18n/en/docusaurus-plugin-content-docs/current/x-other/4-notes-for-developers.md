@@ -48,7 +48,7 @@ function getDataById(T: string) {}
 const ENV_TEST = 'dev'
 
 // Local constants
-const MyName = 'yunzai'
+const MyName = 'alemonjs'
 
 // Modifiable variable
 let values = ''

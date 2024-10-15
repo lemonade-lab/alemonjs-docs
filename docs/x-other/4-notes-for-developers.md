@@ -48,7 +48,7 @@ function getDataById(T: string) {}
 const ENV_TEST = 'dev'
 
 // 局域常量
-const MyName = 'yunzai'
+const MyName = 'alemonjs'
 
 // 可修改变量
 let values = ''

@@ -76,11 +76,6 @@ export default defineConfig({
         },
         {
           position: 'right',
-          href: 'https://github.com/lemonade-lab',
-          label: '团队'
-        },
-        {
-          position: 'right',
           href: 'https://github.com/lemonade-lab/alemonjs/tree/main/packages/create-alemonjs/bin/template',
           label: '开发模版'
         },
@@ -115,11 +110,7 @@ export default defineConfig({
           title: '社区',
           items: [
             {
-              label: '团队',
-              href: 'https://github.com/lemonade-lab'
-            },
-            {
-              label: 'Q群',
+              label: '问题反馈',
               href: 'https://qm.qq.com/q/aZYMNqUQc'
             }
           ]
