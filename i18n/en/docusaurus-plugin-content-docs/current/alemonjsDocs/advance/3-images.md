@@ -97,7 +97,7 @@ export default defineConfig({
 ```
 
 ```sh title="Load with non -module files"
-npx jsxp dev --node-options alemonjs/loader
+npx jsxp dev --node-options lvyjs/loader
 ```
 
 ## CSS

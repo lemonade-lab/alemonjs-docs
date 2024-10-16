@@ -97,7 +97,7 @@ export default defineConfig({
 ```
 
 ```sh title="使用非模块文件加载"
-npx jsxp dev --node-options alemonjs/loader
+npx jsxp dev --node-options lvyjs/loader
 ```
 
 ## CSS

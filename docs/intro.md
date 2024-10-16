@@ -16,8 +16,8 @@ sidebar_position: 1
 | ------------------------ | ----------------------------------- | -------------- |
 | [alemonjs]               | [![alemonjs-s]][alemonjs-p]         | 标准应用解析器 |
 | [jsxp]                   | [![jsxp-s]][jsxp-p]                 | 渲染器         |
+| [lvyjs]                  | [![lvyjs-s]][lvyjs-p]               | 构建工具       |
 | [chat-space]             | [![chat-space-s]][chat-space-p]     | SDK            |
-| [react-puppeteer]        | [![tsxp-s]][tsxp-p]                 | 渲染器         |
 | [create-alemonjs]        | [![c-s]][c-p]                       | 脚手架         |
 | [@alemonjs/kook]         | [![kook-s]][kook-p]                 | KOOK 连接      |
 | [@alemonjs/discord]      | [![discord-s]][discord-p]           | DC 公会连接    |
@@ -36,9 +36,9 @@ sidebar_position: 1
 [chat-space]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/chat-space
 [chat-space-s]: https://img.shields.io/npm/v/chat-space.svg
 [chat-space-p]: https://www.npmjs.com/package/chat-space
-[react-puppeteer]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/tsxp
-[tsxp-s]: https://img.shields.io/npm/v/react-puppeteer.svg
-[tsxp-p]: https://www.npmjs.com/package/react-puppeteer
+[lvyjs]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/lvyjs
+[lvyjs-s]: https://img.shields.io/npm/v/lvyjs.svg
+[lvyjs-p]: https://www.npmjs.com/package/lvyjs
 [create-alemonjs]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/create-alemonjs
 [c-s]: https://img.shields.io/npm/v/create-alemonjs.svg
 [c-p]: https://www.npmjs.com/package/create-alemonjs

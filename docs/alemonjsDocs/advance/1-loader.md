@@ -27,9 +27,9 @@ const data = readFileSync(img_logo, 'utf-8')
 
 ## 编译
 
-```ts title="alemon.config.ts"
-import { defineConfig } from 'alemonjs'
-import { files } from 'alemonjs/plugins'
+```ts title="lvy.config.ts"
+import { defineConfig } from 'lvyjs'
+import { files } from 'lvyjs/plugins'
 export default defineConfig({
   build: {
     // 请不要拦截css和scss文件，alemonjs已内置处理
@@ -41,23 +41,23 @@ export default defineConfig({
 ## loader
 
 ```sh title="支持在非alemonjs环境中使用本文功能"
-node --loader alemonjs/loader --no-warnings index.js
+node --loader lvyjs/loader --no-warnings index.js
 # or
-NODE_OPTIONS='--loader alemonjs/loader --no-warnings' node index.js
+NODE_OPTIONS='--loader lvyjs/loader --no-warnings' node index.js
 ```
 
 ```sh title="禁用非模块文件加载"
-nxp alemonjs dev --no-import-assets
+nxp lvyjs dev --no-import-assets
 ```
 
 ```sh title="替换assets匹配规则"
-nxp alemonjs dev --import-assets "/.(pm3|jpg|png|svg|icon)$/"
+nxp lvyjs dev --import-assets "/.(pm3|jpg|png|svg|icon)$/"
 ```
 
 ```sh title="禁用postcss预处理"
-nxp alemonjs dev --no-import-css
+nxp lvyjs dev --no-import-css
 ```
 
 ```sh title="替换css匹配规则"
-nxp alemonjs dev --import-css "/.(css|scss|less)$/"
+nxp lvyjs dev --import-css "/.(css|scss|less)$/"
 ```

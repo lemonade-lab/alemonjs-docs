@@ -28,8 +28,8 @@ const data = readFileSync(img_logo, 'utf-8')
 ## Compile
 
 ```ts title="alemon.config.ts"
-import { defineConfig } from 'alemonjs'
-import { files } from 'alemonjs/plugins'
+import { defineConfig } from 'lvyjs'
+import { files } from 'lvyjs/plugins'
 export default defineConfig({
   build: {
     // Please do not intercept CSS and SCSS files. Alemonjs has built -in processing
@@ -41,23 +41,23 @@ export default defineConfig({
 ## loader
 
 ```sh title="Support using this feature in non-alemonjs environments"
-node --loader alemonjs/loader --no-warnings index.js
+node --loader lvyjs/loader --no-warnings index.js
 # or
-NODE_OPTIONS='--loader alemonjs/loader --no-warnings' node index.js
+NODE_OPTIONS='--loader lvyjs/loader --no-warnings' node index.js
 ```
 
 ```sh title="Disable non-module file loading"
-nxp alemonjs dev --no-import-assets
+nxp lvyjs dev --no-import-assets
 ```
 
 ```sh title="Replace the assets matching rules"
-nxp alemonjs dev --import-assets "/.(pm3|jpg|png|svg|icon)$/"
+nxp lvyjs dev --import-assets "/.(pm3|jpg|png|svg|icon)$/"
 ```
 
 ```sh title="Disable postcss preprocessing"
-nxp alemonjs dev --no-import-css
+nxp lvyjs dev --no-import-css
 ```
 
 ```sh title="Replace the css matching rules"
-nxp alemonjs dev --import-css "/.(css|scss|less)$/"
+nxp lvyjs dev --import-css "/.(css|scss|less)$/"
 ```

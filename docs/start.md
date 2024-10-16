@@ -44,7 +44,7 @@ cd alemonb
 ```ts title="./tsconfig.json"
 {
   "include": ["src/**/*"],
-  "extends": "alemonjs/tsconfig.json"
+  "extends": "lvyjs/tsconfig.json"
 }
 ```
 

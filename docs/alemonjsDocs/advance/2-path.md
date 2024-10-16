@@ -21,7 +21,7 @@ sidebar_position: 2
     }
   },
   "include": ["src/**/*"],
-  "extends": "alemonjs/tsconfig.json"
+  "extends": "lvyjs/tsconfig.json"
 }
 ```
 
@@ -37,8 +37,8 @@ const data = readFileSync(img_logo, 'utf-8')
 ## 编译
 
 ```ts title="alemon.config.ts"
-import { defineConfig } from 'alemonjs'
-import { alias } from 'alemonjs/plugins'
+import { defineConfig } from 'lvyjs'
+import { alias } from 'lvyjs/plugins'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 const __filename = fileURLToPath(import.meta.url)
