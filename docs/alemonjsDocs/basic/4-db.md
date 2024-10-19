@@ -10,7 +10,7 @@ Redis配置及调用
 
 :::
 
-```yaml title="lemon.config.yaml"
+```yaml title="alemon.config.yaml"
 redis:
   host: 'localhost'
   port: 6379

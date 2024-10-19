@@ -51,10 +51,29 @@ cd alemonb
 ### 安装框架
 
 ```shell title="添加"
-yarn add alemonjs@2 -W
+yarn add alemonjs@latest -W
 ```
 
 ### 创建文件
+
+```ts title="lvy.config.ts"
+import { defineConfig } from 'lvyjs'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+// add alemonjs
+import { onStart as useAlemonJS } from 'alemonjs'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+export default defineConfig({
+  plugins: [
+    {
+      name: 'alemonjs',
+      // use alemonjs
+      useApp: () => process.argv.include('--alemonjs') && useAlemonJS('src/index.ts')
+    }
+  ]
+})
+```
 
 ```ts title="./src/index.ts"
 import { defineChildren } from 'alemonjs'
@@ -79,8 +98,10 @@ yarn add @alemonjs/kook
 </Tabs>
 
 ```sh title="开发模式启动"
-npx alemonjs dev --login "kook" --token "xxxx"
+npx lvy dev --alemonjs --login "kook" --token "xxxx"
 ```
+
+--alemonjs 选择运行的框架
 
 --login 选择kook平台
 
@@ -101,7 +122,7 @@ kook:
 ## 编译
 
 ```sh titile="编译模式运行"
-npx alemonjs build
+npx lvys build
 ```
 
 > 输出目录 lib

@@ -10,7 +10,7 @@ sidebar_position: 5
 
 :::
 
-```yaml title="lemon.config.yaml"
+```yaml title="alemon.config.yaml"
 kook:
   token: 'xxxx'
   master_id:

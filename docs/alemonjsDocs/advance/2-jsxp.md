@@ -1,14 +1,26 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# 图片
+# jsxp
 
-:::info
+:::tip jsxp
 
-使用前端技术栈描述图片
+[jsxp](https://github.com/lemonade-lab/lvyjs/tree/main/packages/jsxp) 是一个可以在 tsx 环境中,使用 puppeteer 对 React （tsx） 组件进行截图的库
+
+yunzaiJS 默认统一使用 jsxp 调用 puppeteer 对 React 组件进行生成截图
 
 :::
+
+| Project | Status              | Description |
+| ------- | ------------------- | ----------- |
+| [jsxp]  | [![jsxp-s]][jsxp-p] | 打包工具    |
+
+[jsxp]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/jsxp
+[jsxp-s]: https://img.shields.io/npm/v/jsxp.svg
+[jsxp-p]: https://www.npmjs.com/package/jsxp
+
+> 若使用VScode进行开发：安装插件 `ES7+ React/Redux/React-Native snippets`
 
 ## 安装
 
@@ -23,6 +35,25 @@ yarn add jsxp -W
  * @type {import("puppeteer").Configuration}
  */
 module.exports = require('jsxp/.puppeteerrc')
+```
+
+```ts title="lvy.config.ts"
+import { defineConfig } from 'lvyjs'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+// add jsxp
+import { createServer as useJSXP } from 'jsxp'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+export default defineConfig({
+  plugins: [
+    {
+      name: 'jsxp',
+      // use jsxp
+      useApp: () => process.argv.include('--view') && useJSXP()
+    }
+  ]
+})
 ```
 
 ## 组件
@@ -42,9 +73,9 @@ export default ({ name }) => {
 
 ```tsx title="@src/image/index.tsx"
 import React from 'react'
-import { render } from 'jsxp'
+import { render, ObtainProps } from 'jsxp'
 import Word from '@src/image/component/Word'
-export const pictureRender = (Props: Parameters<typeof Word>[0]) => {
+export const pictureRender = (Props: ObtainProps<typeof Word>) => {
   return render({
     // html/hello/uid.html
     path: 'hello',
@@ -96,8 +127,8 @@ export default defineConfig({
 })
 ```
 
-```sh title="使用非模块文件加载"
-npx jsxp dev --node-options lvyjs/loader
+```sh title="lvy启动"
+npx lvy dev --view
 ```
 
 ## CSS
@@ -131,6 +162,10 @@ module.exports = {
     // 内联url资源
     'postcss-url': {
       url: 'inline'
+    },
+    // 压缩css
+    'cssnano': {
+      preset: 'default'
     }
   }
 }
@@ -169,5 +204,3 @@ export default ({ name }) => {
   )
 }
 ```
-
-> 支持使用SCSS预处理

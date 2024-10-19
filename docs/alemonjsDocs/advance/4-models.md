@@ -51,8 +51,8 @@ node_modules
   "description": "xiuxian",
   "author": "ningmengchongshui",
   "type": "module",
-  "main": "lib/index.js", // 必须的
   "types": "lib",
+  "main": "lib/index.js",
   "exports": {
     ".": {
       "import": "./lib/index.js",

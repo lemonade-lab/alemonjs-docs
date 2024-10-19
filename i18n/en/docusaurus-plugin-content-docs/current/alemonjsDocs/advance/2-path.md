@@ -12,7 +12,7 @@ Simplify and standardize import formats
 
 ## Tip
 
-```json title="ts.config.json"
+```json title="tsconfig.json"
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -36,20 +36,17 @@ const data = readFileSync(img_logo, 'utf-8')
 
 ## Compile
 
-```ts title="alemon.config.ts"
+```ts title="lvy.config.ts"
 import { defineConfig } from 'lvyjs'
-import { alias } from 'lvyjs/plugins'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 export default defineConfig({
   build: {
-    plugins: [
-      alias({
-        entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-      })
-    ]
+    alias: {
+      entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
+    }
   }
 })
 ```
