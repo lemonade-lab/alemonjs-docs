@@ -8,7 +8,7 @@ sidebar_position: 2
 
 [jsxp](https://github.com/lemonade-lab/lvyjs/tree/main/packages/jsxp) 是一个可以在 tsx 环境中,使用 puppeteer 对 React （tsx） 组件进行截图的库
 
-yunzaiJS 默认统一使用 jsxp 调用 puppeteer 对 React 组件进行生成截图
+AlemonJS 默认统一使用 jsxp 调用 puppeteer 对 React 组件进行生成截图
 
 :::
 
@@ -112,7 +112,7 @@ export default OnResponse(
 
 ## 调试
 
-```tsx title="tsxp.config.tsx"
+```tsx title="jsxp.config.tsx"
 import React from 'react'
 import { join } from 'path'
 import { defineConfig } from 'jsxp'
@@ -145,6 +145,8 @@ export default {
 ```
 
 ### postcss
+
+> CSS预处理
 
 ```js title="postcss.config.cjs"
 module.exports = {
