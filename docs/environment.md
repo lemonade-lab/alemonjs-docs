@@ -4,17 +4,35 @@ sidebar_position: 2
 
 # 前置条件
 
+## 平台注册
+
 :::warning 注意事项
 
 进行开发之前，请先准备平台账户。
 
-[QQ 开发平台](https://q.qq.com/#/)
+:::
 
-[KOOK 开发平台](https://developer.kookapp.cn/doc/)
+1. [QQ 开发平台](https://q.qq.com/#/)
+2. [KOOK 开发平台](https://developer.kookapp.cn/doc/)
+3. [DISCORD 开发平台](https://discord.com/developers/applications/)
 
-[DISCORD 开发平台](https://discord.com/developers/applications/)
+:::tip 注册教程
+
+使用机器人需要拿到开放平台的账号与密钥，以便与消息平台进行通信进而收发消息。
+
+以下是一些常用的机器人开放平台的使用说明或教程，请根据自己的需求选择。
 
 :::
+
+| 机器人名称            | 链接                                                                                                           |
+| --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| QQ/QQ-Guild官方机器人 | [官方文档](https://bot.q.qq.com/wiki/)                                                                         |
+| 微信机器人            | [官方文档](https://hiflow.tencent.com/docs/applications/wwx-robot/)                                            |
+| Telegram Bot          | [官方文档](https://core.telegram.org/bots)， [其他教程](https://telegrambots.github.io/book/1/quickstart.html) |
+| Discord Bot           | [官方文档](https://discord.com/developers/docs/intro)                                                          |
+| kook Bot              | [官方文档](https://developer.kookapp.cn/)                                                                      |
+
+## 环境准备
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -1,16 +1,28 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Image
+# jsxp
 
-:::info
+:::tip jsxp
 
-Describe images using front-end technology stack
+[jsxp](https://github.com/lemonade-lab/lvyjs/tree/main/packages/jsxp) It is a library that can use Puppeteer to take a screenshot of the React (TSX) component in the TSX environment
+
+Alemonjs uses JSXP to call Puppeteer to generate screenshots to react components
 
 :::
 
-## Installation
+| Project | Status              | Description  |
+| ------- | ------------------- | ------------ |
+| [jsxp]  | [![jsxp-s]][jsxp-p] | Packing tool |
+
+[jsxp]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/jsxp
+[jsxp-s]: https://img.shields.io/npm/v/jsxp.svg
+[jsxp-p]: https://www.npmjs.com/package/jsxp
+
+> If you use VSCODE for development：Installation plugin `ES7+ React/Redux/React-Native snippets`
+
+## Install
 
 ```sh
 yarn add jsxp -W
@@ -23,6 +35,25 @@ yarn add jsxp -W
  * @type {import("puppeteer").Configuration}
  */
 module.exports = require('jsxp/.puppeteerrc')
+```
+
+```ts title="lvy.config.ts"
+import { defineConfig } from 'lvyjs'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+// add jsxp
+import { createServer as useJSXP } from 'jsxp'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+export default defineConfig({
+  plugins: [
+    {
+      name: 'jsxp',
+      // use jsxp
+      useApp: () => process.argv.include('--view') && useJSXP()
+    }
+  ]
+})
 ```
 
 ## Component
@@ -42,9 +73,9 @@ export default ({ name }) => {
 
 ```tsx title="@src/image/index.tsx"
 import React from 'react'
-import { render } from 'jsxp'
+import { render, ObtainProps } from 'jsxp'
 import Word from '@src/image/component/Word'
-export const pictureRender = (Props: Parameters<typeof Word>[0]) => {
+export const pictureRender = (Props: ObtainProps<typeof Word>) => {
   return render({
     // html/hello/uid.html
     path: 'hello',
@@ -54,7 +85,7 @@ export const pictureRender = (Props: Parameters<typeof Word>[0]) => {
 }
 ```
 
-## Sending
+## send
 
 ```ts title="@src/apps/word/res.ts"
 import { useSend, Image, Text } from 'alemonjs'
@@ -66,10 +97,10 @@ export default OnResponse(
     const img = await pictureRender(UID, {
       name: 'Hello Word !'
     })
-    // Create
+    // create
     const Send = useSend(event)
     if (typeof img == 'boolean') {
-      Send(Text('Production failed'))
+      Send(Text('Production failure'))
     } else {
       Send(Image(img))
     }
@@ -79,9 +110,9 @@ export default OnResponse(
 )
 ```
 
-## Debugging
+## debug
 
-```tsx title="tsxp.config.tsx"
+```tsx title="jsxp.config.tsx"
 import React from 'react'
 import { join } from 'path'
 import { defineConfig } from 'jsxp'
@@ -96,8 +127,8 @@ export default defineConfig({
 })
 ```
 
-```sh title="Load with non -module files"
-npx jsxp dev --node-options lvyjs/loader
+```sh title="lvy start up"
+npx lvy dev --view
 ```
 
 ## CSS
@@ -115,38 +146,44 @@ export default {
 
 ### postcss
 
+> CSS Pre-processing
+
 ```js title="postcss.config.cjs"
 module.exports = {
   plugins: {
-    // Allow importing CSS files using import
+    // Allow the use of Import to import CSS file
     'postcss-import': {},
-    // Allow nested syntax
+    // Allow the use of nested syntax
     'postcss-simple-vars': {},
     // nested
     'postcss-nested': {},
     // tailwindcss
     'tailwindcss': {},
-    // Add browser prefixes
+    // Increase the browser prefix
     'autoprefixer': {},
-    // Inline URL resources
+    // Inner Union URL Resources
     'postcss-url': {
       url: 'inline'
+    },
+    // Compressed CSS
+    'cssnano': {
+      preset: 'default'
     }
   }
 }
 ```
 
-### Entry
+### Entrance
 
 ```css title="@src/input.css"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 body {
-  /* Default margins */
+  /* Default border */
   margin: 0;
   padding: 0;
-  /* Margin overlap */
+  /*margin overlap */
   display: flex;
   flex-direction: column;
 }
@@ -169,5 +206,3 @@ export default ({ name }) => {
   )
 }
 ```
-
-> Support for SCSS preprocessing

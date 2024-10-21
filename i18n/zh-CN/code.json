@@ -116,9 +116,6 @@
   "💡 开始": {
     "message": "💡 开始"
   },
-  "我们的团队": {
-    "message": "我们的团队"
-  },
   "theme.ErrorPageContent.title": {
     "message": "页面已崩溃。",
     "description": "The title of the fallback page when the page crashed"

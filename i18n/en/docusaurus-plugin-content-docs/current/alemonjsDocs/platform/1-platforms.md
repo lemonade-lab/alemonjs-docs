@@ -10,7 +10,7 @@ Integrate with any open platform and framework
 
 :::
 
-## 导出
+## Export
 
 ```js title="src/index.ts"
 import { Text, OnProcessor, AEvents, useParse, At } from 'alemonjs'

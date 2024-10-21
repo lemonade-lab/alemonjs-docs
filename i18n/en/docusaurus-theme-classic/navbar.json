@@ -15,10 +15,6 @@
     "message": "Edit",
     "description": "Navbar item with label 编辑"
   },
-  "item.label.团队": {
-    "message": "Team",
-    "description": "Navbar item with label 团队"
-  },
   "item.label.开发模版": {
     "message": "Dev template",
     "description": "Navbar item with label 开发模版"

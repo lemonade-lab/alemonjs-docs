@@ -10,6 +10,8 @@ sidebar_position: 2
 
 :::
 
+## 内置接口
+
 ### 数据 `Buffer`
 
 ```ts title="apps/**/*/res.ts"
@@ -86,13 +88,13 @@ import { IP } from 'chat-space'
 const ip:string : false = await IP.get()
 ```
 
-### 特殊接口
+## 特殊接口
 
 > (卡片|表态)不同于其他接口一般只需要通用子段
 
 > 每个平台的数据格式皆不相同
 
-#### qq-group
+### qq-group
 
 - embed
 
@@ -127,7 +129,7 @@ import { QQGroupBotAPI } from 'chat-space'
 const Client = new QQGroupBotAPI()
 ```
 
-#### qq-guild-bot
+### qq-guild-bot
 
 - markdown模版功能
 

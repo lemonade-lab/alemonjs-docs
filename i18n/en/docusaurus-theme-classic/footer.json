@@ -19,14 +19,6 @@
     "message": "Start",
     "description": "The label of footer link with label=开始 linking to /docs/start"
   },
-  "link.item.label.团队": {
-    "message": "Team",
-    "description": "The label of footer link with label=团队 linking to https://github.com/lemonade-lab"
-  },
-  "link.item.label.Q群": {
-    "message": "QQ Group",
-    "description": "The label of footer link with label=Q群 linking to https://qm.qq.com/q/aZYMNqUQc"
-  },
   "link.item.label.alemonjs": {
     "message": "alemonjs",
     "description": "The label of footer link with label=alemonjs linking to https://github.com/lemonade-lab/alemonjs"
@@ -38,5 +30,9 @@
   "copyright": {
     "message": "<span>Copyright © 2024 LEMONADE </span><a class=\"footer__link-item navbar__item\" href=\"https://beian.miit.gov.cn/\" target=\"_blank\">津ICP备2023004480号</a>",
     "description": "The footer copyright"
+  },
+  "link.item.label.问题反馈": {
+    "message": "Feedback",
+    "description": "The label of footer link with label=问题反馈 linking to https://qm.qq.com/q/aZYMNqUQc"
   }
 }

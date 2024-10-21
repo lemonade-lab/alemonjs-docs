@@ -4,17 +4,35 @@ sidebar_position: 2
 
 # Prerequisites
 
-:::warning Notice
+## Platform registration
 
-Before development, please prepare a platform account.
+:::warning warning
 
-[QQ Development Platform](https://q.qq.com/#/)
-
-[KOOK Development Platform](https://developer.kookapp.cn/doc/)
-
-[DISCORD Development Platform](https://discord.com/developers/applications/)
+Before developing, please prepare a platform account.
 
 :::
+
+- [QQ Development platform](https://q.qq.com/#/)
+- [KOOK Development platform](https://developer.kookapp.cn/doc/)
+- [DISCORD Development platform](https://discord.com/developers/applications/)
+
+:::tip Registered tutorial
+
+Use the robot needs to get the account and Token key of the open platform in order to communicate with the message platform and then send and receive messages.
+
+Here are some commonly used instructions or tutorials for the use of robot open platforms. Please choose according to your needs.
+
+:::
+
+| Robot name               | Link                                                                                                                                |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| QQ/QQ-Guild Official Bot | [Official documentation](https://bot.q.qq.com/wiki/)                                                                                |
+| WeChat Bot               | [Official documentation](https://hiflow.tencent.com/docs/applications/wwx-robot/)                                                   |
+| Telegram Bot             | [Official documentation](https://core.telegram.org/bots)， [Other tutorials](https://telegrambots.github.io/book/1/quickstart.html) |
+| Discord Bot              | [Official documentation](https://discord.com/developers/docs/intro)                                                                 |
+| kook Bot                 | [Official documentation](https://developer.kookapp.cn/)                                                                             |
+
+## Environmental preparation
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
