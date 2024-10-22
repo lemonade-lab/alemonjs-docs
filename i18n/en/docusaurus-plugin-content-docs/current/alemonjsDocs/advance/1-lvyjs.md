@@ -16,7 +16,7 @@ Alemonjs uses lvyjs for development by default
 | ------- | --------------------- | ---------------------------- |
 | [lvyjs] | [![lvyjs-s]][lvyjs-p] | Packing and development tool |
 
-[lvyjs]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/lvyjs
+[lvyjs]: https://github.com/lvyjs/core
 [lvyjs-s]: https://img.shields.io/npm/v/lvyjs.svg
 [lvyjs-p]: https://www.npmjs.com/package/lvyjs
 

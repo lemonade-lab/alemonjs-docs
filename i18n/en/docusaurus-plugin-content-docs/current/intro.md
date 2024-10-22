@@ -16,6 +16,7 @@ sidebar_position: 1
 | ------------------------ | ----------------------------------- | --------------------------- |
 | [alemonjs]               | [![alemonjs-s]][alemonjs-p]         | Standard application parser |
 | [jsxp]                   | [![jsxp-s]][jsxp-p]                 | Renderer                    |
+| [lvyjs]                  | [![lvyjs-s]][lvyjs-p]               | Build tools                 |
 | [chat-space]             | [![chat-space-s]][chat-space-p]     | SDK                         |
 | [react-puppeteer]        | [![tsxp-s]][tsxp-p]                 | Renderer                    |
 | [create-alemonjs]        | [![c-s]][c-p]                       | Scaffolding                 |
@@ -25,19 +26,20 @@ sidebar_position: 1
 | [@alemonjs/qq-guild-bot] | [![qq-guild-bot-s]][qq-guild-bot-p] | QQ Channel Connector        |
 | [@alemonjs/qq]           | [![qq-s]][qq-p]                     | QQ Connector                |
 | [@alemonjs/telegram]     | [![telegram-s]][telegram-p]         | telegram Connector          |
+| [@alemonjs/onebot]       | [![onebot-s]][onebot-p]             | onebot connector            |
 
 [alemonjs]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/alemonjs
 [alemonjs-s]: https://img.shields.io/npm/v/alemonjs.svg
 [alemonjs-p]: https://www.npmjs.com/package/alemonjs
-[jsxp]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/jsxp
+[jsxp]: https://github.com/lvyjs/core/tree/main/packages/jsxp
 [jsxp-s]: https://img.shields.io/npm/v/jsxp.svg
 [jsxp-p]: https://www.npmjs.com/package/jsxp
 [chat-space]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/chat-space
 [chat-space-s]: https://img.shields.io/npm/v/chat-space.svg
 [chat-space-p]: https://www.npmjs.com/package/chat-space
-[react-puppeteer]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/tsxp
-[tsxp-s]: https://img.shields.io/npm/v/react-puppeteer.svg
-[tsxp-p]: https://www.npmjs.com/package/react-puppeteer
+[lvyjs]: https://github.com/lvyjs/core
+[lvyjs-s]: https://img.shields.io/npm/v/lvyjs.svg
+[lvyjs-p]: https://www.npmjs.com/package/lvyjs
 [create-alemonjs]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/create-alemonjs
 [c-s]: https://img.shields.io/npm/v/create-alemonjs.svg
 [c-p]: https://www.npmjs.com/package/create-alemonjs
@@ -59,3 +61,6 @@ sidebar_position: 1
 [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram
 [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg
 [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram
+[@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot
+[onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg
+[onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot

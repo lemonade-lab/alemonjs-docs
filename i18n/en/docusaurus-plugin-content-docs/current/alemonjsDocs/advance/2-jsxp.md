@@ -16,7 +16,7 @@ Alemonjs uses JSXP to call Puppeteer to generate screenshots to react components
 | ------- | ------------------- | ------------ |
 | [jsxp]  | [![jsxp-s]][jsxp-p] | Packing tool |
 
-[jsxp]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/jsxp
+[jsxp]: https://github.com/lvyjs/core/tree/main/packages/jsxp
 [jsxp-s]: https://img.shields.io/npm/v/jsxp.svg
 [jsxp-p]: https://www.npmjs.com/package/jsxp
 

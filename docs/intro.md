@@ -30,13 +30,13 @@ sidebar_position: 1
 [alemonjs]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/alemonjs
 [alemonjs-s]: https://img.shields.io/npm/v/alemonjs.svg
 [alemonjs-p]: https://www.npmjs.com/package/alemonjs
-[jsxp]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/jsxp
+[jsxp]: https://github.com/lvyjs/core/tree/main/packages/jsxp
 [jsxp-s]: https://img.shields.io/npm/v/jsxp.svg
 [jsxp-p]: https://www.npmjs.com/package/jsxp
 [chat-space]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/chat-space
 [chat-space-s]: https://img.shields.io/npm/v/chat-space.svg
 [chat-space-p]: https://www.npmjs.com/package/chat-space
-[lvyjs]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/lvyjs
+[lvyjs]: https://github.com/lvyjs/core
 [lvyjs-s]: https://img.shields.io/npm/v/lvyjs.svg
 [lvyjs-p]: https://www.npmjs.com/package/lvyjs
 [create-alemonjs]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/create-alemonjs
