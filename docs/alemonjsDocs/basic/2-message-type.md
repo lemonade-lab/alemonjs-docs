@@ -36,6 +36,8 @@ export type AEventByMessageCreate = {
   OpenID: string
   // 创建时间
   CreateAt: number
+  // 由Platform生产的标记，无具体含义。
+  Tag: string
   // 捕获原始消息格式
   value: any
 }
