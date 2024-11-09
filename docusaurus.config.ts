@@ -150,5 +150,25 @@ export default defineConfig({
       }
     ]
   ],
-  stylesheets: []
+  stylesheets: [],
+  plugins: [
+    function (context) {
+      return {
+        name: 'docusaurus-proxy',
+        configureWebpack: (config, isServer) => {
+          if (!isServer) {
+            config.devServer = {
+              proxy: {
+                '/api': {
+                  target: 'http://your-api-server.com',
+                  changeOrigin: true,
+                  pathRewrite: { '^/api': '' }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 })

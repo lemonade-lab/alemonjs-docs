@@ -33,7 +33,6 @@ const HomepageHeader = () => {
           </Link>
         </div>
       </div>
-      <hr className="border-0 h-px bg-gray-300 my-8" />
     </header>
   )
 }
@@ -79,7 +78,6 @@ export default function Home(): JSX.Element {
       description="Description will go into a meta tag in <head />"
     >
       <HomepageHeader />
-      <div className="border w-full" />
       <HomepageFeatures />
     </Layout>
   )
