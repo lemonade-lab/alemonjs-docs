@@ -59,7 +59,7 @@ const items = [
 ]
 
 export default function HomePage(): JSX.Element {
-  const [data, setData] = useState<string[]>([''])
+  const [data, setData] = useState<string[]>([])
   const [show, setShow] = useState<boolean>(false)
 
   const ymls = ['latest.yml', 'latest-mac.yml', 'latest-linux.yml', 'latest-linux-arm64.yml']
@@ -75,7 +75,7 @@ export default function HomePage(): JSX.Element {
   })
 
   // 点击更多
-  const onClick = () => {
+  const onClick = async () => {
     if (show) {
       // 关闭
       setShow(!show)
@@ -83,21 +83,17 @@ export default function HomePage(): JSX.Element {
     }
     // 打开
     setShow(!show)
-
-    // 确保是空的
-    setData([])
-
-    // 获取配置
-    ymls.forEach(item => {
-      getYml({
+    let db = []
+    for (const item of ymls) {
+      await getYml({
         baseURL,
         url: item
       }).then(res => {
-        setData([...data, ...res.files.map(file => file.url)])
+        const dbs = res.files.map(file => file.url)
+        db = [...db, ...dbs]
       })
-    })
-
-    //
+    }
+    setData([...db])
   }
 
   const [view, inView] = useInView({
