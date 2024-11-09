@@ -1,5 +1,6 @@
 @import './tailwind.css';
 @import './root.css';
+@import 'animate.css';
 
 .footer__link-item,
 .navbar__item {
@@ -54,4 +55,28 @@ aside {
   margin: auto 0;
   padding: 1rem 0;
   max-width: 79rem;
+}
+
+.custom-spin {
+  @apply animate-spin;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.testimonials__header__hr {
+  border: none;
+  height: 1px;
+  background-color: #fff;
+  transition: transform 0.67s;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.testimonials--inview {
+  transform: scaleX(1);
+}
+
+.shadow-centent {
+  box-shadow: 0 0 0.3rem 0 #cbd5e1;
 }
