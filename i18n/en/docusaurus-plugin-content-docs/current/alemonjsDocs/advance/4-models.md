@@ -16,7 +16,7 @@ Define the `apps` variable and add the package
 
 ```yaml title="alemon.config.yaml"
 apps:
-  - '@alemonjs/xiuxian'
+  - 'my-modules-xiuxian'
 ```
 
 AlemonJS will look for the corresponding package.json based on the configuration,
@@ -27,12 +27,11 @@ Using the directory of the entry file as the project directory, collect all modu
 
 ```shell title="大致的目录结构"
 node_modules/                 // Node.js dependencies
- ├── @alemonjs/               // AlemonJS related modules
- │    └── xixian/             // xixian module
- │         ├── lib/           // Source code directory
- │         │    ├── apps/     // Development applications
- │         │    └── index.js  // Entry file
- │         └── package.json   // Project configuration file
+ ├── my-modules-xiuxian    // AlemonJS related modules
+ │      ├── lib/           // Source code directory
+ │      │    ├── apps/     // Development applications
+ │      │    └── index.js  // Entry file
+ │      └── package.json   // Project configuration file
 ```
 
 ## Publishing
@@ -46,7 +45,7 @@ node_modules
 
 ```json title="package.json"
 {
-  "name": "@alemonjs/xiuxian",
+  "name": "my-modules-xiuxian",
   "version": "0.0.1",
   "description": "xiuxian",
   "author": "ningmengchongshui",

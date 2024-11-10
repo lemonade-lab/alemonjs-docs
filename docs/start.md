@@ -33,18 +33,6 @@ cd alemonb
 yarn install
 ```
 
-> 登录平台，需要增加对应平台的关联包
-
-```sh title="开发模式启动"
-npx lvy dev --alemonjs --login "kook" --token "xxxx"
-```
-
---alemonjs 选择运行的框架
-
---login 选择kook平台
-
---token 即KOOK登录需要的 token
-
 ## 配置
 
 ```yaml title="lemon.config.yaml"
@@ -55,9 +43,15 @@ kook:
     - '654321'
 ```
 
+## 启动
+
+```sh title="以开发模式启动，并登录kook"
+yarn dev --login kook
+```
+
 ## 编译
 
-```sh titile="编译模式运行"
+```sh title="编译代码"
 npx lvys build
 ```
 
@@ -65,9 +59,7 @@ npx lvys build
 
 ## PM2
 
-### 安装
-
-```shell
+```shell title="安装PM2"
 yarn add pm2 -D
 ```
 

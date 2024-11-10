@@ -8,11 +8,9 @@ sidebar_position: 2
 
 :::tip 注册教程
 
-如果你对nodejs开发及其开发生态不熟悉，请前往lvyjs.dev了解
+如果你对nodejs开发及其开发生态不熟悉，请前往[https://lvyjs.dev](https://lvyjs/dev)了解
 
 :::
-
-[点击前往 https://lvyjs/dev](https://lvyjs.dev/)
 
 ## 账户
 
@@ -24,9 +22,9 @@ sidebar_position: 2
 
 ### QQ开放平台
 
-[QQ 开发平台](https://q.qq.com/#/)
+[平台 https://q.qq.com/#/](https://q.qq.com/#/)
 
-[官方文档](https://bot.q.qq.com/wiki/)
+[文档 https://bot.q.qq.com/wiki/](https://bot.q.qq.com/wiki/)
 
 | Project                  | Status                              | Description |
 | ------------------------ | ----------------------------------- | ----------- |
@@ -44,23 +42,25 @@ sidebar_position: 2
 [qq-s]: https://img.shields.io/npm/v/@alemonjs/qq.svg
 [qq-p]: https://www.npmjs.com/package/@alemonjs/qq
 
-### Telegram
+### Discord开发者
 
-[官方文档](https://core.telegram.org/bots)
+[平台 https://discord.com/developers/applications/](https://discord.com/developers/applications/)
 
-| Project              | Status                      | Description   |
-| -------------------- | --------------------------- | ------------- |
-| [@alemonjs/telegram] | [![telegram-s]][telegram-p] | telegram 连接 |
+[文档 https://discord.com/developers/docs/intro](https://discord.com/developers/docs/intro)
 
-[@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram
-[telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg
-[telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram
+| Project             | Status                    | Description |
+| ------------------- | ------------------------- | ----------- |
+| [@alemonjs/discord] | [![discord-s]][discord-p] | DC 公会连接 |
+
+[@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord
+[discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg
+[discord-p]: https://www.npmjs.com/package/@alemonjs/discord
 
 ### KOOK开放平台
 
-[KOOK 开发平台](https://developer.kookapp.cn/doc/)
+[平台 https://developer.kookapp.cn/doc/](https://developer.kookapp.cn/doc/)
 
-[官方文档](https://core.telegram.org/bots)
+[文档 https://core.telegram.org/bots](https://core.telegram.org/bots)
 
 | Project          | Status              | Description |
 | ---------------- | ------------------- | ----------- |
@@ -70,16 +70,28 @@ sidebar_position: 2
 [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg
 [kook-p]: https://www.npmjs.com/package/@alemonjs/kook
 
-### Discord开发者
+### Telegram
 
-[DISCORD 开发平台](https://discord.com/developers/applications/)
+[文档 https://core.telegram.org/bots ](https://core.telegram.org/bots)
 
-[官方文档](https://discord.com/developers/docs/intro)
+| Project              | Status                      | Description   |
+| -------------------- | --------------------------- | ------------- |
+| [@alemonjs/telegram] | [![telegram-s]][telegram-p] | telegram 连接 |
 
-| Project             | Status                    | Description |
-| ------------------- | ------------------------- | ----------- |
-| [@alemonjs/discord] | [![discord-s]][discord-p] | DC 公会连接 |
+[@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram
+[telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg
+[telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram
 
-[@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord
-[discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg
-[discord-p]: https://www.npmjs.com/package/@alemonjs/discord
+#### 创建机器人
+
+[访问 https://core.telegram.org/bots/tutorial#obtain-your-bot-token](https://core.telegram.org/bots/tutorial#obtain-your-bot-token)
+
+点击添加`@BotFather`并发送`/newbot`,并继续发送 `NameXBot` 得以生产 `token`
+
+```yaml
+79179797979:AAAAAAAAAAAAAABBBBBBCCCCCCCCCC
+```
+
+- NameXdBot 即自定义的bot名
+
+[访问 https://web.telegram.org/k/#@NameXdBot 以添加](https://web.telegram.org/k/#@NameXdBot)

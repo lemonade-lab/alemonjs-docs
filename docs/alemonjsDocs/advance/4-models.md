@@ -16,7 +16,7 @@ sidebar_position: 4
 
 ```yaml title="alemon.config.yaml"
 apps:
-  - '@alemonjs/xiuxian'
+  - 'my-modules-xiuxian'
 ```
 
 alemonjs 会根据配置去找对应的 package.json。
@@ -27,10 +27,9 @@ alemonjs 会根据配置去找对应的 package.json。
 
 ```shell title="大致的目录结构"
 node_modules/                 // Node.js 依赖包
- ├── @alemonjs/               // AlemonJS 相关模块
- │    └── xixian/             // xixian 模块
- │         ├── lib/           // 源代码目录
- │         │    ├── apps/     // 开发应用
- │         │    └── index.js  // 文件入口
- │         └── package.json   // 工程配置文件
+ ├── my-modules-xiuxian       // xiuxian相关模块
+ │      ├── lib/           // 源代码目录
+ │      │    ├── apps/     // 开发应用
+ │      │    └── index.js  // 文件入口
+ │      └── package.json   // 工程配置文件
 ```
