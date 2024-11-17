@@ -24,6 +24,7 @@ export default OnResponse(
     next()
   },
   'message.create', // 监听的事件类型
+  //  ['message.create','private.message.create'] // 多选
   /^你好$/ // 匹配的正则表达式 （可选，不填即表示全匹配）
 )
 ```

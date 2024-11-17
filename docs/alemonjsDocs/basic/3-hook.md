@@ -41,6 +41,7 @@ export default OnResponse(
     Send(Image('src/assets/img/test.jpg', 'file'))
   },
   'message.create',
+  //  ['message.create','private.message.create'] // 多选
   /^(#|\/)?你好$/
 )
 ```
@@ -77,6 +78,7 @@ export default OnResponse(
     // 处理被AT的用户...
   },
   'message.create',
+  //  ['message.create','private.message.create'] // 多选
   /^(#|\/)?你好$/
 )
 ```
@@ -120,6 +122,7 @@ export default OnResponse(
     //
   },
   'message.create',
+  //  ['message.create','private.message.create'] // 多选
   /登录/
 )
 ```

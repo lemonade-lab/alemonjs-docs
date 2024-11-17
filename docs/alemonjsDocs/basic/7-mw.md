@@ -24,5 +24,6 @@ export default OnMiddleware(
     return event
   },
   'message.create' // 监听的事件类型
+  //  ['message.create','private.message.create'] // 多选
 )
 ```
