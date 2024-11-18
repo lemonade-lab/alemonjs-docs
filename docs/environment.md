@@ -8,7 +8,7 @@ sidebar_position: 2
 
 :::tip 注册教程
 
-如果你对nodejs开发及其开发生态不熟悉，请前往[https://lvyjs.dev](https://lvyjs/dev)了解
+如果你对nodejs开发及其开发生态不熟悉，请前往[https://lvyjs.dev](https://lvyjs.dev/)了解
 
 :::
 
