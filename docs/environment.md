@@ -8,7 +8,9 @@ sidebar_position: 2
 
 :::tip 注册教程
 
-如果你对nodejs开发及其开发生态不熟悉，请前往[https://lvyjs.dev](https://lvyjs.dev/)了解
+如果你对nodejs开发及其开发生态不熟悉
+
+请前往[https://lvyjs.dev](https://lvyjs.dev/)了解
 
 :::
 
@@ -18,19 +20,21 @@ sidebar_position: 2
 
 进行开发之前，请先准备平台账户。
 
+点击`Project`、`Status`可进一步了解
+
 :::
 
 ### QQ开放平台
 
-[平台 https://q.qq.com/#/](https://q.qq.com/#/)
+[👉平台 https://q.qq.com/#/](https://q.qq.com/#/)
 
-[文档 https://bot.q.qq.com/wiki/](https://bot.q.qq.com/wiki/)
+[👉文档 https://bot.q.qq.com/wiki/](https://bot.q.qq.com/wiki/)
 
-| Project                  | Status                              | Description |
-| ------------------------ | ----------------------------------- | ----------- |
-| [@alemonjs/qq-group-bot] | [![qq-group-bot-s]][qq-group-bot-p] | QQ 群连接   |
-| [@alemonjs/qq-guild-bot] | [![qq-guild-bot-s]][qq-guild-bot-p] | QQ 频道连接 |
-| [@alemonjs/qq]           | [![qq-s]][qq-p]                     | QQ 连接     |
+| Project                    | Status                              | Description |
+| -------------------------- | ----------------------------------- | ----------- |
+| 👉[@alemonjs/qq-group-bot] | [![qq-group-bot-s]][qq-group-bot-p] | QQ 群连接   |
+| 👉[@alemonjs/qq-guild-bot] | [![qq-guild-bot-s]][qq-guild-bot-p] | QQ 频道连接 |
+| 👉[@alemonjs/qq]           | [![qq-s]][qq-p]                     | QQ 连接     |
 
 [@alemonjs/qq-group-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-group-bot
 [qq-group-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-group-bot.svg
@@ -44,9 +48,9 @@ sidebar_position: 2
 
 ### Discord开发者
 
-[平台 https://discord.com/developers/applications/](https://discord.com/developers/applications/)
+[👉平台 https://discord.com/developers/applications/](https://discord.com/developers/applications/)
 
-[文档 https://discord.com/developers/docs/intro](https://discord.com/developers/docs/intro)
+[👉文档 https://discord.com/developers/docs/intro](https://discord.com/developers/docs/intro)
 
 | Project             | Status                    | Description |
 | ------------------- | ------------------------- | ----------- |
@@ -58,13 +62,13 @@ sidebar_position: 2
 
 ### KOOK开放平台
 
-[平台 https://developer.kookapp.cn/doc/](https://developer.kookapp.cn/doc/)
+[👉平台 https://developer.kookapp.cn/doc/](https://developer.kookapp.cn/doc/)
 
-[文档 https://core.telegram.org/bots](https://core.telegram.org/bots)
+[👉文档 https://core.telegram.org/bots](https://core.telegram.org/bots)
 
-| Project          | Status              | Description |
-| ---------------- | ------------------- | ----------- |
-| [@alemonjs/kook] | [![kook-s]][kook-p] | KOOK 连接   |
+| Project            | Status              | Description |
+| ------------------ | ------------------- | ----------- |
+| 👉[@alemonjs/kook] | [![kook-s]][kook-p] | KOOK 连接   |
 
 [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook
 [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg
@@ -84,7 +88,7 @@ sidebar_position: 2
 
 #### 创建机器人
 
-[访问 https://core.telegram.org/bots/tutorial#obtain-your-bot-token](https://core.telegram.org/bots/tutorial#obtain-your-bot-token)
+👉[访问 https://core.telegram.org/bots/tutorial#obtain-your-bot-token](https://core.telegram.org/bots/tutorial#obtain-your-bot-token)
 
 点击添加`@BotFather`并发送`/newbot`,并继续发送 `NameXBot` 得以生产 `token`
 
@@ -94,4 +98,4 @@ sidebar_position: 2
 
 - NameXdBot 即自定义的bot名
 
-[访问 https://web.telegram.org/k/#@NameXdBot 以添加](https://web.telegram.org/k/#@NameXdBot)
+👉[访问 https://web.telegram.org/k/#@NameXdBot 以添加](https://web.telegram.org/k/#@NameXdBot)

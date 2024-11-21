@@ -9,7 +9,7 @@ export default function HeaderPage(): JSX.Element {
       <img className="w-64 md:w-80 lg:w-96" src="img/alemon.png" alt={siteConfig.title} />
       <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
         <p className="text-sm md:text-xl xl:text-2xl mb-4">
-          <TextReveal text="阿柠檬，基于 JavaScript 所构建的跨聊天平台开发框架" />
+          <TextReveal text="阿柠檬，基于 JavaScript 所构建的聊天平台开发框架" />
         </p>
         <div className="flex justify-center my-4">
           <Link

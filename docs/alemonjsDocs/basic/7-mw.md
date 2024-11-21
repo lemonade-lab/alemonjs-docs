@@ -12,7 +12,7 @@ sidebar_position: 7
 
 ### `OnMiddleware`
 
-```ts title="middleware/**/*/mw.ts"
+```ts title="src/middleware/**/*/mw.ts"
 // OnMiddleware((消息体,控制体)=>消息体,消息类型)
 export default OnMiddleware(
   event => {

@@ -14,7 +14,7 @@ sidebar_position: 1
 
 一种用于处理特定事件的功能，它允许开发者定义在事件发生时应执行的操作。
 
-```ts title="apps/**/*/res.ts"
+```ts title="src/apps/**/*/res.ts"
 // OnResponse((消息体,控制体)=>{},消息类型,匹配正则)
 export default OnResponse(
   (event, { next }) => {

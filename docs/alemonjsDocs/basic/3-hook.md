@@ -18,7 +18,7 @@ AlemonJS 提供了以下几种钩子：
 >
 > 这种获取通常在一个特定的事件处理上下文中进行。
 
-```ts title="apps/**/*/res.ts"
+```ts title="src/apps/**/*/res.ts"
 import { useSend, Text, At, Image } from 'alemonjs'
 export default OnResponse(
   event => {

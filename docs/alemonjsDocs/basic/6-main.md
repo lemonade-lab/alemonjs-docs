@@ -14,7 +14,7 @@ sidebar_position: 6
 export default defineChildren(() => {
   return {
     onCreated() {
-      console.log('[@alemonjs/test]')
+      console.log('子模块启动')
     }
   }
 })

@@ -152,23 +152,14 @@ export default defineConfig({
   ],
   stylesheets: [],
   plugins: [
-    function (context) {
-      return {
-        name: 'docusaurus-proxy',
-        configureWebpack: (config, isServer) => {
-          if (!isServer) {
-            config.devServer = {
-              proxy: {
-                '/api': {
-                  target: 'http://your-api-server.com',
-                  changeOrigin: true,
-                  pathRewrite: { '^/api': '' }
-                }
-              }
-            }
-          }
-        }
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        quality: 70,
+        max: 1030,
+        min: 640,
+        steps: 2
       }
-    }
+    ]
   ]
 })

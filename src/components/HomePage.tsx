@@ -22,7 +22,7 @@ const features = [
   },
   {
     title: '中间件',
-    description: '调整事件功能,'
+    description: '顶级中间事件处理块,让开发更得心应手'
   },
   {
     title: '约定大于配置',
