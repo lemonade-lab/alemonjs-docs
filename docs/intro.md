@@ -30,7 +30,6 @@ export default OnResponse(
 )
 ```
 
-import Image from '@theme/IdealImage';
-import thumbnail from '@site/static/img/model.png';
+import Image from '@site/src/components/Image'
 
-<Image img={thumbnail} />
+<Image src={require('@site/static/img/model.png')} />
