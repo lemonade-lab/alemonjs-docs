@@ -98,7 +98,8 @@ export type MessageBody = {
   /**
    * 消息内容
    */
-  Megs: any[]
+  MessageBody: any[]
+  MessageText: string
 }
 
 export type Platform = {

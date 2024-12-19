@@ -19,8 +19,10 @@ kook:
 ```
 
 ```ts title="src/index.ts"
-import { getConfig, getIoRedis } from 'alemonjs'
+import { getConfig, getIoRedis, getConfigValue } from 'alemonjs'
 const cfg = getConfig()
 console.log('alemon.config.yaml', config.value)
 console.log('alemonjs package.json', config.package)
+const value = getConfigValue()
+// 即可 config.value
 ```

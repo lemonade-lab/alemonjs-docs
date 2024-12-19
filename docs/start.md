@@ -35,27 +35,20 @@ yarn install
 
 ## 配置
 
-```yaml title="lemon.config.yaml"
-kook:
-  token: 'xxxx'
-  master_id:
-    - '123456'
-    - '654321'
+```yaml title="alemon.config.yaml"
+gui:
+  port: 9601
 ```
 
 ## 启动
 
-```sh title="以开发模式启动，并登录kook"
-yarn dev --login kook
+> [可选择GUI以体验效果](/)
+
+```sh title="以开发模式启动，并选择gui"
+yarn dev --login gui
 ```
 
-## 编译
-
-```sh title="编译代码"
-npx lvys build
-```
-
-> 输出目录 lib
+--login 登陆平台
 
 ## PM2
 
@@ -63,11 +56,13 @@ npx lvys build
 yarn add pm2 -D
 ```
 
+> 需要了解 [lvyjs](https://lvyjs.dev) 如何编译得到 lib/index.js
+
 ```yaml title="alemon.config.yaml"
 pm2:
-  name: 'kook'
+  name: 'gui'
   # 生产模式，入口可选择只向打包生产后的文件
-  script: 'alemonjs start --input ./lib/index.js --login kook'
+  script: 'alemonjs start --input ./lib/index.js --login gui'
 ```
 
 ### 配置

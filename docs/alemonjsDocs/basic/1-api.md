@@ -17,15 +17,14 @@ sidebar_position: 1
 ```ts title="src/apps/**/*/res.ts"
 // OnResponse((消息体,控制体)=>{},消息类型,匹配正则)
 export default OnResponse(
-  (event, { next }) => {
+  (event, next) => {
     // 事件消息体
     console.log('event', event)
-    // 前往下一个匹配规则
+    // 前往下一个响应
     next()
   },
-  'message.create', // 监听的事件类型
+  'message.create' // 监听的事件类型
   //  ['message.create','private.message.create'] // 多选
-  /^你好$/ // 匹配的正则表达式 （可选，不填即表示全匹配）
 )
 ```
 

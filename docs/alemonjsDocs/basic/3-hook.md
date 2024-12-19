@@ -20,30 +20,29 @@ AlemonJS 提供了以下几种钩子：
 
 ```ts title="src/apps/**/*/res.ts"
 import { useSend, Text, At, Image } from 'alemonjs'
-export default OnResponse(
-  event => {
-    const Send = useSend(event)
+export default OnResponse((event, next) => {
+  if (!/^(#|\/)?你好$/.test(event.MessageText)) {
+    next()
+    return
+  }
+  const Send = useSend(event)
 
-    // 发送文本
-    Send(Text('Hello World!'))
+  // 发送文本
+  Send(Text('Hello World!'))
 
-    // 发送 @ 提及
-    Send(At('123456'))
+  // 发送 @ 提及
+  Send(At('123456'))
 
-    // 发送多种类型的消息
-    Send(Text('Hello '), At('123456'), Text(', How are things going?'))
+  // 发送多种类型的消息
+  Send(Text('Hello '), At('123456'), Text(', How are things going?'))
 
-    // 发送图片
-    const img: Buffer = null // 这里需要正确初始化 Buffer
-    Send(Image(img))
+  // 发送图片
+  const img: Buffer = null // 这里需要正确初始化 Buffer
+  Send(Image(img))
 
-    // 发送本地图片文件
-    Send(Image('src/assets/img/test.jpg', 'file'))
-  },
-  'message.create',
-  //  ['message.create','private.message.create'] // 多选
-  /^(#|\/)?你好$/
-)
+  // 发送本地图片文件
+  Send(Image('src/assets/img/test.jpg', 'file'))
+}, 'message.create')
 ```
 
 ### `usePrase`
@@ -56,31 +55,31 @@ export default OnResponse(
 
 ```ts title="apps/**/*/res.ts"
 import { useParse } from 'alemonjs'
-export default OnResponse(
-  event => {
-    // 解析用户消息
-    const text = useParse(event.Msgs, 'Text')
-    if (!text) {
-      return // 消息为空
-    }
+export default OnResponse((event, next) => {
+  if (!/^(#|\/)?你好$/.test(event.MessageText)) {
+    next()
+    return
+  }
 
-    const ats = useParse(event.Msgs, 'At')
-    if (!ats || ats.length === 0) {
-      return // @ 提及为空
-    }
+  const ats = useParse(event, 'At')
+  if (!ats || ats.length === 0) {
+    return // @ 提及为空
+  }
 
-    // 查找用户类型的 @ 提及，且不是 bot
-    const UserID = ats.find(item => item.typing === 'user' && !item.bot)?.value
-    if (!UserID) {
-      return // 未找到用户ID
-    }
+  // 查找用户类型的 @ 提及，且不是 bot
+  const UserID = ats.find(item => item.typing === 'user' && !item.bot)?.value
+  if (!UserID) {
+    return // 未找到用户ID
+  }
 
-    // 处理被AT的用户...
-  },
-  'message.create',
-  //  ['message.create','private.message.create'] // 多选
-  /^(#|\/)?你好$/
-)
+  // 解析用户消息。 即 得到 event.MessageText
+  const text = useParse(event, 'Text')
+  if (!text) {
+    return // 消息为空
+  }
+
+  // 处理被AT的用户...
+}, 'message.create')
 ```
 
 ## `useObserver`
@@ -89,40 +88,38 @@ export default OnResponse(
 
 ```ts title="apps/**/*/res.ts"
 import { Text, useObserver, useParse, useSend } from 'alemonjs'
-export default OnResponse(
-  event => {
-    // 创建
-    const Send = useSend(event)
-    Send(Text('请输入密码'))
 
-    // 创建观察者
-    const Observer = useObserver(event, 'message.create')
+const res = OnResponse((event, next) => {
+  // 创建
+  const Send = useSend(event)
+  const text = useParse(event, 'Text')
+  // 检查
+  if (text === '123456') {
+    Send(Text('密码正确'))
+    // 结束
+  } else if (text == 'close') {
+    // 结束
+    Send(Text('取消登录'))
+  } else {
+    Send(Text('密码不正确'))
+    // 继续监听
+    next()
+  }
+}, 'message.create')
 
-    Observer(
-      (event, { next }) => {
-        // 创建
-        const Send = useSend(event)
-        const text = useParse(event.Megs, 'Text')
-        // 检查
-        if (text === '123456') {
-          Send(Text('密码正确'))
-          // 结束
-        } else if (text == 'close') {
-          // 结束
-          Send(Text('取消登录'))
-        } else {
-          Send(Text('密码不正确'))
-          // 继续监听下一个消息
-          next()
-        }
-      },
-      ['UserId'] // 监听当前用户的下一个消息
-    )
+export default OnResponse((event, next) => {
+  if (!/^(#|\/)?你好$/.test(event.MessageText)) {
+    next()
+    return
+  }
+  // 创建
+  const Send = useSend(event)
+  Send(Text('请输入密码'))
 
-    //
-  },
-  'message.create',
-  //  ['message.create','private.message.create'] // 多选
-  /登录/
-)
+  // 创建观察者
+  const Observer = useObserver(event, 'message.create')
+
+  // 监听当前用户的ID
+  Observer(res.current, ['UserId'])
+}, 'message.create')
 ```

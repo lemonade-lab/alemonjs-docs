@@ -13,12 +13,12 @@ sidebar_position: 1
 ## 导出
 
 ```js title="src/index.ts"
-import { Text, OnProcessor, getConfig , AEvents, useParse, At } from 'alemonjs'
+import { Text, OnProcessor, getConfigValue , AEvents, useParse, At } from 'alemonjs'
 import { defineBot } from 'alemonjs';
 export default defineBot(() => {
   // 得到自定义配置
-  const config = getConfig()
-  const mybot  = config.value.mybot
+  const value = getConfigValue()
+  const mybot  = value.mybot
 
   // 创建实例后。
 
