@@ -58,11 +58,16 @@ yarn add pm2 -D
 
 > 需要了解 [lvyjs](https://lvyjs.dev) 如何编译得到 lib/index.js
 
+```js title="index.js"
+import { start } from 'alemonjs'
+start('lib/index.js')
+```
+
 ```yaml title="alemon.config.yaml"
 pm2:
   name: 'gui'
   # 生产模式，入口可选择只向打包生产后的文件
-  script: 'alemonjs start --input ./lib/index.js --login gui'
+  script: 'node index.js --login gui'
 ```
 
 ### 配置

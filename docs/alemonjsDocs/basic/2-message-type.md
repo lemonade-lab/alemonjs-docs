@@ -62,14 +62,6 @@ export type Guild = {
    * 频道ID
    */
   GuildId: string
-  /**
-   * 频道名
-   */
-  GuildIdName: string
-  /**
-   * 频道头像
-   */
-  GuildIdAvatar: string
 }
 
 export type Channel = {
@@ -77,10 +69,6 @@ export type Channel = {
    * 子频道ID
    */
   ChannelId: string
-  /**
-   * 子频道名
-   */
-  ChannelName: string
 }
 
 export type Message = {
@@ -92,14 +80,6 @@ export type Message = {
    * 创建时间
    */
   CreateAt: number
-}
-
-export type MessageBody = {
-  /**
-   * 消息内容
-   */
-  MessageBody: any[]
-  MessageText: string
 }
 
 export type Platform = {
@@ -128,28 +108,8 @@ export type User = {
    */
   UserName: string
   /**
-   * 用户头像地址
-   */
-  UserAvatar: string
-  /**
    * 是否是主人
    */
   IsMaster: boolean
-}
-
-// 机器人
-export type Bot = {
-  /**
-   * 机器人编号
-   */
-  BotId: string
-  /**
-   * 机器人昵称
-   */
-  BotName: string
-  /**
-   * 机器人头像
-   */
-  BotAvatar: string
 }
 ```

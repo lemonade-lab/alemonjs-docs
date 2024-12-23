@@ -15,6 +15,12 @@ export default defineChildren(() => {
   return {
     onCreated() {
       console.log('子模块启动')
+    },
+    onMounted() {
+      // 模块索引都正常被识别时
+    },
+    unMounted() {
+      // 出现意外被卸载，或者收到卸载时
     }
   }
 })

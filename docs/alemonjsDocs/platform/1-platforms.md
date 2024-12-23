@@ -13,12 +13,12 @@ sidebar_position: 1
 ## 导出
 
 ```js title="src/index.ts"
-import { Text, OnProcessor, getConfigValue , AEvents, useParse, At } from 'alemonjs'
-import { defineBot } from 'alemonjs';
+import { getConfigValue } from 'alemonjs'
+import { defineBot } from 'alemonjs'
 export default defineBot(() => {
   // 得到自定义配置
   const value = getConfigValue()
-  const mybot  = value.mybot
+  const mybot = value.mybot
 
   // 创建实例后。
 
@@ -30,11 +30,16 @@ export default defineBot(() => {
     api: {
       // useSend()
       use: {
-        send: (event: AEvents['message.create'], data: any[]) => {
+        send: (e, data) => {
           // 数据包 data
           if (data.length < 0) return Promise.all([])
-          //
+          const event = e.value
+          console.log('event', event)
           return Promise.all([])
+        },
+        // useMention
+        mention: async event => {
+          return []
         }
       }
     }

@@ -6,6 +6,18 @@ sidebar_position: 9
 
 > 所有废弃或不可使用版本不会记录在内
 
+### 2024-12-23 23:00 [V2.0.0-rc.70]
+
+- 新增`Text style`、`Mention options`
+- 简化订阅函数嵌套写法
+- 用户头像获取方式更改为异步
+- event 数据字段调整
+- `getConfig` 支持获取 `argv`
+- `onstart` 更改为 `start`
+- 新增 `useMention`
+- 删除 `useParse`、
+- 删除 `MessageBody`
+
 ### 2024-11-18 00:00 [V2.0.0-rc.60]
 
 - API调整。

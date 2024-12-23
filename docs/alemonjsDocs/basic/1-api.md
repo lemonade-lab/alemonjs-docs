@@ -15,16 +15,18 @@ sidebar_position: 1
 一种用于处理特定事件的功能，它允许开发者定义在事件发生时应执行的操作。
 
 ```ts title="src/apps/**/*/res.ts"
-// OnResponse((消息体,控制体)=>{},消息类型,匹配正则)
+import { Text, useSend } from 'alemonjs'
 export default OnResponse(
   (event, next) => {
-    // 事件消息体
-    console.log('event', event)
-    // 前往下一个响应
-    next()
+    // 匹配规则
+    if (!/^(#|\/)?hello$/.test(event.MessageText)) {
+      // 前往下一个响应
+      next()
+    }
   },
-  'message.create' // 监听的事件类型
-  //  ['message.create','private.message.create'] // 多选
+  // 事件类型
+  'message.create'
+  // ['message.create','private.message.create']
 )
 ```
 
