@@ -69,8 +69,9 @@ export default defineConfig({
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar'
         },
+        { to: 'blog', label: '博客', position: 'left' }, // or position: 'right'
         {
-          position: 'left',
+          position: 'right',
           label: '编辑',
           href: 'https://github.com/lemonade-lab/alemonjs-docs/blob/main/docs/intro.md'
         },

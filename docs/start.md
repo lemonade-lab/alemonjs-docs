@@ -24,7 +24,6 @@ npm config set registry https://registry.npmmirror.com
 
 ```sh title="文档统一采用yarn依赖工具"
 npm install yarn@1.19.1 -g
-yarn install
 ```
 
 ```sh title="使用模板"
@@ -38,6 +37,23 @@ yarn install
 ```yaml title="alemon.config.yaml"
 gui:
   port: 9601
+# 基本格式为  [系统]:[系统配置]
+# 例子
+# kook:
+#   token: "xxxx"
+# redis:
+#   host: 'localhost'
+#   port: '6379'
+#   password: ''
+#   db: '1'
+
+# mysql:
+#   host: 'localhost'
+#   port: '3306'
+#   user: 'root'
+#   password: 'Mm002580!'
+#   database: 'alemonjs_test'
+#
 ```
 
 ## 启动
@@ -60,6 +76,7 @@ yarn add pm2 -D
 
 ```js title="index.js"
 import { start } from 'alemonjs'
+// 这里
 start('lib/index.js')
 ```
 

@@ -14,10 +14,10 @@ sidebar_position: 6
 export default defineChildren(() => {
   return {
     onCreated() {
-      console.log('子模块启动')
+      // 被创建时
     },
     onMounted() {
-      // 模块索引都正常被识别时
+      // 模块索引识别完成时
     },
     unMounted() {
       // 出现意外被卸载，或者收到卸载时
