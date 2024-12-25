@@ -39,22 +39,16 @@ const features = [
  */
 const items = [
   {
-    url: require('@site/static/img/dt/res.png').default,
-    title: '在线体验',
-    docs: '示例代码效果立即体验',
-    position: 'right'
-  },
-  {
     url: require('@site/static/img/dt/cat.png').default,
     title: '测试环境',
     docs: '不必登录官方平台即可测试本地代码',
-    position: 'left'
+    position: 'right'
   },
   {
     url: require('@site/static/img/dt/home.png').default,
     title: '一键启动',
     docs: '立即安装立即启动本机应用',
-    position: 'right'
+    position: 'left'
   }
 ]
 
@@ -175,19 +169,25 @@ export default function HomePage(): JSX.Element {
         </div>
         <div className="flex flex-row items-center justify-center py-6 gap-4">
           <div
-            onClick={() => handleDownloadClick('mac', 'x64')}
+            onClick={() => {
+              alert('桌面重构升级中...,待开放')
+              // handleDownloadClick('mac', 'x64')
+            }}
             className="text-md md:text-xl bg-slate-300 bg-opacity-80 rounded-md px-2 duration-[1000ms] md:px-4 py-2  hover:bg-blue-400 hover:text-white cursor-pointer"
           >
             下载 macOS x64
           </div>
           <div
-            onClick={() => handleDownloadClick('win', 'x64')}
+            onClick={() => {
+              alert('桌面重构升级中...,待开放')
+              // handleDownloadClick('win', 'x64')
+            }}
             className="text-md md:text-xl bg-slate-300 bg-opacity-80 rounded-md px-2 duration-[1000ms] md:px-4 py-2  hover:bg-blue-400 hover:text-white cursor-pointer"
           >
             下载 Windows x64
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center gap-4">
+        {/* <div className="flex flex-col items-center justify-center gap-4">
           <div className="cursor-pointer flex" onClick={onClick}>
             <div className="text-slate-500">其他版本: Linux / Windows / macOS </div>{' '}
             <div className="mx-2">{show ? <UpIcon /> : <DownIcon />}</div>
@@ -204,7 +204,7 @@ export default function HomePage(): JSX.Element {
                 {item}
               </div>
             ))}
-        </div>
+        </div> */}
       </div>
     </main>
   )

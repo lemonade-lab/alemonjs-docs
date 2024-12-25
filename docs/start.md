@@ -35,12 +35,12 @@ yarn install
 ## 配置
 
 ```yaml title="alemon.config.yaml"
+# 基本格式 [配置名]:[配置参数]
 gui:
   port: 9601
-# 基本格式为  [系统]:[系统配置]
-# 例子
 # kook:
 #   token: "xxxx"
+
 # redis:
 #   host: 'localhost'
 #   port: '6379'
@@ -53,12 +53,17 @@ gui:
 #   user: 'root'
 #   password: 'Mm002580!'
 #   database: 'alemonjs_test'
-#
 ```
 
 ## 启动
 
-> [可选择GUI以体验效果](/)
+> 选择GUI体验效果
+
+> 需要下载[`Visual Studio Code`](https://code.visualstudio.com/)
+
+> 下载插件[`AlemonJS GUI`](https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui)
+
+> 选择底部 Status Bar AlemonJS 按钮以打开侧边栏
 
 ```sh title="以开发模式启动，并选择gui"
 yarn dev --login gui
