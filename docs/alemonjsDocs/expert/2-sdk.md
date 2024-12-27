@@ -22,22 +22,29 @@ sidebar_position: 1
 import { Text, useSend } from 'alemonjs'
 import { client, platform } from '@alemonjs/kook'
 
+/**
+ * client 客户端api
+ * platform 平台标识
+ */
+
 const kookResponse = OnResponse((event, next) => {
   // 使用.value获取原生数据
   const e = event.value
-
   //   client.postMessage ....
 }, 'message.create')
 
 export default OnResponse((event, next) => {
   // 匹配规则
-  if (!/^(#|\/)?hello$/.test(event.MessageText)) {
+  if (!/^(#|\/)?card$/.test(event.MessageText)) {
     // 前往下一个响应
     next()
   }
   // 判断平台
   if (event.Platform == platform) {
-    kookResponse.current(e, next)
+    kookResponse.current(event, next)
+  } else {
+    const Send = useSend(event)
+    Send(Text('该平台不支持此类消息'))
   }
 }, 'message.create')
 ```

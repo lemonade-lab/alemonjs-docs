@@ -92,7 +92,7 @@ import { useSend, Image, Text } from 'alemonjs'
 import { pictureRender } from '@/src/image/index'
 export default OnResponse(
   async event => {
-    const UID = event.UserID
+    const UID = event.UserId
     // pic
     const img = await pictureRender(UID, {
       name: 'Hello Word !'

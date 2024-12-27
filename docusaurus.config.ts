@@ -123,8 +123,8 @@ export default defineConfig({
               href: 'https://github.com/lemonade-lab/alemonjs'
             },
             {
-              label: 'chat-space',
-              href: 'https://github.com/lemonade-lab/alemonjs/tree/main/packages/chat-space'
+              label: 'vscode-plugin',
+              href: 'https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui'
             }
           ]
         }

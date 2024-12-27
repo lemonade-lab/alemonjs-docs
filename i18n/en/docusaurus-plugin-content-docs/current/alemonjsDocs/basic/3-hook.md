@@ -69,8 +69,8 @@ export default OnResponse(
     }
 
     // Find the user type @ mension, and not BOT
-    const UserID = ats.find(item => item.typing === 'user' && !item.bot)?.value
-    if (!UserID) {
+    const UserId = ats.find(item => item.typing === 'user' && !item.bot)?.value
+    if (!UserId) {
       return // No user ID is found
     }
 

@@ -13,12 +13,19 @@ sidebar_position: 1
 ## 导出
 
 ```js title="src/index.ts"
-import { getConfigValue } from 'alemonjs'
 import { defineBot } from 'alemonjs'
+import { getConfigValue ,User} from 'alemonjs'
+
+export const platform = 'mybot'
+
 export default defineBot(() => {
   // 得到自定义配置
   const value = getConfigValue()
-  const mybot = value.mybot
+  const mybot = value[platform]
+
+  if (!mybot) {
+    //
+  }
 
   // 创建实例后。
 
@@ -39,7 +46,8 @@ export default defineBot(() => {
         },
         // useMention
         mention: async event => {
-          return []
+          const Mentions: User[] = []
+          return Mentions
         }
       }
     }
