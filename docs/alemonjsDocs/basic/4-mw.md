@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 4
 ---
 
 # 中间件
@@ -20,6 +20,7 @@ export default OnMiddleware(
     event['user_id'] = event.UserId
 
     // 常用于兼容其他框架或增强event功能
+
     next()
   },
   'message.create' // 监听的事件类型
@@ -27,10 +28,34 @@ export default OnMiddleware(
 )
 ```
 
-:::info 重要提示
+:::info 事件周期顺序
 
-> OnEvent > OnMiddleware > OnObserver > OnResponse
+OnEvent >
+
+onSubscribe(create) >
+
+OnMiddleware >
+
+onSubscribe(onObserver=mount) >
+
+OnResponse >
+
+onSubscribe(unmount)
 
 不执行next()表示结束后续匹配。
 
 :::
+
+## `Next(Bool)`
+
+```ts
+const current = async (event, next) => {
+  // 当前周期中进行
+  next()
+  // 下一个周期中进行
+  next(true)
+  // 下下个周期中进行
+  next(true, true)
+  // 以此类推
+}
+```

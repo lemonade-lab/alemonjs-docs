@@ -26,8 +26,6 @@ export type AEventByMessageCreate = {
   UserId: string
   // User name
   UserName: string
-  // User avatar address
-  UserAvatar: string
   // Message ID
   MsgId: string
   // Content

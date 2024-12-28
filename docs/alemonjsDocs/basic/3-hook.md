@@ -140,6 +140,8 @@ export default OnResponse(async (event, next) => {
 
 > 观察者模式，监听并响应某个事件。观察事件示例
 
+> 不推荐在中间件触发后使用,具体了解下一章节的中间件机制
+
 ```ts title="apps/**/*/res.ts"
 import { Text, useObserver, useSend } from 'alemonjs'
 
@@ -179,5 +181,113 @@ export default OnResponse((event, next) => {
     'UserId'
     // 可新增，如：当前所在频道的用户，或者当前频道下的当前用户
   ])
+}, 'message.create')
+```
+
+## `useSubscribe`
+
+> 订阅模式，在某个事件周期中进行观察
+
+```ts
+// [事件创建之后，事件被中间件处理之后，事件被处理完成之后,]
+const [create, monut, unmonut] = useSubscribe(event, <select event type>)
+create(Res.current, [])
+// 等同于 Observer ，它正是 SubscribeMount 的简写
+monut(Res.current, [])
+unmonut(Res.current, [])
+```
+
+```ts title="apps/**/*/res.ts"
+import { Text, useSubscribe, useSend } from 'alemonjs'
+
+const CodeRes = OnResponse(async (e, next) => {
+  if (!/^(\/|#)?code\d{6}$/.test(e.MessageText)) {
+    next()
+    return
+  }
+
+  // 尝试读取出code
+  const match = e.MessageText.match(/\d+/g)
+  const code = match ? match[0] : null
+  if (!code) {
+    next()
+    return
+  }
+
+  const email = await Email.getEmail(e.UserKey, code)
+
+  if (!email) {
+    Send(Text('验证码错误'))
+    next()
+    return
+  }
+
+  Email.delEmail(e.UserKey, code)
+
+  // 先建立索引
+  await user_email.create({
+    email: email,
+    uid: e.UserKey
+  } as any)
+
+  // 查看该邮箱是否注册游戏信息。没有则创建。
+
+  const data = await user.findOneValue({
+    where: {
+      uid: email
+    }
+  })
+
+  if (!data) {
+    // 开始创建存档
+    createPlayer(email)
+  }
+
+  // 发送消息
+  Send(Text('登录成功'))
+
+  //
+}, 'message.create')
+
+const EmailRes = OnResponse(
+  async (e, next) => {
+    // 每次来的时候。只允许该操作可进行后续。
+    if (!/^(\/|#)?login[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}.*$/.test(e.MessageText)) {
+      next()
+      return
+    }
+
+    // 得到邮箱
+    const email = e.MessageText.replace(/^(\/|#)?login/, '')
+
+    // 创建验证码
+    Email.createEmail(e.UserKey, email)
+
+    Send(Text('验证码已发送至邮箱，请查收后回复[/codeXXXXX]'))
+
+    // 开始新的询问。
+    const [Subscribe] = useSubscribe(e, 'message.create')
+    Subscribe(CodeRes.current, ['UserId'])
+  },
+  ['message.create']
+)
+
+export default OnMiddleware((event, next) => {
+  // 根据
+  const email = getUserEmail(e.User_key)
+
+  // 已登录账号
+  if (email) {
+    next()
+    return
+  }
+
+  // 创建
+  const Send = useSend(event)
+  Send(Text('请发送[/login+email]以登录账户'))
+
+  // 没有查询到用户邮箱。需要提示用户进行邮箱绑定。
+  const [subscribe] = useSubscribe(e, 'message.create')
+  subscribe(LoginRes.current, ['UserId'])
 }, 'message.create')
 ```
