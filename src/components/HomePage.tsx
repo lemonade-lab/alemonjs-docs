@@ -1,12 +1,8 @@
 import classNames from 'classnames'
-import { getYml, useDownloadLink, useElectronDownload } from '@site/src/core/electron'
+import { getYml, useElectronDownload } from '@site/src/core/electron'
 import { useState } from 'react'
-import { DownIcon, UpIcon } from '@site/src/core/icons'
 import { useInView } from 'react-intersection-observer'
 
-/**
- *
- */
 const features = [
   {
     title: '生态支持',
@@ -17,20 +13,20 @@ const features = [
     description: '可对接可自定义的各类平台，灵活适应需求。'
   },
   {
-    title: '增强捆绑',
-    description: 'VlyJS基于esBuild和Rollup,可打包、压缩、混淆等。'
+    title: '资源捆绑',
+    description: '基于tsx和Rollup设计了开发工具,可打包、压缩、混淆等。'
   },
   {
     title: '中间件',
-    description: '顶级中间事件处理块,让开发更得心应手'
+    description: '顶级中间事件处理块,让开发更得心应手。'
+  },
+  {
+    title: '观察者',
+    description: '可自由的观察不同阶段的事件并单向流动。'
   },
   {
     title: '约定大于配置',
     description: '一整套约定的机器人开发模式，快速上手。'
-  },
-  {
-    title: '完整工具链',
-    description: '拥有完整的机器人开发生态和工具链，助力开发者。'
   }
 ]
 
