@@ -31,6 +31,9 @@ const kookResponse = OnResponse((event, next) => {
   // 使用.value获取原生数据
   const e = event.value
   //   client.postMessage ....
+  console.log('event', e)
+  console.log('client', client)
+  console.log('platform', platform)
 }, 'message.create')
 
 export default OnResponse((event, next) => {

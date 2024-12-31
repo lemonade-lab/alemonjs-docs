@@ -32,10 +32,14 @@ sidebar_position: 2
 
 | Project                    | Status                              | Description |
 | -------------------------- | ----------------------------------- | ----------- |
-| 👉[@alemonjs/qq-group-bot] | [![qq-group-bot-s]][qq-group-bot-p] | QQ 群连接   |
-| 👉[@alemonjs/qq-guild-bot] | [![qq-guild-bot-s]][qq-guild-bot-p] | QQ 频道连接 |
+| 👉[@alemonjs/qq-bot]       | [![qq-bot-s]][qq-bot-p]             | QQ webhook  |
+| 👉[@alemonjs/qq-group-bot] | [![qq-group-bot-s]][qq-group-bot-p] | QQ 群ws     |
+| 👉[@alemonjs/qq-guild-bot] | [![qq-guild-bot-s]][qq-guild-bot-p] | QQ 频道ws   |
 
-[@alemonjs/qq-group-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-group-bot
+[@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot
+[qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg
+[qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot
+[@alemonjs/qq-group-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot
 [qq-group-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-group-bot.svg
 [qq-group-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-group-bot
 [@alemonjs/qq-guild-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-guild-bot

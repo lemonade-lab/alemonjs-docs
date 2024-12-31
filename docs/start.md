@@ -27,9 +27,15 @@ npm install yarn@1.19.1 -g
 ```
 
 ```sh title="使用模板"
-npm create lvyjs@latest -y # 选择 alemonjs
-cd alemonb
+npm create lvyjs@latest -y
+cd alemonjs
 yarn install
+```
+
+> 超时可尝试
+
+```sh
+npm create --registry=https://registry.npmmirror.com lvyjs@latest -y
 ```
 
 ## 配置
@@ -37,10 +43,7 @@ yarn install
 ```yaml title="alemon.config.yaml"
 # 基本格式 [配置名]:[配置参数]
 gui:
-  port: 9601
-# kook:
-#   token: "xxxx"
-
+  port: 17127
 # redis:
 #   host: 'localhost'
 #   port: '6379'
@@ -81,15 +84,16 @@ yarn add pm2 -D
 
 ```js title="index.js"
 import { start } from 'alemonjs'
-// 这里
 start('lib/index.js')
 ```
 
 ```yaml title="alemon.config.yaml"
 pm2:
-  name: 'gui'
-  # 生产模式，入口可选择只向打包生产后的文件
-  script: 'node index.js --login gui'
+  apps:
+    - name: 'gui'
+      script: 'node index.js --login gui'
+      env:
+        NODE_ENV: 'production'
 ```
 
 ### 配置
@@ -99,23 +103,19 @@ pm2:
 ```js title="pm2.config.cjs"
 const fs = require('fs')
 const yaml = require('yaml')
+
+// Read and parse the YAML configuration file
 const data = fs.readFileSync('./alemon.config.yaml', 'utf8')
 const config = yaml.parse(data)
-const app = config?.pm2 ?? {}
+
+// Extracting PM2 configuration
+const pm2 = config?.pm2 ?? {}
+
 /**
  * @type {{ apps: import("pm2").StartOptions[] }}
  */
 module.exports = {
-  apps: [
-    {
-      ...app,
-      env: {
-        // 确保是生产环境
-        NODE_ENV: 'production',
-        ...(app?.env ?? {})
-      }
-    }
-  ]
+  ...pm2
 }
 ```
 

@@ -10,9 +10,9 @@ sidebar_position: 5
 
 ```yaml title="alemon.config.yaml"
 apps:
-  - 'xxx'
-  - 'xxx2'
-  - 'xxx3'
+  - 'alemonjs-name'
+  - 'alemonjs-name2'
+  - 'alemonjs-name3'
 ```
 
 > 需要重启
@@ -20,14 +20,6 @@ apps:
 ## 分类
 
 ### 游戏服务
-
-| 项目名             | 状态     | 说明             |
-| ------------------ | -------- | ---------------- |
-| [alemonjs-xiuxian] | 本地模块 | 大型修仙文字游戏 |
-
-[alemonjs-xiuxian]: https://github.com/xiuxianjs/xiuxian-bot
-
-### 文字游戏
 
 | 项目名            | 状态     | 说明     |
 | ----------------- | -------- | -------- |

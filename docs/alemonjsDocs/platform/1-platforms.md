@@ -16,16 +16,12 @@ sidebar_position: 1
 import { defineBot } from 'alemonjs'
 import { getConfigValue ,User} from 'alemonjs'
 
-export const platform = 'mybot'
+export const platform = 'bot-name'
 
 export default defineBot(() => {
   // 得到自定义配置
   const value = getConfigValue()
-  const mybot = value[platform]
-
-  if (!mybot) {
-    //
-  }
+  const botName = value[platform]
 
   // 创建实例后。
 
