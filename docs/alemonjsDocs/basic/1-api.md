@@ -48,32 +48,25 @@ export default OnResponse((event, next) => {
 }, 'message.create')
 ```
 
-### 嵌套
+### 分组
 
-> 封装OnResponse来复用逻辑
+> 复用逻辑
 
 ```ts
-import { Next, PrivateEventMessageCreate, PublicEventMessageCreate } from 'alemonjs'
-type EventMessageCreate = PrivateEventMessageCreate | PublicEventMessageCreate
-/**
- * 定义响应
- * @param current
- * @returns
- */
-const OnMyResponse = (current: (event: EventMessageCreate, next: Next) => void) => {
-  // 不是/my开头的都不做处理
-  return OnResponse(
-    (event, next) => {
-      if (!/^(\/|#)my/.test(event.MessageText)) {
-        return next()
-      }
-      current(event, next)
-    },
-    ['message.create', 'private.message.create']
-  )
-}
+const Res = OnMyResponse((event, next) => {
+  console.log('text', event.MessageText)
+  // 允许在同组响应中，继续后续的函数
+  return true
+}, 'message.create')
 
-export default OnMyResponse((event, next) => {
-  console.log('消息:', event.MessageText)
-})
+export default OnMyResponse(
+  [
+    // add
+    Res.current,
+    (event, next) => {
+      console.log('完成')
+    }
+  ],
+  'message.create'
+)
 ```

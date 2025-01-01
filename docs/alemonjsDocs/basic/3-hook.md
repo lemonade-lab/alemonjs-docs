@@ -286,3 +286,44 @@ export default OnMiddleware((event, next) => {
   subscribe(LoginRes.current, ['UserId'])
 }, 'message.create')
 ```
+
+## `useState`
+
+> 声明res/mw的状态,可用于管理是否启用
+
+```ts title="apps/**/*/res.ts"
+export name = 'login'  // 标记res名
+export const regular = /^(#|\/)?login$/
+export default OnResponse((event, next) => {
+  // login code ...
+}, 'message.create')
+```
+
+```ts title="apps/**/*/res.ts"
+import { Text, useSend, useState } from 'alemonjs'
+export const regular = /^(#|\/)?close:/
+export default OnResponse((event, next) => {
+  //   /close:login
+  const name = event.MessageText.replace(regular, '')
+  const [state, setState] = useState(name)
+  if (state) {
+    next()
+    return
+  }
+  setState(false)
+  const Send = useSend(event)
+  Send(Text('关闭成功'))
+  return
+}, 'message.create')
+```
+
+> 可以在任意地方订阅状态的更改。
+
+```ts title="apps/**/*/res.ts"
+import { eventState, unEventState } from 'alemonjs'
+
+const login = state => {}
+
+eventState('login', login)
+unEventState('login', login)
+```
