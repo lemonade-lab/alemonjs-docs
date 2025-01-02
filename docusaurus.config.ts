@@ -57,7 +57,7 @@ export default defineConfig({
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'AlemonJS',
+      // title: 'AlemonJS',
       logo: {
         alt: 'AlemonJS Logo',
         src: 'img/alemon.png'

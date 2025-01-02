@@ -50,16 +50,16 @@ export default OnResponse((event, next) => {
 
 ### 分组
 
-> 复用逻辑
+> 复用逻辑,共用一个next
 
 ```ts
-const Res = OnMyResponse((event, next) => {
+const Res = OnResponse((event, next) => {
   console.log('text', event.MessageText)
   // 允许在同组响应中，继续后续的函数
   return true
 }, 'message.create')
 
-export default OnMyResponse(
+export default OnResponse(
   [
     // add
     Res.current,

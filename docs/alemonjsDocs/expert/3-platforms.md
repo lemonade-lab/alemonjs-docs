@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
-# 自定义
+# 自定义平台
 
 :::tip
 
@@ -14,7 +14,7 @@ sidebar_position: 1
 
 ```js title="src/index.ts"
 import { defineBot } from 'alemonjs'
-import { getConfigValue ,User} from 'alemonjs'
+import { getConfigValue, User } from 'alemonjs'
 
 export const platform = 'bot-name'
 

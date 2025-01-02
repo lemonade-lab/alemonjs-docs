@@ -6,16 +6,7 @@ sidebar_position: 5
 
 ## 使用
 
-在需要加载模块应用的配置文件中添加
-
-```yaml title="alemon.config.yaml"
-apps:
-  - 'alemonjs-name'
-  - 'alemonjs-name2'
-  - 'alemonjs-name3'
-```
-
-> 需要重启
+详细请了解[👉模块化应用](/docs/alemonjsDocs/advance/models)
 
 ## 分类
 
