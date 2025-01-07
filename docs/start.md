@@ -18,26 +18,37 @@ import TabItem from '@theme/TabItem';
 
 ## 初始化
 
-```sh title="国内镜像，已安装可忽视"
-npm config set registry https://registry.npmmirror.com
-```
-
+<Tabs>
+  <TabItem value="0" label="npmjs" default>
+   
+   
 ```sh title="文档统一采用yarn依赖工具"
-npm install yarn@1.19.1 -g
+npm install yarn@1.19.1 -g 
 ```
 
 ```sh title="使用模板"
-npm create lvyjs@latest -y
+npm create  lvyjs@latest -y
 cd alemonjs
 yarn install
 ```
 
-> 超时可尝试
-
-```sh
-npm create --registry=https://registry.npmmirror.com lvyjs@latest -y
+  </TabItem>
+  <TabItem value="1" label="npmmirror">
+ 
+ 
+```sh title="文档统一采用yarn依赖工具"
+npm install yarn@1.19.1 -g --registry=https://registry.npmmirror.com
 ```
 
+```sh title="使用模板"
+npm create  lvyjs@latest -y --registry=https://registry.npmmirror.com
+cd alemonjs
+yarn install
+```
+
+  </TabItem>
+</Tabs>
+ 
 ## 配置
 
 ```yaml title="alemon.config.yaml"

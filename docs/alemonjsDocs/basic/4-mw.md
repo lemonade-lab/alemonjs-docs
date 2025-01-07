@@ -30,17 +30,15 @@ export default OnMiddleware(
 
 :::info 事件周期顺序
 
-OnEvent >
+subscribe(create) >
 
-onSubscribe(create) >
+middleware >
 
-OnMiddleware >
+subscribe(observer/mount) >
 
-onSubscribe(onObserver=mount) >
+response >
 
-OnResponse >
-
-onSubscribe(unmount)
+subscribe(unmount)
 
 不执行next()表示结束后续匹配。
 
