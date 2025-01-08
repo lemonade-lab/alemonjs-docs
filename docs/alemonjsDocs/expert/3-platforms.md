@@ -17,6 +17,8 @@ import { defineBot } from 'alemonjs'
 import { getConfigValue, User } from 'alemonjs'
 
 export const platform = 'bot-name'
+export type Client = {}
+export const client = {}
 
 export default defineBot(() => {
   // 得到自定义配置

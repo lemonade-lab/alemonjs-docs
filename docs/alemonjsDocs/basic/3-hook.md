@@ -21,11 +21,6 @@ sidebar_position: 3
 ```ts title="src/apps/**/*/res.ts"
 import { Text, useSend } from 'alemonjs'
 export default OnResponse((event, next) => {
-  if (!/^(#|\/)?text$/.test(event.MessageText)) {
-    next()
-    return
-  }
-
   // 创建
   const Send = useSend(event)
 
@@ -55,10 +50,6 @@ import { useSend, Text, Image } from 'alemonjs'
 import { readFileSync } from 'fs'
 import url from '@src/assets/test.jpeg'
 export default OnResponse((event, next) => {
-  if (!/^(#|\/)?image$/.test(event.MessageText)) {
-    next()
-    return
-  }
   const Send = useSend(event)
   // 发送本地图片文件
   const img = readFileSync(url)
@@ -76,11 +67,6 @@ export default OnResponse((event, next) => {
 ```ts title="apps/**/*/res.ts"
 import { useSend, Text, Mention } from 'alemonjs'
 export default OnResponse((event, next) => {
-  if (!/^(#|\/)?mention$/.test(event.MessageText)) {
-    next()
-    return
-  }
-
   const Send = useSend(event)
 
   // 发送多种类型的消息
@@ -115,11 +101,6 @@ const useMentionsUserId = async event => {
 }
 
 export default OnResponse(async (event, next) => {
-  if (!/^(#|\/)?test$/.test(event.MessageText)) {
-    next()
-    return
-  }
-
   // 获得User
   const User = await useMentionsUserId(event)
 
@@ -158,11 +139,6 @@ const Res = OnResponse((event, next) => {
 }, 'message.create')
 
 export default OnResponse((event, next) => {
-  if (!/^(#|\/)?login$/.test(event.MessageText)) {
-    next()
-    return
-  }
-
   // 创建
   const Send = useSend(event)
   Send(Text('请输入密码'))

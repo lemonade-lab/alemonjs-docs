@@ -32,15 +32,6 @@ export default OnResponse(
 ### 匹配
 
 ```ts title="src/apps/**/*/res.ts"
-export default OnResponse((event, next) => {
-  // 函数内匹配规则
-  if (!/^(#|\/)?hello$/.test(event.MessageText)) {
-    next()
-  }
-}, 'message.create')
-```
-
-```ts title="src/apps/**/*/res.ts"
 // 不匹配该正则，自动进行next
 export const regular = /^(#|\/)?hello$/
 export default OnResponse((event, next) => {

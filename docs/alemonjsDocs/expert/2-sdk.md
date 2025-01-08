@@ -20,34 +20,27 @@ sidebar_position: 2
 
 ```ts title="src/apps/**/*/res.ts"
 import { Text, useSend } from 'alemonjs'
-import { client, platform } from '@alemonjs/kook'
-
-/**
- * client 客户端api
- * platform 平台标识
- */
-
-const kookResponse = OnResponse((event, next) => {
-  // 使用.value获取原生数据
-  const e = event.value
-  //   client.postMessage ....
-  console.log('event', e)
-  console.log('client', client)
-  console.log('platform', platform)
-}, 'message.create')
-
+import { platform } from '@alemonjs/kook'
+import kookResponse from './kook.res'
 export default OnResponse((event, next) => {
-  // 匹配规则
-  if (!/^(#|\/)?card$/.test(event.MessageText)) {
-    // 前往下一个响应
-    next()
-  }
   // 判断平台
   if (event.Platform == platform) {
+    console.log('platform', platform)
     kookResponse.current(event, next)
   } else {
     const Send = useSend(event)
     Send(Text('该平台不支持此类消息'))
   }
+}, 'message.create')
+```
+
+```ts title="./kook.res.ts"
+import { client } from '@alemonjs/kook'
+export default OnResponse((event, next) => {
+  // 使用.value获取原生数据
+  const e = event.value
+  //   client.postMessage ....
+  console.log('event', e)
+  console.log('client', client)
 }, 'message.create')
 ```

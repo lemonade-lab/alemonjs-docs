@@ -108,8 +108,18 @@ node_modules/                 // Node.js 依赖包
   },
   "export": {
     ".": "lib/index.js",
-    "./package": "package.json"
+    "./package": "package.json",
+    "./config": "alemon.package.js"
   }
+}
+```
+
+```js title="alemon.package.js"
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+const __dirname = dirname(fileURLToPath(import.meta.url))
+export default {
+  __dirname: __dirname
 }
 ```
 

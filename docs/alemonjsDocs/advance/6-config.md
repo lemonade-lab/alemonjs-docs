@@ -22,7 +22,7 @@ kook:
 import { getConfig, getIoRedis, getConfigValue } from 'alemonjs'
 const config = getConfig()
 console.log('alemon.config.yaml', config.value)
-console.log('alemonjs package.json', config.package)
+console.log('alemonjs/package.json', config.package)
 console.log('alemonjs process.argv', config.argv)
 const value = getConfigValue()
 // 即可 config.value
