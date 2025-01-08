@@ -107,9 +107,9 @@ node_modules/                 // Node.js 依赖包
     "build": "npx lvy build"
   },
   "export": {
-    ".": "lib/index.js",
-    "./package": "package.json",
-    "./config": "alemon.package.js"
+    ".": "./lib/index.js",
+    "./package": "./package.json",
+    "./config": "./alemon.package.js"
   }
 }
 ```
@@ -120,6 +120,7 @@ import { dirname } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export default {
   __dirname: __dirname
+  // 待设计...
 }
 ```
 
