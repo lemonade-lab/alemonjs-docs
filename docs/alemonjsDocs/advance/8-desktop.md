@@ -6,7 +6,7 @@ sidebar_position: 7
 
 :::info
 
-如何在桌面中加载扩展
+如何在桌面中开发扩展
 :::
 
 ## 配置
@@ -83,36 +83,59 @@ export const activate = context => {
 }
 ```
 
-### 接收消息
+- 接收消息
 
 ```js title="desktop.js"
-import { readFileSync } from 'fs'
 export const activate = context => {
   // 创建一个 webview。
   const sidebarWebView = context.createSidebarWebView(context)
   // 监听 webview 的消息。
   sidebarWebView.onMessage(data => {
-    console.log(data) // "{value: 'ping'}"
+    // { type: 'pong',data: ''}
   })
 }
 ```
 
-### 发送消息
+- 发送消息
+
+```js title="desktop.js"
+export const activate = context => {
+  // 创建一个 webview。
+  const sidebarWebView = context.createSidebarWebView(context)
+  // 监听 webview 的消息。
+  sidebarWebView.postMessage({
+    type: 'ping',
+    data: ''
+  })
+}
+```
+
+### 脚本
+
+- 发送消息
 
 ```js title="index.js"
 const API = createDesktopAPI()
 
-const data = JSON.stringify({
-  value: 'ping'
+API.postMessage({
+  type: 'pong',
+  data: ''
 })
+```
 
-API.postMessage(data)
+- 接收消息
+
+```js title="index.js"
+const API = createDesktopAPI()
+
+API.onMessage(data => {
+  //  {  type: 'ping', data: '' }
+})
 ```
 
 ## 资源路径
 
 ```js title="desktop.js"
-import { readFileSync } from 'fs'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 // 当前目录
@@ -122,5 +145,13 @@ export const activate = context => {
   const styleUri = context.createExtensionDir(join(__dirname, 'assets', 'index.css'))
   const scriptUri = context.createExtensionDir(join(__dirname, 'assets', 'index.js'))
   // 可替换 html 内部资源，确保正确加载
+}
+```
+
+## 通知推送
+
+```js title="desktop.js"
+export const activate = context => {
+  context.notification('扩展加载')
 }
 ```

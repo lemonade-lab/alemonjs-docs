@@ -95,7 +95,7 @@ node_modules/                 // Node.js 依赖包
 
 收集子目录 apps 内的所有模块
 
-包配置可能是下面的信息
+包配置可能类似于下面的信息
 
 ```json title="package.json"
 {
@@ -108,22 +108,7 @@ node_modules/                 // Node.js 依赖包
   },
   "export": {
     ".": "./lib/index.js",
-    "./package": "./package.json",
-    "./config": "./alemon.package.js"
+    "./package": "./package.json"
   }
 }
 ```
-
-```js title="alemon.package.js"
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
-const __dirname = dirname(fileURLToPath(import.meta.url))
-export default {
-  __dirname: __dirname
-  // 待设计...
-}
-```
-
-此时入口文件为`lib/index.js`,工程目录为`lib`
-
-因此得到`lib/apps`、`lib/middleware`
