@@ -9,6 +9,8 @@ sidebar_position: 7
 如何在桌面中加载扩展
 :::
 
+## 配置
+
 ```json title="package.json"
 {
   "name": "@alemonjs/test",
@@ -50,41 +52,66 @@ sidebar_position: 7
 }
 ```
 
+## 周期
+
 ```js title="package.js"
 // 被激活的时候。
 export const activate = context => {}
 ```
 
-```js title="package.js"
+## webview
+
+### 渲染
+
+```js title="desktop.js"
 import { readFileSync } from 'fs'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 // 当前目录
 const __dirname = dirname(fileURLToPath(import.meta.url))
-//
 export const activate = context => {
   // 创建一个 webview。
-  const webView = context.createSidebarWebView(context)
-
-  // 监听 webview 的消息。
-  webView.onMessage(data => {
-    console.log(data)
-  })
-
+  const sidebarWebView = context.createSidebarWebView(context)
   // 当命令被触发的时候。
   context.onCommand('open.test', () => {
     const dir = join(__dirname, 'assets', 'index.html')
     // 确保路径存在
     const html = readFileSync(dir, 'utf-8')
     // 立即渲染 webview
-    webView.loadWebView(html)
+    sidebarWebView.loadWebView(html)
   })
 }
 ```
 
-- 创建资源路径
+### 接收消息
 
-```ts
+```js title="desktop.js"
+import { readFileSync } from 'fs'
+export const activate = context => {
+  // 创建一个 webview。
+  const sidebarWebView = context.createSidebarWebView(context)
+  // 监听 webview 的消息。
+  sidebarWebView.onMessage(data => {
+    console.log(data) // "{value: 'ping'}"
+  })
+}
+```
+
+### 发送消息
+
+```js title="index.js"
+const API = createDesktopAPI()
+
+const data = JSON.stringify({
+  value: 'ping'
+})
+
+API.postMessage(data)
+```
+
+## 资源路径
+
+```js title="desktop.js"
 import { readFileSync } from 'fs'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
