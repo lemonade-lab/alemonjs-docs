@@ -114,9 +114,9 @@ sidebar_position: 2
 
 ### OneBot
 
-| Project              | Status                  | Description    |
-| -------------------- | ----------------------- | -------------- |
-| 👉[@alemonjs/onebot] | [![onebot-s]][onebot-p] | onebot V11$V12 |
+| Project              | Status                  | Description |
+| -------------------- | ----------------------- | ----------- |
+| 👉[@alemonjs/onebot] | [![onebot-s]][onebot-p] | onebot V11  |
 
 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot
 [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg
@@ -131,3 +131,25 @@ sidebar_position: 2
 [@alemonjs/wechat]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/wechat
 [wechat-s]: https://img.shields.io/npm/v/@alemonjs/wechat.svg
 [wechat-p]: https://www.npmjs.com/package/@alemonjs/wechat
+
+## 增强
+
+### gui
+
+| Project           | Status            | Description |
+| ----------------- | ----------------- | ----------- |
+| 👉[@alemonjs/gui] | [![gui-s]][gui-p] | 沙盒界面    |
+
+[@alemonjs/gui]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/gui
+[gui-s]: https://img.shields.io/npm/v/@alemonjs/gui.svg
+[gui-p]: https://www.npmjs.com/package/@alemonjs/gui
+
+### database
+
+| Project          | Status          | Description |
+| ---------------- | --------------- | ----------- |
+| 👉[@alemonjs/db] | [![db-s]][db-p] | redis&mysql |
+
+[@alemonjs/db]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/gui
+[db-s]: https://img.shields.io/npm/v/@alemonjs/db.svg
+[db-p]: https://www.npmjs.com/package/@alemonjs/db

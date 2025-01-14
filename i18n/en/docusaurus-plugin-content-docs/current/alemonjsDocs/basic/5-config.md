@@ -19,7 +19,7 @@ kook:
 ```
 
 ```ts title="src/index.ts"
-import { getConfig, getIoRedis } from 'alemonjs'
+import { getConfig } from 'alemonjs'
 const cfg = getConfig()
 console.log('alemon.config.yaml', config.value)
 console.log('alemonjs package.json', config.package)
