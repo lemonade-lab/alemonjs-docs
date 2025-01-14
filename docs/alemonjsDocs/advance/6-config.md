@@ -20,10 +20,17 @@ kook:
 
 ```ts title="src/index.ts"
 import { getConfig, getConfigValue } from 'alemonjs'
+const value = getConfigValue()
+console.log('alemon.config.yaml', value)
+
+// 配置类
 const config = getConfig()
-console.log('alemon.config.yaml', config.value)
 console.log('alemonjs/package.json', config.package)
 console.log('alemonjs process.argv', config.argv)
-const value = getConfigValue()
-// 即可 config.value
+console.log('alemon.config.yaml', config.value)
+
+// 修改并保存为新配置
+const val = config.value
+val.apps.push('@alemonjs/db')
+config.saveValue(val)
 ```

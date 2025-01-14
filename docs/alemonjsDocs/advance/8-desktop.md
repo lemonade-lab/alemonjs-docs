@@ -13,6 +13,8 @@ sidebar_position: 7
 
 ```json title="package.json"
 {
+  // 官方 @alemonjs/XXX
+  // 三方 alemonjs-XXX
   "name": "@alemonjs/test",
   "version": "0.0.1",
   "type": "module",
@@ -22,32 +24,38 @@ sidebar_position: 7
   },
   "export": {
     ".": "./lib/index.js",
-    // 必须的
-    "./package": "./package.json",
-    // 必须的
-    "./desktop": "./desktop.js"
+    "./package": "./package.json", // 必须的
+    "./desktop": "./desktop.js" // 可选（桌面扩展入口脚本)
   },
-  // config
   "alemonjs": {
-    // 桌面
     "desktop": {
       // 指令输入框
       "commond": [
         {
           "name": "test",
-          // 发送指令
-          "commond": "open.test"
+          "commond": "open.test" // 发送指令
         }
       ],
       // 侧边栏
       "sidebars": [
         {
           "name": "test",
-          // 发送指令
-          "commond": "open.test"
+          "commond": "open.test" // 发送指令
+        }
+      ],
+      // 平台（拥有此配置将无法被添加至config.value.apps）
+      "platform": [
+        {
+          "name": "test" // --login test
         }
       ]
     }
+  },
+  // author
+  "author": {
+    "name": "ningmengchongshui",
+    "email": "ningmengchongshui@gmail.com",
+    "url": "https://github.com/ningmengchongshui"
   }
 }
 ```

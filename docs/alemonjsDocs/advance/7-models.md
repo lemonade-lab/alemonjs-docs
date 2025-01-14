@@ -101,14 +101,14 @@ node_modules/                 // Node.js 依赖包
 {
   "name": "pkg-name",
   "version": "0.0.1",
-  "type": "module",
-  "main": "lib/index.js",
+  "type": "module", // 必须的
+  "main": "lib/index.js", // 必须的
   "scripts": {
     "build": "npx lvy build"
   },
   "export": {
-    ".": "./lib/index.js",
-    "./package": "./package.json"
+    ".": "./lib/index.js", // 必须的
+    "./package": "./package.json" // 必须的
   }
 }
 ```
