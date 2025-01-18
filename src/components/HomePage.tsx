@@ -130,7 +130,7 @@ export default function HomePage(): JSX.Element {
             )
           })}
         </div>
-        <div className="flex flex-col items-center py-6 gap-4">
+        {/* <div className="flex flex-col items-center py-6 gap-4">
           <div className="text-3xl  md:text-5xl">让你眼前一亮的特性</div>
           <div className="text-lg md:text-xl">
             框架不仅仅只是拥有客户端那么简单,在开发体验上,它还能这样！
@@ -159,7 +159,7 @@ export default function HomePage(): JSX.Element {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-col items-center py-6 gap-4">
           <div className="text-3xl  md:text-5xl">何必继续等待</div>
           <div className="text-lg md:text-2xl">立即安装阿柠檬客户端来启动你的机器人吧</div>

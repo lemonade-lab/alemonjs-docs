@@ -138,7 +138,7 @@ sidebar_position: 2
 
 | Project           | Status            | Description |
 | ----------------- | ----------------- | ----------- |
-| 👉[@alemonjs/gui] | [![gui-s]][gui-p] | 沙盒界面    |
+| 👉[@alemonjs/gui] | [![gui-s]][gui-p] | 沙盒测试    |
 
 [@alemonjs/gui]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/gui
 [gui-s]: https://img.shields.io/npm/v/@alemonjs/gui.svg

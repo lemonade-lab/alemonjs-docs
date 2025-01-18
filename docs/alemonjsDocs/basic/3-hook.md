@@ -157,105 +157,55 @@ export default OnResponse((event, next) => {
 
 > 订阅模式，在某个事件周期中进行观察
 
-```ts
-// [事件创建之后，事件被中间件处理之后，事件被处理完成之后,]
+```ts title="apps/**/*/res.ts"
+// [创建之后，响应之前，响应之后]
 const [create, monut, unmonut] = useSubscribe(event, <select event type>)
 create(Res.current, [])
-// 等同于 Observer ，它正是 SubscribeMount 的简写
-monut(Res.current, [])
+monut(Res.current, []) // 同Observer(SubscribeMount)
 unmonut(Res.current, [])
 ```
 
-```ts title="apps/**/*/res.ts"
+```ts title="./login.ts"
 import { Text, useSubscribe, useSend } from 'alemonjs'
-
-const CodeRes = OnResponse(async (e, next) => {
-  if (!/^(\/|#)?code\d{6}$/.test(e.MessageText)) {
-    next()
-    return
-  }
-
-  // 尝试读取出code
-  const match = e.MessageText.match(/\d+/g)
-  const code = match ? match[0] : null
-  if (!code) {
-    next()
-    return
-  }
-
-  const email = await Email.getEmail(e.UserKey, code)
-
-  if (!email) {
-    Send(Text('验证码错误'))
-    next()
-    return
-  }
-
-  Email.delEmail(e.UserKey, code)
-
-  // 先建立索引
-  await user_email.create({
-    email: email,
-    uid: e.UserKey
-  } as any)
-
-  // 查看该邮箱是否注册游戏信息。没有则创建。
-
-  const data = await user.findOneValue({
-    where: {
-      uid: email
-    }
-  })
-
-  if (!data) {
-    // 开始创建存档
-    createPlayer(email)
-  }
-
-  // 发送消息
-  Send(Text('登录成功'))
-
-  //
-}, 'message.create')
-
-const EmailRes = OnResponse(
-  async (e, next) => {
-    // 每次来的时候。只允许该操作可进行后续。
-    if (!/^(\/|#)?login[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}.*$/.test(e.MessageText)) {
-      next()
-      return
-    }
-
-    // 得到邮箱
-    const email = e.MessageText.replace(/^(\/|#)?login/, '')
-
-    // 创建验证码
-    Email.createEmail(e.UserKey, email)
-
-    Send(Text('验证码已发送至邮箱，请查收后回复[/codeXXXXX]'))
-
-    // 开始新的询问。
-    const [Subscribe] = useSubscribe(e, 'message.create')
-    Subscribe(CodeRes.current, ['UserId'])
+const LoginRes = OnResponse(
+  async (event, next) => {
+    // 检验 并存储关系映射
   },
   ['message.create']
 )
+export default LoginRes
+```
 
+```ts title="mw/**/*/res.ts"
+import { Text, useSubscribe, useSend } from 'alemonjs'
+import LoginRes from './login'
+// 中间件，在所有apps响应之前。
 export default OnMiddleware((event, next) => {
-  // 根据
-  const email = getUserEmail(e.User_key)
+  // 非约定前缀
+  if (!/^#xx/.test(event.MessageText)) {
+    next()
+    return
+  }
 
-  // 已登录账号
-  if (email) {
+  // 不是
+  if (!/^xx login/.test()) {
+    // 根据userid/userkey请求获得email
+    const email = ''
+    if (!email) {
+      next()
+      return
+    }
+    // 拥有数据，携带字段
+    event['xx_emeil'] = email
     next()
     return
   }
 
   // 创建
   const Send = useSend(event)
-  Send(Text('请发送[/login+email]以登录账户'))
+  Send(Text('请输入 #xx email,password '))
 
-  // 没有查询到用户邮箱。需要提示用户进行邮箱绑定。
+  // 在中间件响应之前，观察该用户
   const [subscribe] = useSubscribe(e, 'message.create')
   subscribe(LoginRes.current, ['UserId'])
 }, 'message.create')
