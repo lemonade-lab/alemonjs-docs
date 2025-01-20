@@ -118,6 +118,18 @@ export const activate = context => {
 }
 ```
 
+- 主题变量
+
+```css
+:root {
+  --alemonjs--primary-bg: #3498db;
+  /* 
+    内置一套以--alemonjs开头的主题变量，
+    更多变量请在桌面的主题配置中查看。
+  */
+}
+```
+
 ### 脚本
 
 - 发送消息

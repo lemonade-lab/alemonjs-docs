@@ -62,7 +62,12 @@ export const useElectronDownload = <T extends string>({
     await axios({
       method: 'get',
       baseURL: baseURL,
-      url: `/${ymls[platform]}`
+      url: `/${ymls[platform]}`,
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      }
     })
       .then(res => res.data)
       .then(res => {
