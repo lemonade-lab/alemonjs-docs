@@ -164,22 +164,22 @@ export default function HomePage(): JSX.Element {
           <div className="text-3xl  md:text-5xl">何必继续等待</div>
           <div className="text-lg md:text-2xl">立即安装阿柠檬客户端来启动你的机器人吧</div>
         </div>
-        <div className="flex flex-row items-center justify-center py-6 gap-4">
+        <div className="flex flex-row items-center justify-center py-6">
           <div
             onClick={() => {
               handleDownloadClick('mac', 'x64')
             }}
-            className="text-md md:text-xl bg-slate-300 bg-opacity-80 rounded-md px-2 duration-[1000ms] md:px-4 py-2  hover:bg-blue-400 hover:text-white cursor-pointer"
+            className="text-md md:text-xl bg-slate-300 bg-opacity-80 rounded-l-md px-2 duration-[1000ms] md:px-4 py-2  hover:bg-blue-400 hover:text-white cursor-pointer"
           >
-            下载 macOS x64
+            macOS x64
           </div>
           <div
             onClick={() => {
               handleDownloadClick('win', 'x64')
             }}
-            className="text-md md:text-xl bg-slate-300 bg-opacity-80 rounded-md px-2 duration-[1000ms] md:px-4 py-2  hover:bg-blue-400 hover:text-white cursor-pointer"
+            className="text-md md:text-xl bg-slate-300 bg-opacity-80 rounded-r-md px-2 duration-[1000ms] md:px-4 py-2  hover:bg-blue-400 hover:text-white cursor-pointer"
           >
-            下载 Windows x64
+            Windows x64
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-4">
