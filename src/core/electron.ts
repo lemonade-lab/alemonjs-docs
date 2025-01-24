@@ -23,7 +23,12 @@ export const getYml = async ({ baseURL, url }) => {
   return await axios({
     method: 'get',
     baseURL: baseURL,
-    url: `/${url}`
+    url: `/${url}`,
+    headers: {
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0'
+    }
   })
     .then(res => res.data)
     .then(res => {

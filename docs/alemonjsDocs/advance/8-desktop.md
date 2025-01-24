@@ -29,17 +29,24 @@ sidebar_position: 7
   },
   "alemonjs": {
     "desktop": {
+      // 图标（可选）
+      "logo": "public/logo.png",
       // 指令输入框
       "commond": [
         {
           "name": "test",
+          // 图标（可选）
+          "icon": "public/logo.png",
           "commond": "open.test" // 发送指令
         }
       ],
       // 侧边栏
       "sidebars": [
         {
+          // 无图标则显示
           "name": "test",
+          // 图标（可选）
+          "icon": "public/logo.png",
           "commond": "open.test" // 发送指令
         }
       ],
@@ -110,7 +117,7 @@ export const activate = context => {
 export const activate = context => {
   // 创建一个 webview。
   const sidebarWebView = context.createSidebarWebView(context)
-  // 监听 webview 的消息。
+  // 发送消息到webview。
   sidebarWebView.postMessage({
     type: 'ping',
     data: ''
@@ -122,7 +129,7 @@ export const activate = context => {
 
 ```css
 :root {
-  --alemonjs--primary-bg: #3498db;
+  --alemonjs-primary-bg: #3498db;
   /* 
     内置一套以--alemonjs开头的主题变量，
     更多变量请在桌面的主题配置中查看。
