@@ -26,35 +26,27 @@ sidebar_position: 2
 
 ### QQ
 
-[👉平台 https://q.qq.com/#/](https://q.qq.com/#/)
+[平台 https://q.qq.com/#/](https://q.qq.com/#/)
 
-[👉文档 https://bot.q.qq.com/wiki/](https://bot.q.qq.com/wiki/)
+[文档 https://bot.q.qq.com/wiki/](https://bot.q.qq.com/wiki/)
 
-| Project                    | Status                              | Description |
-| -------------------------- | ----------------------------------- | ----------- |
-| 👉[@alemonjs/qq-bot]       | [![qq-bot-s]][qq-bot-p]             | QQ webhook  |
-| 👉[@alemonjs/qq-group-bot] | [![qq-group-bot-s]][qq-group-bot-p] | QQ 群ws     |
-| 👉[@alemonjs/qq-guild-bot] | [![qq-guild-bot-s]][qq-guild-bot-p] | QQ 频道ws   |
+| Project            | Status                  | Description |
+| ------------------ | ----------------------- | ----------- |
+| [@alemonjs/qq-bot] | [![qq-bot-s]][qq-bot-p] | QQbot       |
 
 [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot
 [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg
 [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot
-[@alemonjs/qq-group-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot
-[qq-group-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-group-bot.svg
-[qq-group-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-group-bot
-[@alemonjs/qq-guild-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-guild-bot
-[qq-guild-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-guild-bot.svg
-[qq-guild-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-guild-bot
 
 ### Discord
 
-[👉平台 https://discord.com/developers/applications/](https://discord.com/developers/applications/)
+[平台 https://discord.com/developers/applications/](https://discord.com/developers/applications/)
 
-[👉文档 https://discord.com/developers/docs/intro](https://discord.com/developers/docs/intro)
+[文档 https://discord.com/developers/docs/intro](https://discord.com/developers/docs/intro)
 
-| Project               | Status                    | Description |
-| --------------------- | ------------------------- | ----------- |
-| 👉[@alemonjs/discord] | [![discord-s]][discord-p] | DC 公会连接 |
+| Project             | Status                    | Description |
+| ------------------- | ------------------------- | ----------- |
+| [@alemonjs/discord] | [![discord-s]][discord-p] | discord     |
 
 [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord
 [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg
@@ -62,13 +54,13 @@ sidebar_position: 2
 
 ### KOOK
 
-[👉平台 https://developer.kookapp.cn/doc/](https://developer.kookapp.cn/doc/)
+[平台 https://developer.kookapp.cn/doc/](https://developer.kookapp.cn/doc/)
 
-[👉文档 https://core.telegram.org/bots](https://core.telegram.org/bots)
+[文档 https://core.telegram.org/bots](https://core.telegram.org/bots)
 
-| Project            | Status              | Description |
-| ------------------ | ------------------- | ----------- |
-| 👉[@alemonjs/kook] | [![kook-s]][kook-p] | KOOK 连接   |
+| Project          | Status              | Description |
+| ---------------- | ------------------- | ----------- |
+| [@alemonjs/kook] | [![kook-s]][kook-p] | KOOK        |
 
 [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook
 [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg
@@ -76,11 +68,11 @@ sidebar_position: 2
 
 ### Telegram
 
-[👉文档 https://core.telegram.org/bots ](https://core.telegram.org/bots)
+[文档 https://core.telegram.org/bots ](https://core.telegram.org/bots)
 
-| Project                | Status                      | Description   |
-| ---------------------- | --------------------------- | ------------- |
-| 👉[@alemonjs/telegram] | [![telegram-s]][telegram-p] | telegram 连接 |
+| Project              | Status                      | Description |
+| -------------------- | --------------------------- | ----------- |
+| [@alemonjs/telegram] | [![telegram-s]][telegram-p] | telegram    |
 
 [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram
 [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg
@@ -88,7 +80,7 @@ sidebar_position: 2
 
 #### 创建机器人
 
-👉[访问 https://core.telegram.org/bots/tutorial#obtain-your-bot-token](https://core.telegram.org/bots/tutorial#obtain-your-bot-token)
+[访问 https://core.telegram.org/bots/tutorial#obtain-your-bot-token](https://core.telegram.org/bots/tutorial#obtain-your-bot-token)
 
 点击添加`@BotFather`并发送`/newbot`,并继续发送 `NameXBot` 得以生产 `token`
 
@@ -98,15 +90,15 @@ sidebar_position: 2
 
 - NameXdBot 即自定义的bot名
 
-👉[访问 https://web.telegram.org/k/#@NameXdBot 以添加](https://web.telegram.org/k/#@NameXdBot)
+[访问 https://web.telegram.org/k/#@NameXdBot 以添加](https://web.telegram.org/k/#@NameXdBot)
 
 ## 三方
 
 ### QQ
 
-| Project          | Status          | Description |
-| ---------------- | --------------- | ----------- |
-| 👉[@alemonjs/qq] | [![qq-s]][qq-p] | QQ 连接     |
+| Project        | Status          | Description |
+| -------------- | --------------- | ----------- |
+| [@alemonjs/qq] | [![qq-s]][qq-p] | QQ          |
 
 [@alemonjs/qq]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq
 [qq-s]: https://img.shields.io/npm/v/@alemonjs/qq.svg
@@ -114,9 +106,9 @@ sidebar_position: 2
 
 ### OneBot
 
-| Project              | Status                  | Description |
-| -------------------- | ----------------------- | ----------- |
-| 👉[@alemonjs/onebot] | [![onebot-s]][onebot-p] | onebot V11  |
+| Project            | Status                  | Description |
+| ------------------ | ----------------------- | ----------- |
+| [@alemonjs/onebot] | [![onebot-s]][onebot-p] | onebot V11  |
 
 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot
 [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg
@@ -124,9 +116,9 @@ sidebar_position: 2
 
 ### Wechat
 
-| Project              | Status                  | Description |
-| -------------------- | ----------------------- | ----------- |
-| 👉[@alemonjs/wechat] | [![wechat-s]][wechat-p] | 微信        |
+| Project            | Status                  | Description |
+| ------------------ | ----------------------- | ----------- |
+| [@alemonjs/wechat] | [![wechat-s]][wechat-p] | 微信        |
 
 [@alemonjs/wechat]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/wechat
 [wechat-s]: https://img.shields.io/npm/v/@alemonjs/wechat.svg
@@ -136,9 +128,9 @@ sidebar_position: 2
 
 ### gui
 
-| Project           | Status            | Description |
-| ----------------- | ----------------- | ----------- |
-| 👉[@alemonjs/gui] | [![gui-s]][gui-p] | 沙盒测试    |
+| Project         | Status            | Description |
+| --------------- | ----------------- | ----------- |
+| [@alemonjs/gui] | [![gui-s]][gui-p] | 沙盒测试    |
 
 [@alemonjs/gui]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/gui
 [gui-s]: https://img.shields.io/npm/v/@alemonjs/gui.svg
@@ -146,10 +138,10 @@ sidebar_position: 2
 
 ### database
 
-| Project          | Status          | Description |
-| ---------------- | --------------- | ----------- |
-| 👉[@alemonjs/db] | [![db-s]][db-p] | redis&mysql |
+| Project        | Status          | Description |
+| -------------- | --------------- | ----------- |
+| [@alemonjs/db] | [![db-s]][db-p] | redis&mysql |
 
-[@alemonjs/db]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/gui
+[@alemonjs/db]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/db
 [db-s]: https://img.shields.io/npm/v/@alemonjs/db.svg
 [db-p]: https://www.npmjs.com/package/@alemonjs/db

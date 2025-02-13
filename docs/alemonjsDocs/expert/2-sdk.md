@@ -44,3 +44,8 @@ export default OnResponse((event, next) => {
   console.log('client', client)
 }, 'message.create')
 ```
+
+```ts
+import { platform, client, type Client } from '@alemonjs/kook'
+// platform 和 client 是平台包固定的两个变量, 具体可阅读“自定义平台”
+```

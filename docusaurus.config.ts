@@ -123,8 +123,12 @@ export default defineConfig({
               href: 'https://github.com/lemonade-lab/alemonjs'
             },
             {
-              label: 'vscode-plugin',
+              label: 'vscode-extend',
               href: 'https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui'
+            },
+            {
+              label: 'desktop',
+              href: 'https://github.com/lemonade-lab/alemonjs-desktop'
             }
           ]
         }

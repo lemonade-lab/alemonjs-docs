@@ -4,9 +4,13 @@ sidebar_position: 5
 
 # 生态平台
 
-## 使用
+模块机制到底是怎么回事？请点击了解[👉模块化应用](/docs/alemonjsDocs/advance/models)的制作
 
-详细请了解[👉模块化应用](/docs/alemonjsDocs/advance/models)
+:::warning 如何加载Yunzai生态插件？
+
+请阅读 [https://github.com/lemonade-lab/yunzai](https://github.com/lemonade-lab/yunzai)
+
+:::
 
 ## 分类
 
@@ -16,9 +20,20 @@ sidebar_position: 5
 | ----------------- | ----------------------- | ------------- |
 | [alemonjs-cheese] | [![cheese-s]][cheese-p] | AI+今日运势等 |
 
-[alemonjs-cheese]: https://github.com
+[alemonjs-cheese]: https://github.com/V2233/alemonjs-cheese
 [cheese-s]: https://img.shields.io/npm/v/alemonjs-cheese.svg
 [cheese-p]: https://www.npmjs.com/package/alemonjs-cheese
+
+### 游戏
+
+| 项目名            | 类型  | 说明         |
+| ----------------- | ----- | ------------ |
+| [alemonjs-xianyu] | local | 扫雷等小游戏 |
+
+[alemonjs-xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/
+
+<!-- [xianyu-s]: https://img.shields.io/npm/v/alemonjs-xianyu.svg -->
+<!-- [xianyu-p]: https://www.npmjs.com/package/alemonjs-xianyu -->
 
 ### IP类
 
@@ -41,9 +56,3 @@ sidebar_position: 5
 | 项目名                                             | 类型  | 说明                    |
 | -------------------------------------------------- | ----- | ----------------------- |
 | [visible](https://github.com/lemonade-lab/visible) | shell | linux系统图形化安装脚本 |
-
-### Yunzai
-
-如何加载Yunzai生态插件？
-
-请阅读 脚本A [https://github.com/lemonade-lab/yunzai](https://github.com/lemonade-lab/yunzai)
