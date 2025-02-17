@@ -26,10 +26,6 @@ sidebar_position: 2
 
 ### QQ
 
-[平台 https://q.qq.com/#/](https://q.qq.com/#/)
-
-[文档 https://bot.q.qq.com/wiki/](https://bot.q.qq.com/wiki/)
-
 | Project            | Status                  | Description |
 | ------------------ | ----------------------- | ----------- |
 | [@alemonjs/qq-bot] | [![qq-bot-s]][qq-bot-p] | QQbot       |
@@ -39,10 +35,6 @@ sidebar_position: 2
 [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot
 
 ### Discord
-
-[平台 https://discord.com/developers/applications/](https://discord.com/developers/applications/)
-
-[文档 https://discord.com/developers/docs/intro](https://discord.com/developers/docs/intro)
 
 | Project             | Status                    | Description |
 | ------------------- | ------------------------- | ----------- |
@@ -54,10 +46,6 @@ sidebar_position: 2
 
 ### KOOK
 
-[平台 https://developer.kookapp.cn/doc/](https://developer.kookapp.cn/doc/)
-
-[文档 https://core.telegram.org/bots](https://core.telegram.org/bots)
-
 | Project          | Status              | Description |
 | ---------------- | ------------------- | ----------- |
 | [@alemonjs/kook] | [![kook-s]][kook-p] | KOOK        |
@@ -68,8 +56,6 @@ sidebar_position: 2
 
 ### Telegram
 
-[文档 https://core.telegram.org/bots ](https://core.telegram.org/bots)
-
 | Project              | Status                      | Description |
 | -------------------- | --------------------------- | ----------- |
 | [@alemonjs/telegram] | [![telegram-s]][telegram-p] | telegram    |
@@ -77,20 +63,6 @@ sidebar_position: 2
 [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram
 [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg
 [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram
-
-#### 创建机器人
-
-[访问 https://core.telegram.org/bots/tutorial#obtain-your-bot-token](https://core.telegram.org/bots/tutorial#obtain-your-bot-token)
-
-点击添加`@BotFather`并发送`/newbot`,并继续发送 `NameXBot` 得以生产 `token`
-
-```yaml
-79179797979:AAAAAAAAAAAAAABBBBBBCCCCCCCCCC
-```
-
-- NameXdBot 即自定义的bot名
-
-[访问 https://web.telegram.org/k/#@NameXdBot 以添加](https://web.telegram.org/k/#@NameXdBot)
 
 ## 三方
 

@@ -14,7 +14,7 @@ sidebar_position: 5
 
 ## 分类
 
-### 娱乐
+### recreation
 
 | 项目名            | 类型                    | 说明          |
 | ----------------- | ----------------------- | ------------- |
@@ -24,24 +24,25 @@ sidebar_position: 5
 [cheese-s]: https://img.shields.io/npm/v/alemonjs-cheese.svg
 [cheese-p]: https://www.npmjs.com/package/alemonjs-cheese
 
-### 游戏
+### game
 
-| 项目名            | 类型  | 说明         |
-| ----------------- | ----- | ------------ |
-| [alemonjs-xianyu] | local | 扫雷等小游戏 |
+| 项目名             | 类型  | 说明         |
+| ------------------ | ----- | ------------ |
+| [alemonjs-xianyu]  | local | 扫雷等小游戏 |
+| [alemonjs-xiuxian] | local | 大型修仙游戏 |
+| [alemonjs-farm]    | local | 农场         |
 
 [alemonjs-xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/
+[alemonjs-xiuxian]: https://github.com/xiuxianjs/xiuxian-bot
+[alemonjs-farm]: https://github.com/xiuxianjs/farm-bot
 
-<!-- [xianyu-s]: https://img.shields.io/npm/v/alemonjs-xianyu.svg -->
-<!-- [xianyu-p]: https://www.npmjs.com/package/alemonjs-xianyu -->
-
-### IP类
+### IP
 
 | 项目名            | 类型  | 说明     |
 | ----------------- | ----- | -------- |
 | [alemonjs-kuromc] | local | 鸣潮WIKI |
 
-[alemonjs-kuromc]: https://github.com/lemonade-lab/kuromc
+[alemonjs-kuromc]: https://github.com/xiuxianjs/kuromc
 
 ### AI
 
@@ -49,9 +50,9 @@ sidebar_position: 5
 | ----------------- | ----- | ---------- |
 | [alemonjs-ollama] | local | 对接ollama |
 
-[alemonjs-ollama]: https://github.com/lemonade-lab/ollama
+[alemonjs-ollama]: https://github.com/xiuxianjs/ollama
 
-### 脚本
+### script
 
 | 项目名                                             | 类型  | 说明                    |
 | -------------------------------------------------- | ----- | ----------------------- |
