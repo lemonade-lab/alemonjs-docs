@@ -46,11 +46,13 @@ sidebar_position: 5
 
 ### AI
 
-| 项目名            | 类型  | 说明       |
-| ----------------- | ----- | ---------- |
-| [alemonjs-ollama] | local | 对接ollama |
+| 项目名            | 类型                    | 说明                 |
+| ----------------- | ----------------------- | -------------------- |
+| [alemonjs-openai] | [![openai-s]][openai-p] | 连接符合openAI的模型 |
 
-[alemonjs-ollama]: https://github.com/xiuxianjs/ollama
+[alemonjs-openai]: https://github.com/xiuxianjs/ollama
+[openai-s]: https://img.shields.io/npm/v/alemonjs-openai.svg
+[openai-p]: https://www.npmjs.com/package/alemonjs-openai
 
 ### script
 
