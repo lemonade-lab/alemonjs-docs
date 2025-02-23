@@ -38,13 +38,13 @@ const items = [
   {
     url: require('@site/static/img/dt/cat.png').default,
     title: '测试环境',
-    docs: '不必登录官方平台即可测试本地代码',
+    docs: '不必登录平台即可测试代码',
     position: 'right'
   },
   {
     url: require('@site/static/img/dt/home.png').default,
     title: '一键启动',
-    docs: '立即安装立即启动本机应用',
+    docs: '立即安装立即启动机器人',
     position: 'left'
   }
 ]

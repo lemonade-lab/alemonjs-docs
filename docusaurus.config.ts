@@ -14,7 +14,7 @@ const link = `<a  href="https://beian.miit.gov.cn/" target="_blank">${number}</a
 
 export default defineConfig({
   title: 'AlemonJS',
-  tagline: '阿柠檬，基于 JavaScript 所构建的跨聊天平台开发框架',
+  tagline: '阿柠檬，基于 JavaScript 所构建的聊天平台机器人开发框架',
   url: 'https://alemonjs.com',
   baseUrl: '/',
   organizationName: 'lemonade-lab',

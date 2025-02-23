@@ -17,6 +17,11 @@ sidebar_position: 7
   // 三方 alemonjs-XXX
   "name": "@alemonjs/test",
   "version": "0.0.1",
+  "author": {
+    "name": "ningmengchongshui",
+    "email": "ningmengchongshui@gmail.com",
+    "url": "https://github.com/ningmengchongshui"
+  },
   "type": "module",
   "main": "lib/index.js",
   "scripts": {
@@ -25,17 +30,19 @@ sidebar_position: 7
   "export": {
     ".": "./lib/index.js",
     "./package": "./package.json", // 必须的
-    "./desktop": "./desktop.js" // 可选（桌面扩展入口脚本)
+    "./desktop": "./lib/desktop.js" // 可选（桌面扩展入口脚本)
   },
   "alemonjs": {
     "desktop": {
       // 图标（可选）
+      // 支持antd图标，如 antd.OpenAIOutlined
+      // https://ant.design/components/icon-cn
       "logo": "public/logo.png",
       // 指令输入框
       "commond": [
         {
           "name": "test",
-          // 图标（可选）
+          // 图标（可选）支持antd图标
           "icon": "public/logo.png",
           "commond": "open.test" // 发送指令
         }
@@ -45,7 +52,7 @@ sidebar_position: 7
         {
           // 无图标则显示
           "name": "test",
-          // 图标（可选）
+          // 图标（可选） 支持antd图标
           "icon": "public/logo.png",
           "commond": "open.test" // 发送指令
         }
@@ -57,12 +64,6 @@ sidebar_position: 7
         }
       ]
     }
-  },
-  // author
-  "author": {
-    "name": "ningmengchongshui",
-    "email": "ningmengchongshui@gmail.com",
-    "url": "https://github.com/ningmengchongshui"
   }
 }
 ```

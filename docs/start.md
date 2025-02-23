@@ -55,27 +55,15 @@ yarn install
 # 基本格式 [配置名]:[配置参数]
 gui:
   port: 17127
-# redis:
-#   host: 'localhost'
-#   port: '6379'
-#   password: ''
-#   db: '1'
-
-# mysql:
-#   host: 'localhost'
-#   port: '3306'
-#   user: 'root'
-#   password: 'Mm002580!'
-#   database: 'alemonjs_test'
 ```
 
 ## 启动
 
 > 选择GUI体验效果
 
-> 需要下载[`Visual Studio Code`](https://code.visualstudio.com/)
+> 下载应用[`Visual Studio Code`](https://code.visualstudio.com/)
 
-> 下载插件[`AlemonJS GUI`](https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui)
+> 下载扩展[`AlemonJS GUI`](https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui)
 
 > 选择底部 Status Bar AlemonJS 按钮以打开侧边栏
 
@@ -84,63 +72,3 @@ yarn dev --login gui
 ```
 
 --login 登陆平台
-
-## PM2
-
-```shell title="安装PM2"
-yarn add pm2 -D
-```
-
-> 需要了解 [lvyjs](https://lvyjs.dev) 如何编译得到 lib/index.js
-
-```js title="index.js"
-import { start } from 'alemonjs'
-start('lib/index.js')
-```
-
-```yaml title="alemon.config.yaml"
-pm2:
-  apps:
-    - name: 'gui'
-      script: 'node index.js --login gui'
-      env:
-        NODE_ENV: 'production'
-```
-
-### 配置
-
-`pm2.config.cjs`
-
-```js title="pm2.config.cjs"
-const fs = require('fs')
-const yaml = require('yaml')
-
-// Read and parse the YAML configuration file
-const data = fs.readFileSync('./alemon.config.yaml', 'utf8')
-const config = yaml.parse(data)
-
-// Extracting PM2 configuration
-const pm2 = config?.pm2 ?? {}
-
-/**
- * @type {{ apps: import("pm2").StartOptions[] }}
- */
-module.exports = {
-  ...pm2
-}
-```
-
-### 启动
-
-```sh
-# start
-npx pm2 startOrRestart pm2.config.cjs
-# stop
-npx pm2 stop pm2.config.cjs
-# delete
-npx pm2 delete pm2.config.cjs
-# kill
-npx pm2 kill
-# logs
-npx pm2 logs
-```
