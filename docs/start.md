@@ -67,8 +67,23 @@ gui:
 
 > 选择底部 Status Bar AlemonJS 按钮以打开侧边栏
 
+- 指令启动
+
 ```sh title="以开发模式启动，并选择gui"
 yarn dev --login gui
 ```
 
---login 登陆平台
+- 配置中启动
+
+```yaml title="alemon.config.yaml"
+# 也可以在配置中固定login
+login: 'gui'
+```
+
+- 函数中启动
+
+```ts title="index.js"
+import { start } from 'alemonjs'
+start('src/index.ts', 'gui')
+// start('src/index.ts', '@alemonjs/gui')
+```

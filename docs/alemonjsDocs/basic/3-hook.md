@@ -28,25 +28,14 @@ export default OnResponse((event, next) => {
 
   Send(Text('这个'), Text('标题'), Text('没有变化'))
 
-  Send(
-    Text(
-      [
-        `const Send = useSend(event)`,
-        `Send(Text('这个'), Text('标题', { style: 'bold' }), Text('被加粗了'))`,
-        `Send(Text('这个'), Text('标题'), Text('没有变化'))`
-      ].join('\n'),
-      {
-        style: 'block'
-      }
-    )
-  )
+  Send(Text([`// 我的代码块 `, `const Send = useSend(event)`].join('\n'), { style: 'block' }))
 }, 'message.create')
 ```
 
 ### Image
 
 ```ts title="src/apps/**/*/res.ts"
-import { useSend, Text, Image } from 'alemonjs'
+import { useSend, Text, Image, ImageFile, ImageURL } from 'alemonjs'
 import { readFileSync } from 'fs'
 import url from '@src/assets/test.jpeg'
 export default OnResponse((event, next) => {
@@ -54,8 +43,9 @@ export default OnResponse((event, next) => {
   // 发送本地图片文件
   const img = readFileSync(url)
   if (img) {
-    // Send(Image(img), Image(img))
     Send(Image(img))
+    // Send(Image(url))
+    // Send(ImageURL("https://xxxx.png"))
   } else {
     Send(Text('图片不存在'))
   }
