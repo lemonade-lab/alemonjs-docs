@@ -26,12 +26,7 @@ sendToUser('UserID', [Text('hello word')])
 
 ```ts
 import { createDataFormat } from 'alemonjs'
-
 const data = createDataFormat(Text('hello word'))
-
-// 例1
+// 向指定频道发送消息
 sendToChannel('ChannelID', data)
-
-// 例2
-Send(...data)
 ```

@@ -12,18 +12,45 @@ sidebar_position: 1
 
 框架通过定义响应函数来来描述不同事件将要执行的操作。
 
-```ts title="发送消息的基础示例"
-import { Text, useSend } from 'alemonjs'
+import Image from '@site/src/components/Image';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="0" label="res.tsx" default>
+
+```tsx title="发送消息的基础示例"
+import React from 'react'
+import { createSelects } from 'alemonjs'
+import { Text, useSend } from 'alemonjs/jsx'
+const selects = createSelects(['message.create'])
 // 导出响应
-export default OnResponse((event, next) => {
+export default onResponse(selects, event => {
+  // 创建接口
+  const Send = useSend(event)
+  // 发送文本
+  Send(<Text>hello</Text>)
+})
+```
+
+  </TabItem>
+  <TabItem value="1" label="res.ts">
+ 
+ 
+```ts title="发送消息的基础示例"
+import { createSelects } from 'alemonjs'
+import { Text, useSend } from 'alemonjs'
+const selects = createSelects(['message.create'])
+// 导出响应
+export default onResponse(selects, event => {
   // 创建接口
   const Send = useSend(event)
   // 发送文本
   Send(Text('hello'))
-  // 事件类型
-}, 'message.create')
+})
 ```
 
-import Image from '@site/src/components/Image'
+  </TabItem>
+</Tabs>
 
 <Image src={require('@site/static/img/model.png')} />

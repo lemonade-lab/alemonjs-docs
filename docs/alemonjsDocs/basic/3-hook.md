@@ -16,58 +16,122 @@ sidebar_position: 3
 >
 > 这种获取通常在一个特定的事件处理上下文中进行。
 
+import Tabs from '@theme/Tabs';
+
+import TabItem from '@theme/TabItem';
+
 ### Text
 
-```ts title="src/apps/**/*/res.ts"
-import { Text, useSend } from 'alemonjs'
-export default OnResponse((event, next) => {
+<Tabs>
+  <TabItem value="0" label="res.tsx" default>
+
+```tsx title="src/apps/**/*/res.tsx"
+import React from 'react'
+import { createSelects } from 'alemonjs'
+import { Text, useSend } from 'alemonjs/jsx'
+const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
   // 创建
   const Send = useSend(event)
-
-  Send(Text('这个'), Text('标题', { style: 'bold' }), Text('被加粗了'))
-
-  Send(Text('这个'), Text('标题'), Text('没有变化'))
-
-  Send(Text([`// 我的代码块 `, `const Send = useSend(event)`].join('\n'), { style: 'block' }))
-}, 'message.create')
+  Send(<Text>这个</Text>, <Text style="bold">标题</Text>, <Text>被加粗了</Text>)
+  Send(<Text>这个</Text>, <Text>标题</Text>, <Text>没有变化</Text>)
+  const text = `// 我的代码块 \nconst Send = useSend(event)`
+  Send(<Text style="block">{text}</Text>)
+})
 ```
+
+  </TabItem>
+ <TabItem value="1" label="res.ts">
+ 
+```ts title="src/apps/**/*/res.ts"
+import { createSelects } from 'alemonjs'
+import { Text, useSend } from 'alemonjs'
+const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
+  // 创建
+  const Send = useSend(event)
+  Send(Text('这个'), Text('标题', { style: 'bold' }), Text('被加粗了'))
+  Send(Text('这个'), Text('标题'), Text('没有变化'))
+  Send(Text(`// 我的代码块 \nconst Send = useSend(event)`, { style: 'block' }))
+})
+```
+
+  </TabItem>
+</Tabs>
 
 ### Image
 
+<Tabs>
+  <TabItem value="0" label="res.tsx" default>
+
+```tsx title="src/apps/**/*/res.tsx"
+import React from 'react'
+import { createSelects } from 'alemonjs'
+import { useSend, ImageFile, ImageURL } from 'alemonjs/jsx'
+import url from '@src/assets/test.jpeg'
+const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
+  const Send = useSend(event)
+  // 发送本地图片文件
+  Send(<ImageFile src={url} />)
+  Send(<ImageURL src="https://xxx.com/yyy.png" />)
+})
+```
+
+  </TabItem>
+ <TabItem value="1" label="res.ts">
+
 ```ts title="src/apps/**/*/res.ts"
-import { useSend, Text, Image, ImageFile, ImageURL } from 'alemonjs'
+import { createSelects } from 'alemonjs'
+import { useSend, ImageFile, ImageURL } from 'alemonjs'
+import url from '@src/assets/test.jpeg'
+const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
+  const Send = useSend(event)
+  // 发送本地图片文件
+  Send(ImageFile(url))
+  Send(ImageURL('https://xxx.com/yyy.png'))
+})
+```
+
+```ts title="src/apps/**/*/res.ts"
+import { createSelects } from 'alemonjs'
+import { useSend, Text, Image } from 'alemonjs'
 import { readFileSync } from 'fs'
 import url from '@src/assets/test.jpeg'
-export default OnResponse((event, next) => {
+const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
   const Send = useSend(event)
   // 发送本地图片文件
   const img = readFileSync(url)
   if (img) {
     Send(Image(img))
-    // Send(Image(url))
-    // Send(ImageURL("https://xxxx.png"))
   } else {
     Send(Text('图片不存在'))
   }
-}, 'message.create')
+})
 ```
+
+  </TabItem>
+</Tabs>
 
 ### Mention
 
 ```ts title="apps/**/*/res.ts"
+import { createSelects } from 'alemonjs'
 import { useSend, Text, Mention } from 'alemonjs'
-export default OnResponse((event, next) => {
+const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
   const Send = useSend(event)
-
   // 发送多种类型的消息
   Send(Text('Hello '), Mention(event.UserId), Text(', How are things going?'))
 
   // @ 所有人
-  // Send(Mention())
+  Send(Mention())
 
   // @ channel
-  // Send(Mention(event.ChannelId, { belong: 'channel' }))
-}, 'message.create')
+  Send(Mention(event.ChannelId, { belong: 'channel' }))
+})
 ```
 
 ## `useMention`
@@ -75,7 +139,9 @@ export default OnResponse((event, next) => {
 > 解析得到被提及的数据
 
 ```ts title="apps/**/*/res.ts"
+import { createSelects } from 'alemonjs'
 import { useMention } from 'alemonjs'
+const selects = createSelects(['message.create'])
 
 const useMentionsUserId = async event => {
   const Mentions = await useMention(event)
@@ -90,14 +156,14 @@ const useMentionsUserId = async event => {
   return User
 }
 
-export default OnResponse(async (event, next) => {
+export default onResponse(selects, async (event, next) => {
   // 获得User
   const User = await useMentionsUserId(event)
 
   console.log('User:', User)
 
   // 处理被AT的用户...
-}, 'message.create')
+})
 ```
 
 ## `useObserver`
@@ -107,9 +173,11 @@ export default OnResponse(async (event, next) => {
 > 不推荐在中间件触发后使用,具体了解下一章节的中间件机制
 
 ```ts title="apps/**/*/res.ts"
+import { createSelects } from 'alemonjs'
 import { Text, useObserver, useSend } from 'alemonjs'
+const selects = createSelects('message.create')
 
-const Res = OnResponse((event, next) => {
+const response = onResponse(selects, (event, next) => {
   // 创建
   const Send = useSend(event)
   // 获取文本
@@ -126,21 +194,21 @@ const Res = OnResponse((event, next) => {
     // 继续监听
     next()
   }
-}, 'message.create')
+})
 
-export default OnResponse((event, next) => {
+export default onResponse(selects, (event, next) => {
   // 创建
   const Send = useSend(event)
   Send(Text('请输入密码'))
 
   // 创建观察者
-  const Observer = useObserver(event, 'message.create')
-  Observer(Res.current, [
+  const Observer = useObserver(event, selects)
+  Observer(response.current, [
     // 观察条件，当前用户
     'UserId'
     // 可新增，如：当前所在频道的用户，或者当前频道下的当前用户
   ])
-}, 'message.create')
+})
 ```
 
 ## `useSubscribe`
@@ -156,21 +224,21 @@ unmonut(Res.current, [])
 ```
 
 ```ts title="./login.ts"
+import { createSelects } from 'alemonjs'
 import { Text, useSubscribe, useSend } from 'alemonjs'
-const LoginRes = OnResponse(
-  async (event, next) => {
-    // 检验 并存储关系映射
-  },
-  ['message.create']
-)
-export default LoginRes
+const selects = createSelects(['message.create'])
+export default onResponse(selects, async (event, next) => {
+  // 检验 并存储关系映射
+})
 ```
 
 ```ts title="mw/**/*/res.ts"
+import { createSelects } from 'alemonjs'
 import { Text, useSubscribe, useSend } from 'alemonjs'
 import LoginRes from './login'
+const selects = createSelects(['message.create'])
 // 中间件，在所有apps响应之前。
-export default OnMiddleware((event, next) => {
+export default onMiddleware(selects, (event, next) => {
   // 非约定前缀
   if (!/^#xx/.test(event.MessageText)) {
     next()
@@ -198,25 +266,23 @@ export default OnMiddleware((event, next) => {
   // 在中间件响应之前，观察该用户
   const [subscribe] = useSubscribe(e, 'message.create')
   subscribe(LoginRes.current, ['UserId'])
-}, 'message.create')
+})
 ```
 
 ## `useState`
 
 > 声明res/mw的状态,可用于管理是否启用
 
-```ts title="apps/**/*/res.ts"
-export name = 'login'  // 标记res名
-export const regular = /^(#|\/)?login$/
-export default OnResponse((event, next) => {
-  // login code ...
-}, 'message.create')
-```
+> 命名规则 子应用名:apps:文件夹1:文件夹2...
+
+> 如默认main为： main:apps:login
 
 ```ts title="apps/**/*/res.ts"
+import { createSelects } from 'alemonjs'
 import { Text, useSend, useState } from 'alemonjs'
 export const regular = /^(#|\/)?close:/
-export default OnResponse((event, next) => {
+const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
   //   /close:login
   const name = event.MessageText.replace(regular, '')
   const [state, setState] = useState(name)
@@ -228,16 +294,15 @@ export default OnResponse((event, next) => {
   const Send = useSend(event)
   Send(Text('关闭成功'))
   return
-}, 'message.create')
+})
 ```
 
 > 可以在任意地方订阅状态的更改。
 
 ```ts title="apps/**/*/res.ts"
-import { eventState, unEventState } from 'alemonjs'
-
-const login = state => {}
-
-eventState('login', login)
-unEventState('login', login)
+import { onState, unState } from 'alemonjs'
+onState('main:apps:login', state => {
+  //
+})
+unState('main:apps:login')
 ```

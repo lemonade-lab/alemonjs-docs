@@ -13,14 +13,14 @@ sidebar_position: 3
 ## 导出
 
 ```js title="src/index.ts"
-import { defineBot } from 'alemonjs'
+import { definePlatform } from 'alemonjs'
 import { getConfigValue, User } from 'alemonjs'
 
 export const platform = 'bot-name'
 export type Client = {}
 export const client = {}
 
-export default defineBot(() => {
+export default definePlatform(() => {
   // 得到自定义配置
   const value = getConfigValue()
   const botName = value[platform]

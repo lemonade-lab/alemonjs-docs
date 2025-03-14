@@ -11,15 +11,17 @@ sidebar_position: 6
 :::
 
 ```ts title="src/index.ts"
-export default defineChildren(() => ({
+export default defineChildren({
   onCreated() {
-    // 被创建时
+    /**
+     * 把所有在创建时要执行的内容放置在此处
+     */
   },
   onMounted() {
-    // 模块索引识别完成时
+    // 模块索引识别完成时。也就是 onCreated 执行完之后。
   },
   unMounted() {
-    // 出现意外被卸载，或者收到卸载时
+    // 当onCreated和onMounted出现意外被卸载，或者收到卸载时
   }
-}))
+})
 ```

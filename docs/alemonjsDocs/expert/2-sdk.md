@@ -22,7 +22,9 @@ sidebar_position: 2
 import { Text, useSend } from 'alemonjs'
 import { platform } from '@alemonjs/kook'
 import kookResponse from './kook.res'
-export default OnResponse((event, next) => {
+import { createSelects } from 'alemonjs'
+const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
   // 判断平台
   if (event.Platform == platform) {
     console.log('platform', platform)
@@ -31,18 +33,20 @@ export default OnResponse((event, next) => {
     const Send = useSend(event)
     Send(Text('该平台不支持此类消息'))
   }
-}, 'message.create')
+})
 ```
 
 ```ts title="./kook.res.ts"
 import { client } from '@alemonjs/kook'
-export default OnResponse((event, next) => {
+import { createSelects } from 'alemonjs'
+const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
   // 使用.value获取原生数据
   const e = event.value
   //   client.postMessage ....
   console.log('event', e)
   console.log('client', client)
-}, 'message.create')
+})
 ```
 
 ```ts
