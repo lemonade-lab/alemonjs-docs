@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
 
 ```ts title="src/apps/**/*/res.ts"
 import { createSelects } from 'alemonjs'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 前往下一个响应,不执行则立即停止。
   next()
@@ -34,7 +34,7 @@ export default onResponse(selects, (event, next) => {
 import { createSelects } from 'alemonjs'
 // 不匹配该正则，自动进行next
 export const regular = /^(#|\/)?hello$/
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   //
 })
@@ -46,7 +46,7 @@ export default onResponse(selects, (event, next) => {
 
 ```ts
 import { createSelects } from 'alemonjs'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 
 const response$1 = onResponse(selects, (event, next) => {
   console.log('text', event.MessageText)

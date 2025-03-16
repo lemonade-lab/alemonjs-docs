@@ -23,7 +23,8 @@ import TabItem from '@theme/TabItem';
 import React from 'react'
 import { createSelects } from 'alemonjs'
 import { Text, useSend } from 'alemonjs/jsx'
-const selects = createSelects(['message.create'])
+// 创建事件类型
+export const selects = createSelects(['message.create'])
 // 导出响应
 export default onResponse(selects, event => {
   // 创建接口
@@ -40,7 +41,8 @@ export default onResponse(selects, event => {
 ```ts title="发送消息的基础示例"
 import { createSelects } from 'alemonjs'
 import { Text, useSend } from 'alemonjs'
-const selects = createSelects(['message.create'])
+// 创建事件类型
+export const selects = createSelects(['message.create'])
 // 导出响应
 export default onResponse(selects, event => {
   // 创建接口

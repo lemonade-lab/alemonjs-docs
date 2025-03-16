@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 import React from 'react'
 import { createSelects } from 'alemonjs'
 import { Text, useSend } from 'alemonjs/jsx'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 创建
   const Send = useSend(event)
@@ -46,7 +46,7 @@ export default onResponse(selects, (event, next) => {
 ```ts title="src/apps/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { Text, useSend } from 'alemonjs'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 创建
   const Send = useSend(event)
@@ -69,7 +69,7 @@ import React from 'react'
 import { createSelects } from 'alemonjs'
 import { useSend, ImageFile, ImageURL } from 'alemonjs/jsx'
 import url from '@src/assets/test.jpeg'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   const Send = useSend(event)
   // 发送本地图片文件
@@ -85,7 +85,7 @@ export default onResponse(selects, (event, next) => {
 import { createSelects } from 'alemonjs'
 import { useSend, ImageFile, ImageURL } from 'alemonjs'
 import url from '@src/assets/test.jpeg'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   const Send = useSend(event)
   // 发送本地图片文件
@@ -99,7 +99,7 @@ import { createSelects } from 'alemonjs'
 import { useSend, Text, Image } from 'alemonjs'
 import { readFileSync } from 'fs'
 import url from '@src/assets/test.jpeg'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   const Send = useSend(event)
   // 发送本地图片文件
@@ -117,22 +117,44 @@ export default onResponse(selects, (event, next) => {
 
 ### Mention
 
+<Tabs>
+  <TabItem value="0" label="res.tsx" default>
+
+```tsx title="apps/**/*/res.tsx"
+import { createSelects } from 'alemonjs'
+import { useSend, Text, Mention } from 'alemonjs/jsx'
+export const selects = createSelects(['message.create'])
+export default onResponse(selects, (event, next) => {
+  const Send = useSend(event)
+  // 发送多种类型的消息
+  Send(<Text>Hello</Text>, <Mention value={event.UserId} />, <Text>, How are things going?</Text>)
+  // @ 所有人
+  Send(<Mention value="all" />)
+  // @ channel
+  Send(<Mention belong="channel" value={event.ChannelId} />)
+})
+```
+
+  </TabItem>
+ <TabItem value="1" label="res.ts">
+
 ```ts title="apps/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { useSend, Text, Mention } from 'alemonjs'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   const Send = useSend(event)
   // 发送多种类型的消息
   Send(Text('Hello '), Mention(event.UserId), Text(', How are things going?'))
-
   // @ 所有人
   Send(Mention())
-
   // @ channel
   Send(Mention(event.ChannelId, { belong: 'channel' }))
 })
 ```
+
+  </TabItem>
+</Tabs>
 
 ## `useMention`
 
@@ -141,7 +163,7 @@ export default onResponse(selects, (event, next) => {
 ```ts title="apps/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { useMention } from 'alemonjs'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 
 const useMentionsUserId = async event => {
   const Mentions = await useMention(event)
@@ -175,7 +197,7 @@ export default onResponse(selects, async (event, next) => {
 ```ts title="apps/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { Text, useObserver, useSend } from 'alemonjs'
-const selects = createSelects('message.create')
+export const selects = createSelects(['message.create'])
 
 const response = onResponse(selects, (event, next) => {
   // 创建
@@ -226,7 +248,7 @@ unmonut(Res.current, [])
 ```ts title="./login.ts"
 import { createSelects } from 'alemonjs'
 import { Text, useSubscribe, useSend } from 'alemonjs'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, async (event, next) => {
   // 检验 并存储关系映射
 })
@@ -236,7 +258,7 @@ export default onResponse(selects, async (event, next) => {
 import { createSelects } from 'alemonjs'
 import { Text, useSubscribe, useSend } from 'alemonjs'
 import LoginRes from './login'
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 // 中间件，在所有apps响应之前。
 export default onMiddleware(selects, (event, next) => {
   // 非约定前缀
@@ -281,7 +303,7 @@ export default onMiddleware(selects, (event, next) => {
 import { createSelects } from 'alemonjs'
 import { Text, useSend, useState } from 'alemonjs'
 export const regular = /^(#|\/)?close:/
-const selects = createSelects(['message.create'])
+export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   //   /close:login
   const name = event.MessageText.replace(regular, '')
