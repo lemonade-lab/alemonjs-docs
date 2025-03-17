@@ -87,11 +87,6 @@ export default function HomePage(): JSX.Element {
     setData([...db])
   }
 
-  const [view, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.5
-  })
-
   return (
     <main className="flex justify-around py-8">
       <div className="container">
@@ -130,37 +125,7 @@ export default function HomePage(): JSX.Element {
             )
           })}
         </div>
-        {/* <div className="flex flex-col items-center py-6 gap-4">
-          <div className="text-3xl  md:text-5xl">让你眼前一亮的特性</div>
-          <div className="text-lg md:text-xl">
-            框架不仅仅只是拥有客户端那么简单,在开发体验上,它还能这样！
-          </div>
-        </div>
-        <div ref={view} className="container mx-auto py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className={classNames(
-                  'shadow-md rounded-lg p-6 transition-transform transform hover:scale-105 dark:bg-slate-800',
-                  'animate__animated duration-[1000ms]',
-                  {
-                    'animate__fadeIn opacity-100': inView,
-                    'opacity-0': !inView
-                  }
-                )}
-              >
-                <h3 className={classNames('text-xl font-semibold mb-2 dark:text-slate-100')}>
-                  {feature.title}
-                </h3>
-                <p className={classNames('text-gray-700 dark:text-slate-100')}>
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div> */}
-        <div className="flex flex-col items-center py-6 gap-4">
+        <div id="desktop" className="flex flex-col items-center py-6 gap-4">
           <div className="text-3xl  md:text-5xl">何必继续等待</div>
           <div className="text-lg md:text-2xl">立即安装阿柠檬客户端来启动你的机器人吧</div>
         </div>
@@ -171,7 +136,7 @@ export default function HomePage(): JSX.Element {
             }}
             className="text-md md:text-xl bg-slate-300 bg-opacity-80 rounded-l-md px-2 duration-[1000ms] md:px-4 py-2  hover:bg-blue-400 hover:text-white cursor-pointer"
           >
-            macOS x64
+            macOS arm64
           </div>
           <div
             onClick={() => {

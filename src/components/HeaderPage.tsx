@@ -16,20 +16,14 @@ export default function HeaderPage(): JSX.Element {
             className="bg-white text-blue-500 border border-blue-500 rounded-md px-4 py-2 mx-2 hover:bg-gray-200 transition"
             to="docs/intro"
           >
-            <Translate>💡了解更多</Translate>
+            <Translate> 🚀快速开始</Translate>
           </Link>
-          {/* <Link
-            className="bg-white text-blue-500 border border-blue-500 rounded-md px-4 py-2 mx-2 hover:bg-gray-200 transition"
-            to="docs/intro"
-          >
-            <Translate>ℹ️ 学习</Translate>
-          </Link> */}
-          {/* <Link
+          <a
             className="bg-blue-500 text-white rounded-md px-4 py-2 mx-2 hover:bg-blue-600 transition"
-            to="docs/start"
+            href="#desktop"
           >
-            <Translate>💡 开始</Translate>
-          </Link> */}
+            <Translate> 💡安装桌面</Translate>
+          </a>
         </div>
       </div>
     </header>
