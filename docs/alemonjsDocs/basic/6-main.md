@@ -17,7 +17,7 @@ export default defineChildren({
      * 把所有在创建时要执行的内容放置在此处
      */
   },
-  onMounted(apps, mws) {
+  onMounted({ response, middleware }) {
     // 模块索引识别完成时。也就是 onCreated 执行完之后。
   },
   unMounted() {
