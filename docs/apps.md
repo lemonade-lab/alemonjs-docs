@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # 生态平台
 
-模块机制到底是怎么回事？请点击了解[👉模块化应用](/docs/alemonjsDocs/advance/models)的制作
+模块机制到底是怎么回事？请点击了解[👉模块化应用](/docs/alemonjsDocs/open/models)的制作
 
 :::warning 如何加载Yunzai生态插件？
 

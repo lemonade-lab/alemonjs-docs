@@ -25,7 +25,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="0" label="res.tsx" default>
 
-```tsx title="src/apps/**/*/res.tsx"
+```tsx title="src/response/**/*/res.tsx"
 import React from 'react'
 import { createSelects } from 'alemonjs'
 import { Text, useSend } from 'alemonjs/jsx'
@@ -43,7 +43,7 @@ export default onResponse(selects, (event, next) => {
   </TabItem>
  <TabItem value="1" label="res.ts">
  
-```ts title="src/apps/**/*/res.ts"
+```ts title="src/response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { Text, useSend } from 'alemonjs'
 export const selects = createSelects(['message.create'])
@@ -56,6 +56,18 @@ export default onResponse(selects, (event, next) => {
 })
 ```
 
+```ts title="src/response/**/*/res.ts"
+import { createSelects } from 'alemonjs'
+import { Text } from 'alemonjs'
+export const selects = createSelects(['message.create'])
+export default onResponse(selects, () => {
+  return {
+    // 即将要发送的数据，等同于 useSend(event)(...)
+    data: [Text('这个'), Text('标题', { style: 'bold' }), Text('被加粗了')]
+  }
+})
+```
+
   </TabItem>
 </Tabs>
 
@@ -64,7 +76,7 @@ export default onResponse(selects, (event, next) => {
 <Tabs>
   <TabItem value="0" label="res.tsx" default>
 
-```tsx title="src/apps/**/*/res.tsx"
+```tsx title="src/response/**/*/res.tsx"
 import React from 'react'
 import { createSelects } from 'alemonjs'
 import { useSend, ImageFile, ImageURL } from 'alemonjs/jsx'
@@ -81,7 +93,7 @@ export default onResponse(selects, (event, next) => {
   </TabItem>
  <TabItem value="1" label="res.ts">
 
-```ts title="src/apps/**/*/res.ts"
+```ts title="src/response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { useSend, ImageFile, ImageURL } from 'alemonjs'
 import url from '@src/assets/test.jpeg'
@@ -94,7 +106,7 @@ export default onResponse(selects, (event, next) => {
 })
 ```
 
-```ts title="src/apps/**/*/res.ts"
+```ts title="src/response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { useSend, Text, Image } from 'alemonjs'
 import { readFileSync } from 'fs'
@@ -120,7 +132,7 @@ export default onResponse(selects, (event, next) => {
 <Tabs>
   <TabItem value="0" label="res.tsx" default>
 
-```tsx title="apps/**/*/res.tsx"
+```tsx title="response/**/*/res.tsx"
 import { createSelects } from 'alemonjs'
 import { useSend, Text, Mention } from 'alemonjs/jsx'
 export const selects = createSelects(['message.create'])
@@ -138,7 +150,7 @@ export default onResponse(selects, (event, next) => {
   </TabItem>
  <TabItem value="1" label="res.ts">
 
-```ts title="apps/**/*/res.ts"
+```ts title="response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { useSend, Text, Mention } from 'alemonjs'
 export const selects = createSelects(['message.create'])
@@ -160,7 +172,7 @@ export default onResponse(selects, (event, next) => {
 
 > 解析得到被提及的数据
 
-```ts title="apps/**/*/res.ts"
+```ts title="response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { useMention } from 'alemonjs'
 export const selects = createSelects(['message.create'])
@@ -194,7 +206,7 @@ export default onResponse(selects, async (event, next) => {
 
 > 不推荐在中间件触发后使用,具体了解下一章节的中间件机制
 
-```ts title="apps/**/*/res.ts"
+```ts title="response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { Text, useObserver, useSend } from 'alemonjs'
 export const selects = createSelects(['message.create'])
@@ -237,7 +249,7 @@ export default onResponse(selects, (event, next) => {
 
 > 订阅模式，在某个事件周期中进行观察
 
-```ts title="apps/**/*/res.ts"
+```ts title="response/**/*/res.ts"
 // [创建之后，响应之前，响应之后]
 const [create, monut, unmonut] = useSubscribe(event, <select event type>)
 create(Res.current, [])
@@ -295,11 +307,13 @@ export default onMiddleware(selects, (event, next) => {
 
 > 声明res/mw的状态,可用于管理是否启用
 
-> 命名规则 子应用名:apps:文件夹1:文件夹2...
+> 命名规则 子应用名:res:文件夹1:文件夹2...
 
-> 如默认main为： main:apps:login
+> 如默认main为： main:res:login
 
-```ts title="apps/**/*/res.ts"
+> 部分不是res，而是apps（旧版本）
+
+```ts title="response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { Text, useSend, useState } from 'alemonjs'
 export const regular = /^(#|\/)?close:/
@@ -321,10 +335,10 @@ export default onResponse(selects, (event, next) => {
 
 > 可以在任意地方订阅状态的更改。
 
-```ts title="apps/**/*/res.ts"
+```ts title="response/**/*/res.ts"
 import { onState, unState } from 'alemonjs'
-onState('main:apps:login', state => {
+onState('main:res:login', state => {
   //
 })
-unState('main:apps:login')
+unState('main:res:login')
 ```

@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# 自定义平台
+# 平台
 
 :::tip
 

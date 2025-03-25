@@ -15,6 +15,8 @@ sidebar_position: 5
 ```ts title="src/middleware/**/*/mw.ts"
 import { createSelects } from 'alemonjs'
 export const selects = createSelects(['message.create'])
+// 仅限 # 和 / 开头的消息才执行该中间件
+// export const regular = /^(#|\/)/
 // OnMiddleware((事件体,控制体)=>消息体,消息类型)
 export default onMiddleware(selects, (event, next) => {
   // 新增字段

@@ -18,7 +18,7 @@ sidebar_position: 2
 
 以下使用kook作为例子，学习如何发送一个md
 
-```ts title="src/apps/**/*/res.ts"
+```ts title="src/response/**/*/res.ts"
 import { Text, useSend } from 'alemonjs'
 import { platform } from '@alemonjs/kook'
 import kookResponse from './kook.res'

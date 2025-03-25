@@ -6,8 +6,26 @@ sidebar_position: 7
 
 :::info
 
-如何在桌面中开发扩展
+如何开发扩展并推送到npmjs
 :::
+
+## 如何识别的
+
+```shell title="大致的目录结构"
+node_modules/                 // Node.js 依赖包
+ ├── pkg-name                 // 相关模块
+ │      ├── lib/              // 工程目录
+ │      │    ├── response/        // 应用
+ │      │    ├── middleware/  // 中间件
+ │      │    └── index.js     // 入口文件
+ │      └── package.json      // 工程配置文件
+```
+
+会读取`node_modules/pkg-name/package.json`
+
+解析并得到`main`
+
+以入口文件的目录为工程目录
 
 ## 配置
 
@@ -15,22 +33,27 @@ sidebar_position: 7
 {
   // 官方 @alemonjs/XXX
   // 三方 alemonjs-XXX
-  "name": "@alemonjs/test",
-  "version": "0.0.1",
+  "name": "@alemonjs/test", // *
+  "version": "0.0.1", // *
   "author": {
     "name": "ningmengchongshui",
     "email": "ningmengchongshui@gmail.com",
     "url": "https://github.com/ningmengchongshui"
   },
-  "type": "module",
-  "main": "lib/index.js",
+  "type": "module", // *
+  "main": "lib/index.js", // *
   "scripts": {
     "build": "npx lvy build"
   },
   "export": {
-    ".": "./lib/index.js",
-    "./package": "./package.json", // 必须的
+    ".": "./lib/index.js", // *
+    "./package": "./package.json", // *
     "./desktop": "./lib/desktop.js" // 可选（桌面扩展入口脚本)
+  },
+  "keywords": ["alemonjs"], // *
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org", // *
+    "access": "public" // *
   },
   "alemonjs": {
     "desktop": {
@@ -65,6 +88,9 @@ sidebar_position: 7
       ]
     }
   }
+  // 要发布模块，请确保没有以下内容。
+  // "private": true,
+  // "workspaces": ["packages/*"]
 }
 ```
 
