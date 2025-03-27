@@ -23,7 +23,7 @@ import TabItem from '@theme/TabItem';
 ### Text
 
 <Tabs>
-  <TabItem value="0" label="res.tsx" default>
+  <TabItem value="0" label="res.tsx" >
 
 ```tsx title="src/response/**/*/res.tsx"
 import React from 'react'
@@ -41,7 +41,7 @@ export default onResponse(selects, (event, next) => {
 ```
 
   </TabItem>
- <TabItem value="1" label="res.ts">
+ <TabItem value="1" label="res.ts" default>
  
 ```ts title="src/response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
@@ -74,7 +74,7 @@ export default onResponse(selects, () => {
 ### Image
 
 <Tabs>
-  <TabItem value="0" label="res.tsx" default>
+  <TabItem value="0" label="res.tsx" >
 
 ```tsx title="src/response/**/*/res.tsx"
 import React from 'react'
@@ -91,7 +91,7 @@ export default onResponse(selects, (event, next) => {
 ```
 
   </TabItem>
- <TabItem value="1" label="res.ts">
+ <TabItem value="1" label="res.ts" default>
 
 ```ts title="src/response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
@@ -130,7 +130,7 @@ export default onResponse(selects, (event, next) => {
 ### Mention
 
 <Tabs>
-  <TabItem value="0" label="res.tsx" default>
+  <TabItem value="0" label="res.tsx" >
 
 ```tsx title="response/**/*/res.tsx"
 import { createSelects } from 'alemonjs'
@@ -148,7 +148,7 @@ export default onResponse(selects, (event, next) => {
 ```
 
   </TabItem>
- <TabItem value="1" label="res.ts">
+ <TabItem value="1" label="res.ts" default>
 
 ```ts title="response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
@@ -176,23 +176,13 @@ export default onResponse(selects, (event, next) => {
 import { createSelects } from 'alemonjs'
 import { useMention } from 'alemonjs'
 export const selects = createSelects(['message.create'])
-
-const useMentionsUserId = async event => {
-  const Mentions = await useMention(event)
-  if (!Mentions || Mentions.length === 0) {
-    return // @ 提及为空
-  }
+export default onResponse(selects, async (event, next) => {
+  const [mention] = useMention(event)
   // 查找用户类型的 @ 提及，且不是 bot
-  const User = Mentions.find(item => !item.IsBot)
+  const User = await mention.findOne()
   if (!User) {
     return // 未找到用户Id
   }
-  return User
-}
-
-export default onResponse(selects, async (event, next) => {
-  // 获得User
-  const User = await useMentionsUserId(event)
 
   console.log('User:', User)
 

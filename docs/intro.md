@@ -17,7 +17,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-  <TabItem value="0" label="res.tsx" default>
+  <TabItem value="0" label="res.tsx" >
 
 ```tsx title="发送消息的基础示例"
 import React from 'react'
@@ -35,7 +35,7 @@ export default onResponse(selects, event => {
 ```
 
   </TabItem>
-  <TabItem value="1" label="res.ts">
+  <TabItem value="1" label="res.ts" default>
  
  
 ```ts title="发送消息的基础示例"
