@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # 接口
@@ -16,33 +16,6 @@ sidebar_position: 3
 >
 > 这种获取通常在一个特定的事件处理上下文中进行。
 
-import Tabs from '@theme/Tabs';
-
-import TabItem from '@theme/TabItem';
-
-### Text
-
-<Tabs>
-  <TabItem value="0" label="res.tsx" >
-
-```tsx title="src/response/**/*/res.tsx"
-import React from 'react'
-import { createSelects } from 'alemonjs'
-import { Text, useSend } from 'alemonjs/jsx'
-export const selects = createSelects(['message.create'])
-export default onResponse(selects, (event, next) => {
-  // 创建
-  const Send = useSend(event)
-  Send(<Text>这个</Text>, <Text style="bold">标题</Text>, <Text>被加粗了</Text>)
-  Send(<Text>这个</Text>, <Text>标题</Text>, <Text>没有变化</Text>)
-  const text = `// 我的代码块 \nconst Send = useSend(event)`
-  Send(<Text style="block">{text}</Text>)
-})
-```
-
-  </TabItem>
- <TabItem value="1" label="res.ts" default>
- 
 ```ts title="src/response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { Text, useSend } from 'alemonjs'
@@ -50,9 +23,7 @@ export const selects = createSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 创建
   const Send = useSend(event)
-  Send(Text('这个'), Text('标题', { style: 'bold' }), Text('被加粗了'))
-  Send(Text('这个'), Text('标题'), Text('没有变化'))
-  Send(Text(`// 我的代码块 \nconst Send = useSend(event)`, { style: 'block' }))
+  Send(Text('hello word !'))
 })
 ```
 
@@ -63,110 +34,10 @@ export const selects = createSelects(['message.create'])
 export default onResponse(selects, () => {
   return {
     // 即将要发送的数据，等同于 useSend(event)(...)
-    data: [Text('这个'), Text('标题', { style: 'bold' }), Text('被加粗了')]
+    data: [Text('hello word !')]
   }
 })
 ```
-
-  </TabItem>
-</Tabs>
-
-### Image
-
-<Tabs>
-  <TabItem value="0" label="res.tsx" >
-
-```tsx title="src/response/**/*/res.tsx"
-import React from 'react'
-import { createSelects } from 'alemonjs'
-import { useSend, ImageFile, ImageURL } from 'alemonjs/jsx'
-import url from '@src/assets/test.jpeg'
-export const selects = createSelects(['message.create'])
-export default onResponse(selects, (event, next) => {
-  const Send = useSend(event)
-  // 发送本地图片文件
-  Send(<ImageFile src={url} />)
-  Send(<ImageURL src="https://xxx.com/yyy.png" />)
-})
-```
-
-  </TabItem>
- <TabItem value="1" label="res.ts" default>
-
-```ts title="src/response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
-import { useSend, ImageFile, ImageURL } from 'alemonjs'
-import url from '@src/assets/test.jpeg'
-export const selects = createSelects(['message.create'])
-export default onResponse(selects, (event, next) => {
-  const Send = useSend(event)
-  // 发送本地图片文件
-  Send(ImageFile(url))
-  Send(ImageURL('https://xxx.com/yyy.png'))
-})
-```
-
-```ts title="src/response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
-import { useSend, Text, Image } from 'alemonjs'
-import { readFileSync } from 'fs'
-import url from '@src/assets/test.jpeg'
-export const selects = createSelects(['message.create'])
-export default onResponse(selects, (event, next) => {
-  const Send = useSend(event)
-  // 发送本地图片文件
-  const img = readFileSync(url)
-  if (img) {
-    Send(Image(img))
-  } else {
-    Send(Text('图片不存在'))
-  }
-})
-```
-
-  </TabItem>
-</Tabs>
-
-### Mention
-
-<Tabs>
-  <TabItem value="0" label="res.tsx" >
-
-```tsx title="response/**/*/res.tsx"
-import { createSelects } from 'alemonjs'
-import { useSend, Text, Mention } from 'alemonjs/jsx'
-export const selects = createSelects(['message.create'])
-export default onResponse(selects, (event, next) => {
-  const Send = useSend(event)
-  // 发送多种类型的消息
-  Send(<Text>Hello</Text>, <Mention value={event.UserId} />, <Text>, How are things going?</Text>)
-  // @ 所有人
-  Send(<Mention value="all" />)
-  // @ channel
-  Send(<Mention belong="channel" value={event.ChannelId} />)
-})
-```
-
-  </TabItem>
- <TabItem value="1" label="res.ts" default>
-
-```ts title="response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
-import { useSend, Text, Mention } from 'alemonjs'
-export const selects = createSelects(['message.create'])
-export default onResponse(selects, (event, next) => {
-  const Send = useSend(event)
-  // 发送多种类型的消息
-  Send(Text('Hello '), Mention(event.UserId), Text(', How are things going?'))
-  // @ 所有人
-  Send(Mention())
-  // @ channel
-  Send(Mention(event.ChannelId, { belong: 'channel' }))
-})
-```
-
-  </TabItem>
-</Tabs>
 
 ## `useMention`
 
