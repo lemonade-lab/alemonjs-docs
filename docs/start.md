@@ -1,15 +1,19 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 show_giscus: 1
 ---
 
 # 快速开始
 
-:::tip 提示
+:::tip
 
-[更多详细推荐前往环境生态查看对应内容](/docs/intro)
+本文默认你已经了解并熟悉NodeJS编程，
 
-[如果未进行环境部署，请进行环境准备工作](/docs/environment)
+如果你对NodeJS的部署和配置不熟悉，
+
+同时也对JavaScript主流的打包工具不熟悉，
+
+请前往[https://lvyjs.dev](https://lvyjs.dev/)了解
 
 :::
 
@@ -59,31 +63,29 @@ gui:
 
 ## 启动
 
-> 选择GUI体验效果
+> 下载编辑器 [`Visual Studio Code`](https://code.visualstudio.com/)
 
-> 下载应用[`Visual Studio Code`](https://code.visualstudio.com/)
-
-> 下载扩展[`AlemonJS GUI`](https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui)
-
-> 选择底部 Status Bar AlemonJS 按钮以打开侧边栏
+> 下载编辑器扩展 [`ALemonJS GUI`](https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui)
 
 - 指令启动
+
+<Tabs>
+  <TabItem value="0" label="yarn" default>
 
 ```sh title="以开发模式启动，并选择gui"
 yarn dev --login gui
 ```
 
-- 配置中启动
+  </TabItem>
+  <TabItem value="1" label="npm">
 
-```yaml title="alemon.config.yaml"
-# 也可以在配置中固定login
-login: 'gui'
+```sh title="以开发模式启动，并选择gui"
+npm run dev login gui
 ```
 
-- 函数中启动
+  </TabItem>
+</Tabs>
 
-```ts title="index.js"
-import { start } from 'alemonjs'
-start('src/index.ts', 'gui')
-// start('src/index.ts', '@alemonjs/gui')
+```yaml title="可在alemon.config.yaml固定login参数"
+login: 'gui'
 ```

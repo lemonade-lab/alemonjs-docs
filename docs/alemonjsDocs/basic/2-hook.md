@@ -6,15 +6,13 @@ sidebar_position: 2
 
 :::info
 
-在特定事件或状态下调用，在特定的事件中扩展。
+捕获事件后可进行的
 
 :::
 
 ## `useSend`
 
-> 允许开发者在响应特定事件（如接收到消息）时，发送消息。
->
-> 这种获取通常在一个特定的事件处理上下文中进行。
+> 在响应事件（如消息被创建）时，发送消息。
 
 ```ts title="src/response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
@@ -127,7 +125,7 @@ export default onResponse(selects, async (event, next) => {
 })
 ```
 
-```ts title="mw/**/*/res.ts"
+```ts title="middleware/**/*/res.ts"
 import { createSelects } from 'alemonjs'
 import { Text, useSubscribe, useSend } from 'alemonjs'
 import LoginRes from './login'
@@ -168,11 +166,15 @@ export default onMiddleware(selects, (event, next) => {
 
 > 声明res/mw的状态,可用于管理是否启用
 
-> 命名规则 子应用名:res:文件夹1:文件夹2...
+> 命名规则 子应用名:response:文件夹1:文件夹2...
 
-> 如默认main为： main:res:login
+> 如默认main为： main:response:login
 
-> 部分不是res，而是apps（旧版本）
+:::warning
+
+响应文件夹由`apps（旧版本）`命名为`response`
+
+:::
 
 ```ts title="response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
@@ -198,8 +200,8 @@ export default onResponse(selects, (event, next) => {
 
 ```ts title="response/**/*/res.ts"
 import { onState, unState } from 'alemonjs'
-onState('main:res:login', state => {
+onState('main:response:login', state => {
   //
 })
-unState('main:res:login')
+unState('main:response:login')
 ```

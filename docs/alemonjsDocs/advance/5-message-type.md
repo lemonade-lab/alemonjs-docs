@@ -2,15 +2,7 @@
 sidebar_position: 5
 ---
 
-# 类型
-
-:::info
-
-所有事件类型注释
-
-:::
-
-## 事件
+# 事件
 
 ```ts
 // 携带有消息体的
@@ -52,64 +44,4 @@ export type AEvents = {
   // 私有事件 - 频道添加请求
   'private.guild.add': PrivateEventRequestGuildAdd
 } & AEventsMsg
-```
-
-## 对象
-
-```ts title=""
-export type Guild = {
-  /**
-   * 频道ID
-   */
-  GuildId: string
-}
-
-export type Channel = {
-  /**
-   * 子频道ID
-   */
-  ChannelId: string
-}
-
-export type Message = {
-  /**
-   * 消息编号
-   */
-  MsgId: string
-  /**
-   * 创建时间
-   */
-  CreateAt: number
-}
-
-export type Platform = {
-  /**
-   * 平台
-   */
-  Platform: string
-  /**
-   * 标记
-   */
-  tag: string
-  /**
-   * 原始消息
-   */
-  value: any
-}
-
-// 用户
-export type User = {
-  /**
-   * 用户编号
-   */
-  UserId: string
-  /**
-   * 用户名
-   */
-  UserName: string
-  /**
-   * 是否是主人
-   */
-  IsMaster: boolean
-}
 ```

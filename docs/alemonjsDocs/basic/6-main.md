@@ -12,16 +12,20 @@ sidebar_position: 6
 
 ```ts title="src/index.ts"
 export default defineChildren({
+  // 创建时
   onCreated() {
     /**
-     * 把所有在创建时要执行的内容放置在此处
+     * 尽量避免直接把耗时，且阻塞运行的内容直接放在脚本内。
+     * 尽可能的把可能造成程序停止的操作放置在此处
      */
   },
+  // 建立res和mw索引之后
   onMounted({ response, middleware }) {
     // 模块索引识别完成时。也就是 onCreated 执行完之后。
   },
+  // onCreated 和 onMounted 出现意外后
   unMounted() {
-    // 当onCreated和onMounted出现意外被卸载，或者收到卸载时
+    // 意外卸载
   }
 })
 ```

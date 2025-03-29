@@ -6,7 +6,7 @@ sidebar_position: 1
 
 :::info
 
-如何定义处理消息体
+定义响应函数
 
 :::
 
@@ -15,18 +15,24 @@ import TabItem from '@theme/TabItem';
 
 ## `onResponse`
 
-一种用于处理特定事件的功能，它允许开发者定义在事件发生时应执行的操作。
+通过定义响应函数来描述不同类型的事件将要执行的内容
 
 ```ts title="src/response/**/*/res.ts"
 import { createSelects } from 'alemonjs'
+// 选择事件类型
 export const selects = createSelects(['message.create'])
+// 定义响应函数
 export default onResponse(selects, (event, next) => {
-  // 前往下一个响应,不执行则立即停止。
+  // 前往下一个响应,不执行则响应到此处后，立即停止。
   next()
 })
 ```
 
-在`response`目录中新建任意名文件夹和res.ts文件，框架会自动搜索
+:::info
+
+在`response`目录中新建任意名文件夹和res.ts文件，框架会在启动后记录文件索引
+
+:::
 
 ### 匹配
 
@@ -35,8 +41,8 @@ import { createSelects } from 'alemonjs'
 // 不匹配该正则，自动进行next
 export const regular = /^(#|\/)?hello$/
 export const selects = createSelects(['message.create'])
-export default onResponse(selects, (event, next) => {
-  //
+export default onResponse(selects, event => {
+  // your code
 })
 ```
 
@@ -49,13 +55,13 @@ import { createSelects } from 'alemonjs'
 export const selects = createSelects(['message.create'])
 
 const response$1 = onResponse(selects, (event, next) => {
-  console.log('return true')
+  console.log('step 1')
   // 允许在同组响应中，继续后续的函数
   return true
 })
 
 const response$2 = onResponse(selects, (event, next) => {
-  console.log('allowGrouping: true')
+  console.log('step 2')
   return {
     // 允许分组，等同于 return true
     allowGrouping: true
@@ -63,15 +69,17 @@ const response$2 = onResponse(selects, (event, next) => {
 })
 
 const response$3 = onResponse(selects, (event, next) => {
-  console.log('完成')
+  console.log('step 3')
 })
 
-export default onResponse(selects, [response$1.current, esponse$2.current, response$3.current])
+const response = onResponse(selects, [response$1.current, esponse$2.current, response$3.current])
+
+export default response
 ```
 
-### 复用
+### 调用
 
-> 复用函数
+> 可以return任意对象，除了约定的值需要注意之外
 
 ```ts
 import { createSelects } from 'alemonjs'
@@ -83,10 +91,10 @@ const response$1 = onResponse(selects, (event, next) => {
   }
 })
 
-const response$2 = onResponse(selects, (event, next) => {
+const response = onResponse(selects, (event, next) => {
   const res = response$1.current(event, next)
   console.log('获得指定res的id', res.id)
 })
 
-export default response$2
+export default response
 ```

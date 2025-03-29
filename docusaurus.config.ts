@@ -13,7 +13,7 @@ const number = '津ICP备2023004480号'
 const link = `<a  href="https://beian.miit.gov.cn/" target="_blank">${number}</a>`
 
 export default defineConfig({
-  title: 'AlemonJS',
+  title: 'ALemonJS',
   tagline: '阿柠檬，基于 JavaScript 所构建的聊天平台机器人开发框架',
   url: 'https://alemonjs.com',
   baseUrl: '/',
@@ -57,9 +57,9 @@ export default defineConfig({
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      // title: 'AlemonJS',
+      // title: 'ALemonJS',
       logo: {
-        alt: 'AlemonJS Logo',
+        alt: 'ALemonJS Logo',
         src: 'img/alemon.png'
       },
       items: [

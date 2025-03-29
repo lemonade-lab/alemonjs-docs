@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # 简介
 
-:::tip AlemonJS
+:::tip ALemonJS
 
-[AlemonJS](https://github.com/lemonade-lab/alemonjs) ( 发音为 /əˈlemən/ ) 基于 JavaScript 所构建的聊天平台机器人开发框架
+[ALemonJS](https://github.com/lemonade-lab/alemonjs) ( 发音为 /əˈlemən/ ) 基于 JavaScript 所构建的聊天平台机器人开发框架
 
 :::
 

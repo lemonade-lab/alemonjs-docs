@@ -2,7 +2,7 @@
 
 ## 编辑
 
-这里是[AlemonJS框架](https://github.com/lemonade-lab/alemonjs)文档编辑源码
+这里是[ALemonJS框架](https://github.com/lemonade-lab/alemonjs)文档编辑源码
 
 该仓库已开启自动化部署，提交并成功合并内容，将在1-2min内更新网站
 

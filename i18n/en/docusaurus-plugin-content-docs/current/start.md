@@ -63,9 +63,9 @@ gui:
 
 > download [`Visual Studio Code`](https://code.visualstudio.com/)
 
-> download [`AlemonJS GUI`](https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui)
+> download [`ALemonJS GUI`](https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui)
 
-> Select the Status Bar AlemonJS button at the bottom to open the sidebar
+> Select the Status Bar ALemonJS button at the bottom to open the sidebar
 
 - start
 

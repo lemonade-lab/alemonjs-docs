@@ -6,13 +6,13 @@ sidebar_position: 4
 
 :::info
 
-对指定事件类型的event进行修改并向下传递
+发送自由的、主动的、不需要接收被动事件即可进行的内容
 
 :::
 
 - 主动消息
 
-> 部分平台可能仅支持有限或不支持主动消息机制
+> 部分平台可能仅支持有限或不支持主动消息机制, 请根据实际情况进行使用
 
 ```ts
 import { sendToChannel, sendToUser, Text } from 'alemonjs'

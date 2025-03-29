@@ -1,24 +1,12 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 ---
 
-# 前置条件
-
-## 环境
-
-:::tip 注册教程
-
-如果你对nodejs开发及其开发生态不熟悉
-
-请前往[https://lvyjs.dev](https://lvyjs.dev/)了解
-
-:::
+# 登录账户
 
 ## 官方
 
 :::warning 注意事项
-
-进行开发之前，请先准备平台账户。
 
 点击`Project`、`Status`可进一步了解
 
