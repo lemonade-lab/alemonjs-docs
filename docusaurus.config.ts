@@ -106,12 +106,16 @@ export default defineConfig({
           title: '社区',
           items: [
             {
-              label: '问题反馈',
+              label: 'lvyjs',
+              href: 'https://lvyjs.dev'
+            },
+            {
+              label: '群聊',
               href: 'https://qm.qq.com/q/aZYMNqUQc'
             },
             {
-              label: 'lvyjs',
-              href: 'https://lvyjs.dev'
+              label: '评论',
+              href: 'https://github.com/lemonade-lab/alemonjs-docs/discussions'
             }
           ]
         },
@@ -129,6 +133,10 @@ export default defineConfig({
             {
               label: 'desktop',
               href: 'https://github.com/lemonade-lab/alemonjs-desktop'
+            },
+            {
+              label: 'alemongo',
+              href: 'https://github.com/lemonade-lab/alemongo'
             }
           ]
         }
