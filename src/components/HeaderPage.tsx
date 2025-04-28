@@ -13,13 +13,13 @@ export default function HeaderPage(): JSX.Element {
         </p>
         <div className="flex justify-center my-4">
           <a
-            className="bg-blue-500 text-white rounded-md px-4 py-2 mx-2 hover:bg-blue-600 transition"
+            className="hidden sm:block bg-blue-500 text-white rounded-md px-4 py-2 mx-2 hover:bg-blue-600 transition"
             href="#desktop"
           >
             <Translate> ⚡️安装桌面</Translate>
           </a>
           <a
-            className="bg-blue-500 text-white rounded-md px-4 py-2 mx-2 hover:bg-blue-600 transition"
+            className="hidden sm:block bg-blue-500 text-white rounded-md px-4 py-2 mx-2 hover:bg-blue-600 transition"
             href="#alemongo"
           >
             <Translate> 💡安装Web</Translate>
