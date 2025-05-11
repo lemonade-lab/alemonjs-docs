@@ -23,7 +23,8 @@ export default defineConfig({
   onBrokenMarkdownLinks: 'warn',
   i18n: {
     defaultLocale: 'zh-CN',
-    locales: ['zh-CN', 'en'],
+    // locales: ['zh-CN', 'en'],
+    locales: ['zh-CN'],
     localeConfigs: {
       'zh-CN': {
         label: '简体中文',
@@ -31,13 +32,13 @@ export default defineConfig({
         htmlLang: 'zh-CN',
         path: './zh-CN/'
         // ... other locales you want to support
-      },
-      'en': {
-        label: 'English',
-        direction: 'ltr',
-        htmlLang: 'en-US',
-        path: './en/'
       }
+      // 'en': {
+      //   label: 'English',
+      //   direction: 'ltr',
+      //   htmlLang: 'en-US',
+      //   path: './en/'
+      // }
     }
   },
   presets: [
@@ -74,11 +75,6 @@ export default defineConfig({
           position: 'right',
           label: '编辑',
           href: 'https://github.com/lemonade-lab/alemonjs-docs/blob/main/docs/intro.md'
-        },
-        {
-          position: 'right',
-          href: 'https://github.com/lemonade-lab/alemonjs',
-          label: '源码'
         },
         {
           position: 'right',

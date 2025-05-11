@@ -1,63 +1,70 @@
 import classNames from 'classnames'
-import { getYml, useDownloadLink, useElectronDownload } from '@site/src/core/electron'
-import { useState } from 'react'
+// import { getYml, useDownloadLink, useElectronDownload } from '@site/src/core/electron'
+// import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { DownIcon, UpIcon } from '@site/src/core/icons'
+// import { DownIcon, UpIcon } from '@site/src/core/icons'
 
 const items = [
+  {
+    url: require('@site/static/img/web/info.png').default,
+    title: 'WEB面板',
+    docs: '可视化操作面板',
+    position: 'right',
+    link: 'https://github.com/lemonade-lab/alemongo'
+  },
   {
     url: require('@site/static/img/dt/cat.png').default,
     title: '测试环境',
     docs: '不必登录平台即可测试代码',
-    position: 'right',
+    position: 'left',
     link: 'https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui'
   },
   {
     url: require('@site/static/img/dt/home.png').default,
-    title: '一键启动',
+    title: '桌面启动',
     docs: '立即安装立即启动机器人',
-    position: 'left',
+    position: 'right',
     link: 'https://github.com/lemonade-lab/alemonjs-desktop'
   }
 ]
 
 export default function HomePage(): JSX.Element {
-  const [data, setData] = useState<string[]>([])
-  const [show, setShow] = useState<boolean>(false)
+  // const [data, setData] = useState<string[]>([])
+  // const [show, setShow] = useState<boolean>(false)
 
-  const ymls = ['latest.yml', 'latest-mac.yml', 'latest-linux.yml', 'latest-linux-arm64.yml']
-  const baseURL = '/desktop/release'
+  // const ymls = ['latest.yml', 'latest-mac.yml', 'latest-linux.yml', 'latest-linux-arm64.yml']
+  // const baseURL = '/desktop/release'
 
-  // 点击下载
-  const handleDownloadClick = useElectronDownload<'win' | 'mac'>({
-    baseURL,
-    ymls: {
-      win: 'latest.yml',
-      mac: 'latest-mac.yml'
-    }
-  })
+  // // 点击下载
+  // const handleDownloadClick = useElectronDownload<'win' | 'mac'>({
+  //   baseURL,
+  //   ymls: {
+  //     win: 'latest.yml',
+  //     mac: 'latest-mac.yml'
+  //   }
+  // })
 
-  // 点击更多
-  const onClick = async () => {
-    if (show) {
-      // 关闭
-      setShow(!show)
-      return
-    }
-    // 打开
-    setShow(!show)
-    let db = []
-    for (const item of ymls) {
-      await getYml({
-        baseURL,
-        url: item
-      }).then(res => {
-        const dbs = res.files.map(file => file.url)
-        db = [...db, ...dbs]
-      })
-    }
-    setData([...db])
-  }
+  // // 点击更多
+  // const onClick = async () => {
+  //   if (show) {
+  //     // 关闭
+  //     setShow(!show)
+  //     return
+  //   }
+  //   // 打开
+  //   setShow(!show)
+  //   let db = []
+  //   for (const item of ymls) {
+  //     await getYml({
+  //       baseURL,
+  //       url: item
+  //     }).then(res => {
+  //       const dbs = res.files.map(file => file.url)
+  //       db = [...db, ...dbs]
+  //     })
+  //   }
+  //   setData([...db])
+  // }
 
   return (
     <main className="flex justify-around py-8">
@@ -100,7 +107,7 @@ export default function HomePage(): JSX.Element {
             )
           })}
         </div>
-        <div id="alemongo" className="flex flex-col items-center py-6 gap-4">
+        {/* <div id="alemongo" className="flex flex-col items-center py-6 gap-4">
           <div className="text-3xl  md:text-5xl">WEB版更加强大</div>
           <div className="text-lg md:text-2xl">linux、windows、macOS</div>
           <div className="flex flex-col items-center justify-center py-6">
@@ -150,7 +157,7 @@ export default function HomePage(): JSX.Element {
                 </div>
               ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </main>
   )

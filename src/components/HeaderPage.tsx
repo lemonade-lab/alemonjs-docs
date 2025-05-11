@@ -14,13 +14,19 @@ export default function HeaderPage(): JSX.Element {
         <div className="flex justify-center my-4">
           <a
             className="hidden sm:block bg-blue-500 text-white rounded-md px-4 py-2 mx-2 hover:bg-blue-600 transition"
-            href="#desktop"
+            // href="#desktop"
+            onClick={() => {
+              window.open('https://github.com/lemonade-lab/alemonjs-desktop/releases', '_self')
+            }}
           >
             <Translate> ⚡️安装桌面</Translate>
           </a>
           <a
             className="hidden sm:block bg-blue-500 text-white rounded-md px-4 py-2 mx-2 hover:bg-blue-600 transition"
-            href="#alemongo"
+            // href="#alemongo"
+            onClick={() => {
+              window.open('https://github.com/lemonade-lab/alemongo/releases', '_self')
+            }}
           >
             <Translate> 💡安装Web</Translate>
           </a>
