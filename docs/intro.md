@@ -17,15 +17,15 @@ sidebar_position: 1
 import Image from '@site/src/components/Image';
 
 ```ts title="Hello Word!"
-import { createSelects, onResponse, Text, useSend } from 'alemonjs'
+import { Text, useSends } from 'alemonjs'
 // 创建事件类型
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 // 导出响应
 export default onResponse(selects, event => {
   // 使用发送函数
-  const send = useSend(event)
+  const [send] = useSends(event)
   // 发送文本
-  send(Text('Hello Word!'))
+  send(format(Text('Hello Word!')))
 })
 ```
 

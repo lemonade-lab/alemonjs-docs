@@ -18,9 +18,8 @@ import TabItem from '@theme/TabItem';
 通过定义响应函数来描述不同类型的事件将要执行的内容
 
 ```ts title="src/response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 // 选择事件类型
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 // 定义响应函数
 export default onResponse(selects, (event, next) => {
   // 前往下一个响应,不执行则响应到此处后，立即停止。
@@ -37,10 +36,9 @@ export default onResponse(selects, (event, next) => {
 ### 匹配
 
 ```ts title="src/response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 // 不匹配该正则，自动进行next
 export const regular = /^(#|\/)?hello$/
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   // your code
 })
@@ -51,8 +49,7 @@ export default onResponse(selects, event => {
 > 共用一个next
 
 ```ts
-import { createSelects } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 
 const response$1 = onResponse(selects, (event, next) => {
   console.log('step 1')
@@ -82,8 +79,7 @@ export default response
 > 可以return任意对象，除了约定的值需要注意之外
 
 ```ts
-import { createSelects } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 
 const response$1 = onResponse(selects, (event, next) => {
   return {

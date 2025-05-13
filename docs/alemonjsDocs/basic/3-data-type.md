@@ -17,9 +17,8 @@ sidebar_position: 3
 ### Text
 
 ```ts title="src/response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 import { Text, useSend } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   // 创建
   const Send = useSend(event)
@@ -32,10 +31,9 @@ export default onResponse(selects, event => {
 ### Image
 
 ```ts title="src/response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 import { useSend, Image } from 'alemonjs'
 import url from '@src/assets/test.jpeg'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const Send = useSend(event)
   // 发送本地图片文件
@@ -51,9 +49,8 @@ export default onResponse(selects, event => {
 ### Mention
 
 ```ts title="response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 import { useSend, Text, Mention } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const Send = useSend(event)
   // 发送多种类型的消息
@@ -74,8 +71,7 @@ export default onResponse(selects, event => {
 :::
 
 ```ts title="response/**/*/res.ts"
-import { Ark, createSelects, useSend } from 'alemonjs'
-const selects = createSelects(['message.create'])
+const selects = onSelects(['message.create'])
 const response = onResponse(selects, event => {
   const Send = useSend(event)
 
@@ -131,8 +127,8 @@ export default response
 :::
 
 ```ts
-import { BT, createSelects, useSend } from 'alemonjs'
-const selects = createSelects(['message.create'])
+import { BT, useSend } from 'alemonjs'
+const selects = onSelects(['message.create'])
 const response = onResponse(selects, event => {
   const Send = useSend(event)
 
@@ -181,8 +177,8 @@ export default response
 :::
 
 ```ts
-import { MD, createSelects, useSend } from 'alemonjs'
-const selects = createSelects(['message.create'])
+import { MD, useSend } from 'alemonjs'
+const selects = onSelects(['message.create'])
 const response = onResponse(selects, event => {
   const Send = useSend(event)
   Send(

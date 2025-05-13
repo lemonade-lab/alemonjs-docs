@@ -15,9 +15,8 @@ sidebar_position: 2
 > 在响应事件（如消息被创建）时，发送消息。
 
 ```ts title="src/response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 import { Text, useSend } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 创建
   const Send = useSend(event)
@@ -26,9 +25,8 @@ export default onResponse(selects, (event, next) => {
 ```
 
 ```ts title="src/response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 import { Text } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, () => {
   return {
     // 即将要发送的数据，等同于 useSend(event)(...)
@@ -42,9 +40,8 @@ export default onResponse(selects, () => {
 > 解析得到被提及的数据
 
 ```ts title="response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 import { useMention } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, async (event, next) => {
   const [mention] = useMention(event)
   // 查找用户类型的 @ 提及，且不是 bot
@@ -59,16 +56,17 @@ export default onResponse(selects, async (event, next) => {
 })
 ```
 
-## `useObserver`
+## `useSubscribe`
+
+### `观察`
 
 > 观察者模式，监听并响应某个事件。观察事件示例
 
 > 不推荐在中间件触发后使用,具体了解下一章节的中间件机制
 
 ```ts title="response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
-import { Text, useObserver, useSend } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+import { Text, useSend, useSubscribe } from 'alemonjs'
+export const selects = onSelects(['message.create'])
 
 const response = onResponse(selects, (event, next) => {
   // 创建
@@ -95,8 +93,8 @@ export default onResponse(selects, (event, next) => {
   Send(Text('请输入密码'))
 
   // 创建观察者
-  const Observer = useObserver(event, selects)
-  Observer(response.current, [
+  const [_, observer] = useSubscribe(event, selects)
+  observer(response.current, [
     // 观察条件，当前用户
     'UserId'
     // 可新增，如：当前所在频道的用户，或者当前频道下的当前用户
@@ -104,7 +102,7 @@ export default onResponse(selects, (event, next) => {
 })
 ```
 
-## `useSubscribe`
+### 订阅
 
 > 订阅模式，在某个事件周期中进行观察
 
@@ -112,24 +110,22 @@ export default onResponse(selects, (event, next) => {
 // [创建之后，响应之前，响应之后]
 const [create, monut, unmonut] = useSubscribe(event, <select event type>)
 create(Res.current, [])
-monut(Res.current, []) // 同Observer(SubscribeMount)
+monut(Res.current, []) // observer
 unmonut(Res.current, [])
 ```
 
 ```ts title="./login.ts"
-import { createSelects } from 'alemonjs'
 import { Text, useSubscribe, useSend } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, async (event, next) => {
   // 检验 并存储关系映射
 })
 ```
 
 ```ts title="middleware/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 import { Text, useSubscribe, useSend } from 'alemonjs'
 import LoginRes from './login'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 // 中间件，在所有apps响应之前。
 export default onMiddleware(selects, (event, next) => {
   // 非约定前缀
@@ -177,10 +173,9 @@ export default onMiddleware(selects, (event, next) => {
 :::
 
 ```ts title="response/**/*/res.ts"
-import { createSelects } from 'alemonjs'
 import { Text, useSend, useState } from 'alemonjs'
 export const regular = /^(#|\/)?close:/
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   //   /close:login
   const name = event.MessageText.replace(regular, '')

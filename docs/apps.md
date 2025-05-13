@@ -26,17 +26,13 @@ sidebar_position: 6
 
 ### game
 
-| 项目名             | 类型                    | 说明         |
-| ------------------ | ----------------------- | ------------ |
-| [alemonjs-xianyu]  | [![xianyu-s]][xianyu-p] | 扫雷等小游戏 |
-| [alemonjs-xiuxian] | local                   | 大型修仙游戏 |
-| [alemonjs-farm]    | local                   | 农场         |
+| 项目名            | 类型                    | 说明         |
+| ----------------- | ----------------------- | ------------ |
+| [alemonjs-xianyu] | [![xianyu-s]][xianyu-p] | 扫雷等小游戏 |
 
 [alemonjs-xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/
 [xianyu-s]: https://img.shields.io/npm/v/alemonjs-xianyu.svg
 [xianyu-p]: https://www.npmjs.com/package/alemonjs-xianyu
-[alemonjs-xiuxian]: https://github.com/xiuxianjs/xiuxian-bot
-[alemonjs-farm]: https://github.com/xiuxianjs/farm-bot
 
 ### IP
 

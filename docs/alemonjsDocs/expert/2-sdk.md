@@ -22,8 +22,7 @@ sidebar_position: 2
 import { Text, useSend } from 'alemonjs'
 import { platform } from '@alemonjs/kook'
 import kookResponse from './kook.res'
-import { createSelects } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 判断平台
   if (event.Platform == platform) {
@@ -38,8 +37,7 @@ export default onResponse(selects, (event, next) => {
 
 ```ts title="./kook.res.ts"
 import { client } from '@alemonjs/kook'
-import { createSelects } from 'alemonjs'
-export const selects = createSelects(['message.create'])
+export const selects = onSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 使用.value获取原生数据
   const e = event.value
