@@ -113,7 +113,8 @@ import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export const activate = context => {
   // 创建一个 webview。
-  const sidebarWebView = context.createSidebarWebView(context)
+  const sidebarWebView =
+    context.createSidebarWebView(context)
   // 当命令被触发的时候。
   context.onCommand('open.test', () => {
     const dir = join(__dirname, 'assets', 'index.html')
@@ -130,7 +131,8 @@ export const activate = context => {
 ```js title="desktop.js"
 export const activate = context => {
   // 创建一个 webview。
-  const sidebarWebView = context.createSidebarWebView(context)
+  const sidebarWebView =
+    context.createSidebarWebView(context)
   // 监听 webview 的消息。
   sidebarWebView.onMessage(data => {
     // { type: 'pong',data: ''}
@@ -143,7 +145,8 @@ export const activate = context => {
 ```js title="desktop.js"
 export const activate = context => {
   // 创建一个 webview。
-  const sidebarWebView = context.createSidebarWebView(context)
+  const sidebarWebView =
+    context.createSidebarWebView(context)
   // 发送消息到webview。
   sidebarWebView.postMessage({
     type: 'ping',
@@ -196,8 +199,12 @@ import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export const activate = context => {
   // 创建 webview 路径
-  const styleUri = context.createExtensionDir(join(__dirname, 'assets', 'index.css'))
-  const scriptUri = context.createExtensionDir(join(__dirname, 'assets', 'index.js'))
+  const styleUri = context.createExtensionDir(
+    join(__dirname, 'assets', 'index.css')
+  )
+  const scriptUri = context.createExtensionDir(
+    join(__dirname, 'assets', 'index.js')
+  )
   // 可替换 html 内部资源，确保正确加载
 }
 ```

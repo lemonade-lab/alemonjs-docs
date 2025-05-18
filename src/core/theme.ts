@@ -1,8 +1,12 @@
 import { useEffect } from 'react'
-export const useEffectTheme = (Attribute: string, id: string) => {
+export const useEffectTheme = (
+  Attribute: string,
+  id: string
+) => {
   useEffect(() => {
     const updateBodyClass = () => {
-      const theme = document.documentElement.getAttribute(Attribute)
+      const theme =
+        document.documentElement.getAttribute(Attribute)
       const docusaurusDiv = document.getElementById(id)
       if (theme === 'dark') {
         if (docusaurusDiv) {

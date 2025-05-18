@@ -14,7 +14,8 @@ const link = `<a  href="https://beian.miit.gov.cn/" target="_blank">${number}</a
 
 export default defineConfig({
   title: 'ALemonJS',
-  tagline: '阿柠檬，基于 JavaScript 所构建的聊天平台机器人开发框架',
+  tagline:
+    '阿柠檬，基于 JavaScript 所构建的聊天平台机器人开发框架',
   url: 'https://alemonjs.com',
   baseUrl: '/',
   organizationName: 'lemonade-lab',
@@ -47,7 +48,8 @@ export default defineConfig({
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/lemonade-lab/alemonjs-docs'
+          editUrl:
+            'https://github.com/lemonade-lab/alemonjs-docs'
         },
         theme: {
           customCss: './src/css/custom.css'
@@ -70,7 +72,11 @@ export default defineConfig({
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar'
         },
-        { to: 'blog', label: '博客', position: 'left' }, // or position: 'right'
+        {
+          to: 'blog',
+          label: '博客',
+          position: 'left'
+        }, // or position: 'right'
         {
           position: 'right',
           label: '编辑',
@@ -146,7 +152,9 @@ export default defineConfig({
   } satisfies Preset.ThemeConfig,
   themes: [
     [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
+      require.resolve(
+        '@easyops-cn/docusaurus-search-local'
+      ),
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
       {
         indexDocs: true,

@@ -85,12 +85,15 @@ export default function HomePage(): JSX.Element {
                 className={classNames(
                   `flex flex-col md:flex-row cursor-pointer  gap-8`,
                   {
-                    'md:flex-row-reverse': item.position === 'left'
+                    'md:flex-row-reverse':
+                      item.position === 'left'
                   },
                   'animate__animated  duration-[1000ms]',
                   {
-                    'animate__fadeInLeft opacity-100': item.position === 'left' && inView,
-                    'animate__fadeInRight opacity-100': item.position === 'right' && inView,
+                    'animate__fadeInLeft opacity-100':
+                      item.position === 'left' && inView,
+                    'animate__fadeInRight opacity-100':
+                      item.position === 'right' && inView,
                     'opacity-0': !inView
                   }
                 )}
@@ -100,8 +103,12 @@ export default function HomePage(): JSX.Element {
                   src={item.url}
                 />
                 <div className="flex flex-col gap-2 items-center justify-center">
-                  <div className="text-3xl">{item.title}</div>
-                  <div className="text-slate-600">{item.docs}</div>
+                  <div className="text-3xl">
+                    {item.title}
+                  </div>
+                  <div className="text-slate-600">
+                    {item.docs}
+                  </div>
                 </div>
               </div>
             )

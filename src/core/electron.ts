@@ -32,7 +32,9 @@ export const getYml = async ({ baseURL, url }) => {
   })
     .then(res => res.data)
     .then(res => {
-      const data: VerionConfigType | null = yaml.load(res) as any
+      const data: VerionConfigType | null = yaml.load(
+        res
+      ) as any
       return data
     })
 }
@@ -62,7 +64,10 @@ export const useElectronDownload = <T extends string>({
   /**
    * @param platform
    */
-  const handleDownloadClick = async (platform: T, arch: 'x64' | 'arm64') => {
+  const handleDownloadClick = async (
+    platform: T,
+    arch: 'x64' | 'arm64'
+  ) => {
     let url = ''
     await axios({
       method: 'get',
@@ -76,10 +81,14 @@ export const useElectronDownload = <T extends string>({
     })
       .then(res => res.data)
       .then(res => {
-        const data: VerionConfigType | null = yaml.load(res) as any
+        const data: VerionConfigType | null = yaml.load(
+          res
+        ) as any
         if (data?.path) {
           // 找到匹配架构
-          const item = data.files.find(item => item.url.includes(arch))
+          const item = data.files.find(item =>
+            item.url.includes(arch)
+          )
           if (item.url) {
             url = `${baseURL}/${item.url}`
           }

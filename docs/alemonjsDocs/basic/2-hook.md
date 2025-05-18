@@ -10,17 +10,17 @@ sidebar_position: 2
 
 :::
 
-## `useSend`
+## `useSends`
 
 > 在响应事件（如消息被创建）时，发送消息。
 
 ```ts title="src/response/**/*/res.ts"
-import { Text, useSend } from 'alemonjs'
+import { Text, useSends } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 创建
-  const Send = useSend(event)
-  Send(Text('hello word !'))
+  const [send] = useSends(event)
+  send(format(Text('hello word !')))
 })
 ```
 
@@ -29,8 +29,8 @@ import { Text } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, () => {
   return {
-    // 即将要发送的数据，等同于 useSend(event)(...)
-    data: [Text('hello word !')]
+    // 即将要发送的数据
+    data: format(Text('hello word !'))
   }
 })
 ```
@@ -45,12 +45,12 @@ export const selects = onSelects(['message.create'])
 export default onResponse(selects, async (event, next) => {
   const [mention] = useMention(event)
   // 查找用户类型的 @ 提及，且不是 bot
-  const User = await mention.findOne()
-  if (!User) {
+  const user = await mention.findOne()
+  if (!user) {
     return // 未找到用户Id
   }
 
-  console.log('User:', User)
+  console.log('User:', user)
 
   // 处理被AT的用户...
 })
@@ -65,23 +65,23 @@ export default onResponse(selects, async (event, next) => {
 > 不推荐在中间件触发后使用,具体了解下一章节的中间件机制
 
 ```ts title="response/**/*/res.ts"
-import { Text, useSend, useSubscribe } from 'alemonjs'
+import { Text, useSends, useSubscribe } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 
 const response = onResponse(selects, (event, next) => {
   // 创建
-  const Send = useSend(event)
+  const [send] = useSends(event)
   // 获取文本
   const text = event.MessageText
   // 检查
   if (text === '123456') {
-    Send(Text('密码正确'))
+    send(format(Text('密码正确')))
     // 结束
   } else if (text == '/close') {
     // 结束
-    Send(Text('取消登录'))
+    send(format(Text('取消登录')))
   } else {
-    Send(Text('密码不正确'))
+    send(format(Text('密码不正确')))
     // 继续监听
     next()
   }
@@ -89,15 +89,17 @@ const response = onResponse(selects, (event, next) => {
 
 export default onResponse(selects, (event, next) => {
   // 创建
-  const Send = useSend(event)
-  Send(Text('请输入密码'))
-
+  const [send] = useSends(event)
+  send(format(Text('请输入密码')))
   // 创建观察者
   const [_, observer] = useSubscribe(event, selects)
+  // 观察
   observer(response.current, [
     // 观察条件，当前用户
     'UserId'
-    // 可新增，如：当前所在频道的用户，或者当前频道下的当前用户
+    // 可新增，
+    // 当前所在频道的用户，
+    // 或当前频道下的当前用户
   ])
 })
 ```
@@ -115,7 +117,7 @@ unmonut(Res.current, [])
 ```
 
 ```ts title="./login.ts"
-import { Text, useSubscribe, useSend } from 'alemonjs'
+import { useSubscribe } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, async (event, next) => {
   // 检验 并存储关系映射
@@ -123,7 +125,7 @@ export default onResponse(selects, async (event, next) => {
 ```
 
 ```ts title="middleware/**/*/res.ts"
-import { Text, useSubscribe, useSend } from 'alemonjs'
+import { Text, useSubscribe, useSends } from 'alemonjs'
 import LoginRes from './login'
 export const selects = onSelects(['message.create'])
 // 中间件，在所有apps响应之前。
@@ -149,8 +151,8 @@ export default onMiddleware(selects, (event, next) => {
   }
 
   // 创建
-  const Send = useSend(event)
-  Send(Text('请输入 #xx email,password '))
+  const [send] = useSends(event)
+  send(format(Text('请输入 #xx email,password ')))
 
   // 在中间件响应之前，观察该用户
   const [subscribe] = useSubscribe(e, 'message.create')
@@ -173,7 +175,7 @@ export default onMiddleware(selects, (event, next) => {
 :::
 
 ```ts title="response/**/*/res.ts"
-import { Text, useSend, useState } from 'alemonjs'
+import { Text, useSends, useState } from 'alemonjs'
 export const regular = /^(#|\/)?close:/
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
@@ -185,8 +187,8 @@ export default onResponse(selects, (event, next) => {
     return
   }
   setState(false)
-  const Send = useSend(event)
-  Send(Text('关闭成功'))
+  const [send] = useSends(event)
+  send(format(Text('关闭成功')))
   return
 })
 ```

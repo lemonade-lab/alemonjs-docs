@@ -17,48 +17,72 @@ sidebar_position: 3
 ### Text
 
 ```ts title="src/response/**/*/res.ts"
-import { Text, useSend } from 'alemonjs'
+import { Text, useSends } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   // 创建
-  const Send = useSend(event)
-  Send(Text('这个'), Text('标题', { style: 'bold' }), Text('被加粗了'))
-  Send(Text('这个'), Text('标题'), Text('没有变化'))
-  Send(Text(`// 我的代码块 \nconst Send = useSend(event)`, { style: 'block' }))
+  const [send] = useSends(event)
+  send(
+    format(
+      Text('这个'),
+      Text('标题', { style: 'bold' }),
+      Text('被加粗了')
+    )
+  )
+  send(format(Text('这个'), Text('标题'), Text('没有变化')))
+  send(
+    format(
+      Text(`// 我的代码块 \nconst Send = useSend(event)`, {
+        style: 'block'
+      })
+    )
+  )
 })
 ```
 
 ### Image
 
 ```ts title="src/response/**/*/res.ts"
-import { useSend, Image } from 'alemonjs'
+import { useSends, Image } from 'alemonjs'
 import url from '@src/assets/test.jpeg'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
-  const Send = useSend(event)
+  const [send] = useSends(event)
   // 发送本地图片文件
-  Send(Image.file(url))
+  send(format(Image.file(url)))
   // url
-  Send(Image.url('https://xxx.com/yyy.png'))
+  send(formt(Image.url('https://xxx.com/yyy.png')))
   // buffer
   const img = readFileSync(url)
-  Send(Image(img))
+  send(format(Image(img)))
 })
 ```
 
 ### Mention
 
 ```ts title="response/**/*/res.ts"
-import { useSend, Text, Mention } from 'alemonjs'
+import { useSends, Text, Mention } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
-  const Send = useSend(event)
+  const [send] = useSends(event)
   // 发送多种类型的消息
-  Send(Text('Hello '), Mention(event.UserId), Text(', How are things going?'))
+  send(
+    format(
+      Text('Hello '),
+      Mention(event.UserId),
+      Text(', How are things going?')
+    )
+  )
   // @ 所有人
-  Send(Mention())
+  send(format(Mention()))
   // @ channel
-  Send(Mention(event.ChannelId, { belong: 'channel' }))
+  send(
+    format(
+      Mention(event.ChannelId, {
+        belong: 'channel'
+      })
+    )
+  )
 })
 ```
 
@@ -71,51 +95,66 @@ export default onResponse(selects, event => {
 :::
 
 ```ts title="response/**/*/res.ts"
-const selects = onSelects(['message.create'])
-const response = onResponse(selects, event => {
-  const Send = useSend(event)
+import { useSends } from 'alemonjs'
+export const selects = onSelects(['message.create'])
+export default onResponse(selects, event => {
+  const [send] = useSends(event)
 
   // 普通卡片
-  Send(
-    Ark.Card({
-      decs: '你是谁',
-      title: '收你来啦',
-      prompt: '通知信息！！',
-      metadecs: '阿柠檬2正式版发送',
-      cover:
-        'https://pub.idqqimg.com/pc/misc/files/20190820/2f4e70ae3355ece23d161cf5334d4fc1jzjfmtep.png',
-      link: '',
-      subtitle: '赞赞赞'
-    })
+  send(
+    format(
+      Ark.Card({
+        decs: '你是谁',
+        title: '收你来啦',
+        prompt: '通知信息！！',
+        metadecs: '阿柠檬2正式版发送',
+        cover:
+          'https://pub.idqqimg.com/pc/misc/files/20190820/2f4e70ae3355ece23d161cf5334d4fc1jzjfmtep.png',
+        link: '',
+        subtitle: '赞赞赞'
+      })
+    )
   )
 
   // 大图卡片
-  Send(
-    Ark.BigCard({
-      title: '收你来啦',
-      prompt: '通知信息！！',
-      cover:
-        'https://pub.idqqimg.com/pc/misc/files/20190820/2f4e70ae3355ece23d161cf5334d4fc1jzjfmtep.png',
-      link: '',
-      subtitle: '赞赞赞'
-    })
+  send(
+    format(
+      Ark.BigCard({
+        title: '收你来啦',
+        prompt: '通知信息！！',
+        cover:
+          'https://pub.idqqimg.com/pc/misc/files/20190820/2f4e70ae3355ece23d161cf5334d4fc1jzjfmtep.png',
+        link: '',
+        subtitle: '赞赞赞'
+      })
+    )
   )
 
   // 列表
   Send(
-    Ark.list(
-      Ark.listTip({ desc: '状态扭转', prompt: '状态扭转' }),
-      Ark.listContent(
-        Ark.listItem('需求标题：UI问题解决'),
-        Ark.listItem('点击下列动作直接扭转状态到：'),
-        Ark.listItem({ title: '状态1', link: 'https://alemonjs.com?status=1' }),
-        Ark.listItem({ title: '状态2', link: 'https://alemonjs.com?status=2' }),
-        Ark.listItem('请关注')
+    format(
+      Ark.list(
+        Ark.listTip({
+          desc: '状态扭转',
+          prompt: '状态扭转'
+        }),
+        Ark.listContent(
+          Ark.listItem('需求标题：UI问题解决'),
+          Ark.listItem('点击下列动作直接扭转状态到：'),
+          Ark.listItem({
+            title: '状态1',
+            link: 'https://alemonjs.com?status=1'
+          }),
+          Ark.listItem({
+            title: '状态2',
+            link: 'https://alemonjs.com?status=2'
+          }),
+          Ark.listItem('请关注')
+        )
       )
     )
   )
 })
-export default response
 ```
 
 ### Button
@@ -127,43 +166,74 @@ export default response
 :::
 
 ```ts
-import { BT, useSend } from 'alemonjs'
+import { BT, useSends } from 'alemonjs'
 const selects = onSelects(['message.create'])
 const response = onResponse(selects, event => {
-  const Send = useSend(event)
+  const [send] = useSends(event)
 
   // 一行多个
-  Send(BT.group(BT.row(BT('开始', '/开始游戏'), BT('结束', '/结束游戏'))))
+  send(
+    format(
+      BT.group(
+        BT.row(
+          BT('开始', '/开始游戏'),
+          BT('结束', '/结束游戏')
+        )
+      )
+    )
+  )
 
   // 多行多个
-  Send(
-    BT.group(
-      BT.row(BT('开始', '/开始游戏'), BT('结束', '/结束游戏')),
-      BT.row(BT('退出', '/退出游戏'), BT('注销', '/注销账户'))
+  send(
+    format(
+      BT.group(
+        BT.row(
+          BT('开始', '/开始游戏'),
+          BT('结束', '/结束游戏')
+        ),
+        BT.row(
+          BT('退出', '/退出游戏'),
+          BT('注销', '/注销账户')
+        )
+      )
     )
   )
 
   // 更多类型
-  Send(
-    BT.group(
-      // link
-      BT.row(BT('访问文档', 'https://alemonjs.com/', { isLink: true })),
-      // 回调
-      BT.row(BT('是否同意', { click: '/同意', confirm: '/同意', cancel: '/不同意' })),
-      // 自动发送 + 显示字频道list + 禁用提示
-      BT.row(BT('哈哈', '/哈哈', { autoEnter: false, showList: true, toolTip: '不支持' }))
+  send(
+    format(
+      BT.group(
+        // link
+        BT.row(
+          BT('访问文档', 'https://alemonjs.com/', {
+            isLink: true
+          })
+        ),
+        // 回调
+        BT.row(
+          BT('是否同意', {
+            click: '/同意',
+            confirm: '/同意',
+            cancel: '/不同意'
+          })
+        ),
+        // 自动发送 + 显示字频道list + 禁用提示
+        BT.row(
+          BT('哈哈', '/哈哈', {
+            autoEnter: false,
+            showList: true,
+            toolTip: '不支持'
+          })
+        )
+      )
     )
   )
 
   // 使用申请好的模板（特定平台下使用）
-  Send(BT.template('template_id'))
+  send(format(BT.template('template_id')))
 
   // 向申请的模板注入参数
-  Send(
-    BT.template('template_id', {
-      title: ''
-    })
-  )
+  send(format(BT.template('template_id')))
 })
 export default response
 ```
@@ -177,62 +247,69 @@ export default response
 :::
 
 ```ts
-import { MD, useSend } from 'alemonjs'
+import { MD, useSends } from 'alemonjs'
 const selects = onSelects(['message.create'])
 const response = onResponse(selects, event => {
-  const Send = useSend(event)
-  Send(
-    MD(
-      MD.text('普通文本'),
-      // 标题
-      MD.title('标题！！'),
-      // 副标题
-      MD.subtitle('子标题'),
-      // 加粗
-      MD.bold('加粗'),
-      // 斜体
-      MD.italic('斜体'),
-      // 星号斜体
-      MD.italicStar('星号斜体'),
-      // 删除线
-      MD.strikethrough('删除线'),
-      // 链接
-      MD.link('链接', 'https://www.baidu.com'),
-      // 图片
-      MD.image('https://www.baidu.com/img/bd_logo1.png', { width: 100, height: 100 }),
-      // 有序列表
-      MD.list(
-        MD.listItem(1, '有序列表'),
-        MD.listItem(2, '有序列表'),
-        MD.listItem(3, '有序列表'),
-        MD.listItem(4, '有序列表')
-      ),
-      // 无序列表
-      MD.list(
-        MD.listItem('无序列表'),
-        MD.listItem('无序列表'),
-        MD.listItem('无序列表'),
-        MD.listItem('无序列表'),
-        MD.listItem('无序列表')
-      ),
-      // 块引用
-      MD.blockquote('块引用'),
-      // 水平分割线
-      MD.divider(),
-      // 换行
-      MD.newline(),
-      // 换多行
-      MD.newline(true)
+  const [send] = useSends(event)
+  send(
+    format(
+      MD(
+        MD.text('普通文本'),
+        // 标题
+        MD.title('标题！！'),
+        // 副标题
+        MD.subtitle('子标题'),
+        // 加粗
+        MD.bold('加粗'),
+        // 斜体
+        MD.italic('斜体'),
+        // 星号斜体
+        MD.italicStar('星号斜体'),
+        // 删除线
+        MD.strikethrough('删除线'),
+        // 链接
+        MD.link('链接', 'https://www.baidu.com'),
+        // 图片
+        MD.image('https://www.baidu.com/img/bd_logo1.png', {
+          width: 100,
+          height: 100
+        }),
+        // 有序列表
+        MD.list(
+          MD.listItem(1, '有序列表'),
+          MD.listItem(2, '有序列表'),
+          MD.listItem(3, '有序列表'),
+          MD.listItem(4, '有序列表')
+        ),
+        // 无序列表
+        MD.list(
+          MD.listItem('无序列表'),
+          MD.listItem('无序列表'),
+          MD.listItem('无序列表'),
+          MD.listItem('无序列表'),
+          MD.listItem('无序列表')
+        ),
+        // 块引用
+        MD.blockquote('块引用'),
+        // 水平分割线
+        MD.divider(),
+        // 换行
+        MD.newline(),
+        // 换多行
+        MD.newline(true)
+      )
     )
   )
 
   // 向申请的模板注入参数
-  Send(
-    MD.template('template_id', {
-      title: '你好',
-      image: 'https://www.baidu.com/img/bd_logo1.png',
-      para1: 'hello word'
-    })
+  send(
+    format(
+      MD.template('template_id', {
+        title: '你好',
+        image: 'https://www.baidu.com/img/bd_logo1.png',
+        para1: 'hello word'
+      })
+    )
   )
 })
 export default response

@@ -17,16 +17,15 @@ sidebar_position: 4
 ```ts
 import { sendToChannel, sendToUser, Text } from 'alemonjs'
 // 向指定频道发送消息
-sendToChannel('ChannelID', [Text('hello word')])
+sendToChannel('ChannelID', format(Text('hello word')))
 // 向指定用户发送消息
-sendToUser('UserID', [Text('hello word')])
+sendToUser('UserID', format(Text('hello word')))
 ```
 
 - 数据格式
 
 ```ts
-import { createDataFormat } from 'alemonjs'
-const data = createDataFormat(Text('hello word'))
-// 向指定频道发送消息
-sendToChannel('ChannelID', data)
+import { Text } from 'alemonjs'
+// 把 数据参数 改为 数组变量
+const data = format(Text('hello'), Text(' word'))
 ```

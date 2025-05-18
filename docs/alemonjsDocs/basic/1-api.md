@@ -69,7 +69,11 @@ const response$3 = onResponse(selects, (event, next) => {
   console.log('step 3')
 })
 
-const response = onResponse(selects, [response$1.current, esponse$2.current, response$3.current])
+const response = onResponse(selects, [
+  response$1.current,
+  esponse$2.current,
+  response$3.current
+])
 
 export default response
 ```

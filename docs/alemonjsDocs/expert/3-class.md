@@ -31,14 +31,20 @@ const res = new Middleware().value
 import { SubscribeList } from 'alemonjs'
 // 所有的 create + message.create 订阅
 // 即 onSubscribe
-const subscribeList = new SubscribeList('create', 'message.create').value
+const subscribeList = new SubscribeList(
+  'create',
+  'message.create'
+).value
 // const subscribeList = new SubscribeList('mount', 'message.create').value
 // const subscribeList = new SubscribeList('unmount', 'message.create').value
 ```
 
 ```ts
 import { StateSubscribe } from 'alemonjs'
-const stateList = new StateSubscribe('create', 'message.create')
+const stateList = new StateSubscribe(
+  'create',
+  'message.create'
+)
 stateList.on(() => {}) // onState
 stateList.un(() => {}) // unState
 const stateSubscribe = stateList.value

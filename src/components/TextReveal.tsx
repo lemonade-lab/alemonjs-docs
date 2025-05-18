@@ -36,5 +36,7 @@ export default function TextReveal({
     }, 150) // 每 200 毫秒显示一个字
     return () => clearInterval(interval) // 清理定时器
   }, [])
-  return <span className={className}>「 {displayedText} 」</span>
+  return (
+    <span className={className}>「 {displayedText} 」</span>
+  )
 }

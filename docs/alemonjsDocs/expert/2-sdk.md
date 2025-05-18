@@ -19,7 +19,7 @@ sidebar_position: 2
 以下使用kook作为例子，学习如何发送一个md
 
 ```ts title="src/response/**/*/res.ts"
-import { Text, useSend } from 'alemonjs'
+import { Text, useSends } from 'alemonjs'
 import { platform } from '@alemonjs/kook'
 import kookResponse from './kook.res'
 export const selects = onSelects(['message.create'])
@@ -29,8 +29,8 @@ export default onResponse(selects, (event, next) => {
     console.log('platform', platform)
     kookResponse.current(event, next)
   } else {
-    const Send = useSend(event)
-    Send(Text('该平台不支持此类消息'))
+    const [send] = useSends(event)
+    send(format(Text('该平台不支持此类消息')))
   }
 })
 ```
@@ -48,6 +48,10 @@ export default onResponse(selects, (event, next) => {
 ```
 
 ```ts
-import { platform, client, type Client } from '@alemonjs/kook'
+import {
+  platform,
+  client,
+  type Client
+} from '@alemonjs/kook'
 // platform 和 client 是平台包固定的两个变量, 具体可阅读“自定义平台”
 ```
