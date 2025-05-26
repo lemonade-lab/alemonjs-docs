@@ -10,17 +10,20 @@ sidebar_position: 2
 
 :::
 
-## `useSends`
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## `useMessage`
 
 > 在响应事件（如消息被创建）时，发送消息。
 
 ```ts title="src/response/**/*/res.ts"
-import { Text, useSends } from 'alemonjs'
+import { Text, useMessage } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 创建
-  const [send] = useSends(event)
-  send(format(Text('hello word !')))
+  const [message] = useMessage(event)
+  message.send(format(Text('hello word !')))
 })
 ```
 
@@ -58,74 +61,65 @@ export default onResponse(selects, async (event, next) => {
 
 ## `useSubscribe`
 
-### `观察`
-
-> 观察者模式，监听并响应某个事件。观察事件示例
-
-> 不推荐在中间件触发后使用,具体了解下一章节的中间件机制
-
-```ts title="response/**/*/res.ts"
-import { Text, useSends, useSubscribe } from 'alemonjs'
-export const selects = onSelects(['message.create'])
-
-const response = onResponse(selects, (event, next) => {
-  // 创建
-  const [send] = useSends(event)
-  // 获取文本
-  const text = event.MessageText
-  // 检查
-  if (text === '123456') {
-    send(format(Text('密码正确')))
-    // 结束
-  } else if (text == '/close') {
-    // 结束
-    send(format(Text('取消登录')))
-  } else {
-    send(format(Text('密码不正确')))
-    // 继续监听
-    next()
-  }
-})
-
-export default onResponse(selects, (event, next) => {
-  // 创建
-  const [send] = useSends(event)
-  send(format(Text('请输入密码')))
-  // 创建观察者
-  const [_, observer] = useSubscribe(event, selects)
-  // 观察
-  observer(response.current, [
-    // 观察条件，当前用户
-    'UserId'
-    // 可新增，
-    // 当前所在频道的用户，
-    // 或当前频道下的当前用户
-  ])
-})
-```
-
-### 订阅
-
 > 订阅模式，在某个事件周期中进行观察
 
+<Tabs>
+  <TabItem value="0" label="V2.1+" default>
+
 ```ts title="response/**/*/res.ts"
-// [创建之后，响应之前，响应之后]
-const [create, monut, unmonut] = useSubscribe(event, <select event type>)
-create(Res.current, [])
-monut(Res.current, []) // observer
-unmonut(Res.current, [])
+import { Text, useMessage, useSubscribe } from 'alemonjs'
+export const regular = /^(#|\/)?login$/
+export const selects = onSelects([
+  'message.create',
+  'private.message.create'
+])
+export default onResponse(selects, event => {
+  const [message] = useMessage(event)
+  const [subscribe] = useSubscribe(event, selects)
+
+  message.send(format(Text('请输入密码'), Text('123456')))
+
+  // 订阅 res 挂载之前的
+  const sub = subscribe.mount(
+    (event, next) => {
+      // 创建
+      const [message] = useMessage(event)
+      // 获取文本
+      const text = event.MessageText
+      // 检查
+      if (text === '123456') {
+        message.send(format(Text('密码正确')))
+        clearTimeout(timeout)
+      } else if (text == '/close') {
+        message.send(format(Text('取消登录')))
+        clearTimeout(timeout)
+      } else {
+        message.send(format(Text('密码不正确')))
+        // 继续
+        next()
+      }
+    },
+    ['UserId']
+  )
+
+  const timeout = setTimeout(() => {
+    // 取消订阅
+    subscribe.cancel(sub)
+    // 发送消息
+    message.send(format(Text('登录超时')))
+  }, 1000 * 10)
+})
 ```
 
-```ts title="./login.ts"
-import { useSubscribe } from 'alemonjs'
-export const selects = onSelects(['message.create'])
-export default onResponse(selects, async (event, next) => {
-  // 检验 并存储关系映射
-})
+```ts title="response/**/*/res.ts"
+const [subscribe] = useSubscribe(event, <select event type>)
+subscribe.create(Res.current, []) // res 创建之后
+subscribe.monut(Res.current, []) // res 响应之前
+subscribe.unmonut(Res.current, []) // res 响应之后
 ```
 
 ```ts title="middleware/**/*/res.ts"
-import { Text, useSubscribe, useSends } from 'alemonjs'
+import { Text, useSubscribe, useMessage } from 'alemonjs'
 import LoginRes from './login'
 export const selects = onSelects(['message.create'])
 // 中间件，在所有apps响应之前。
@@ -151,14 +145,28 @@ export default onMiddleware(selects, (event, next) => {
   }
 
   // 创建
-  const [send] = useSends(event)
-  send(format(Text('请输入 #xx email,password ')))
+  const [message] = useMessage(event)
+  message.send(format(Text('请输入 #xx email,password ')))
 
   // 在中间件响应之前，观察该用户
-  const [subscribe] = useSubscribe(e, 'message.create')
-  subscribe(LoginRes.current, ['UserId'])
+  const [subscribe] = useSubscribe(e, selects)
+  subscribe.create(LoginRes.current, ['UserId'])
 })
 ```
+
+  </TabItem>
+  <TabItem value="1" label="V2.0+" >
+
+```ts title="response/**/*/res.ts"
+// [创建之后，响应之前，响应之后]
+const [create, monut, unmonut] = useSubscribe(event, <select event type>)
+create(Res.current, [])
+monut(Res.current, []) // const monut = useObserver(event, <select event type>)
+unmonut(Res.current, [])
+```
+
+  </TabItem>
+</Tabs>
 
 ## `useState`
 

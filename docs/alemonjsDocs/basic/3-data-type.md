@@ -17,20 +17,22 @@ sidebar_position: 3
 ### Text
 
 ```ts title="src/response/**/*/res.ts"
-import { Text, useSends } from 'alemonjs'
+import { Text, useMessage } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   // 创建
-  const [send] = useSends(event)
-  send(
+  const [message] = useMessage(event)
+  message.send(
     format(
       Text('这个'),
       Text('标题', { style: 'bold' }),
       Text('被加粗了')
     )
   )
-  send(format(Text('这个'), Text('标题'), Text('没有变化')))
-  send(
+  message.send(
+    format(Text('这个'), Text('标题'), Text('没有变化'))
+  )
+  message.send(
     format(
       Text(`// 我的代码块 \nconst Send = useSend(event)`, {
         style: 'block'
@@ -43,30 +45,30 @@ export default onResponse(selects, event => {
 ### Image
 
 ```ts title="src/response/**/*/res.ts"
-import { useSends, Image } from 'alemonjs'
+import { useMessage, Image } from 'alemonjs'
 import url from '@src/assets/test.jpeg'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
-  const [send] = useSends(event)
+  const [message] = useMessage(event)
   // 发送本地图片文件
-  send(format(Image.file(url)))
+  message.send(format(Image.file(url)))
   // url
-  send(formt(Image.url('https://xxx.com/yyy.png')))
+  message.send(format(Image.url('https://xxx.com/yyy.png')))
   // buffer
   const img = readFileSync(url)
-  send(format(Image(img)))
+  message.send(format(Image(img)))
 })
 ```
 
 ### Mention
 
 ```ts title="response/**/*/res.ts"
-import { useSends, Text, Mention } from 'alemonjs'
+import { useMessage, Text, Mention } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
-  const [send] = useSends(event)
+  const [message] = useMessage(event)
   // 发送多种类型的消息
-  send(
+  message.send(
     format(
       Text('Hello '),
       Mention(event.UserId),
@@ -74,9 +76,9 @@ export default onResponse(selects, event => {
     )
   )
   // @ 所有人
-  send(format(Mention()))
+  message.send(format(Mention()))
   // @ channel
-  send(
+  message.send(
     format(
       Mention(event.ChannelId, {
         belong: 'channel'
@@ -95,13 +97,13 @@ export default onResponse(selects, event => {
 :::
 
 ```ts title="response/**/*/res.ts"
-import { useSends } from 'alemonjs'
+import { useMessage } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
-  const [send] = useSends(event)
+  const [message] = useMessage(event)
 
   // 普通卡片
-  send(
+  message.send(
     format(
       Ark.Card({
         decs: '你是谁',
@@ -117,7 +119,7 @@ export default onResponse(selects, event => {
   )
 
   // 大图卡片
-  send(
+  message.send(
     format(
       Ark.BigCard({
         title: '收你来啦',
@@ -131,7 +133,7 @@ export default onResponse(selects, event => {
   )
 
   // 列表
-  Send(
+  message.send(
     format(
       Ark.list(
         Ark.listTip({
@@ -166,13 +168,13 @@ export default onResponse(selects, event => {
 :::
 
 ```ts
-import { BT, useSends } from 'alemonjs'
+import { BT, useMessage } from 'alemonjs'
 const selects = onSelects(['message.create'])
 const response = onResponse(selects, event => {
-  const [send] = useSends(event)
+  const [message] = useMessage(event)
 
   // 一行多个
-  send(
+  message.send(
     format(
       BT.group(
         BT.row(
@@ -184,7 +186,7 @@ const response = onResponse(selects, event => {
   )
 
   // 多行多个
-  send(
+  message.send(
     format(
       BT.group(
         BT.row(
@@ -230,10 +232,10 @@ const response = onResponse(selects, event => {
   )
 
   // 使用申请好的模板（特定平台下使用）
-  send(format(BT.template('template_id')))
+  message.send(format(BT.template('template_id')))
 
   // 向申请的模板注入参数
-  send(format(BT.template('template_id')))
+  message.send(format(BT.template('template_id')))
 })
 export default response
 ```
@@ -247,11 +249,11 @@ export default response
 :::
 
 ```ts
-import { MD, useSends } from 'alemonjs'
+import { MD, useMessage } from 'alemonjs'
 const selects = onSelects(['message.create'])
 const response = onResponse(selects, event => {
-  const [send] = useSends(event)
-  send(
+  const [message] = useMessage(event)
+  message.send(
     format(
       MD(
         MD.text('普通文本'),
@@ -302,7 +304,7 @@ const response = onResponse(selects, event => {
   )
 
   // 向申请的模板注入参数
-  send(
+  message.send(
     format(
       MD.template('template_id', {
         title: '你好',

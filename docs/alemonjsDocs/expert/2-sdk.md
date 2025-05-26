@@ -16,10 +16,8 @@ sidebar_position: 2
 
 因此，你需要根据不同的平台来进行调整
 
-以下使用kook作为例子，学习如何发送一个md
-
 ```ts title="src/response/**/*/res.ts"
-import { Text, useSends } from 'alemonjs'
+import { Text, useMessage } from 'alemonjs'
 import { platform } from '@alemonjs/kook'
 import kookResponse from './kook.res'
 export const selects = onSelects(['message.create'])
@@ -29,29 +27,8 @@ export default onResponse(selects, (event, next) => {
     console.log('platform', platform)
     kookResponse.current(event, next)
   } else {
-    const [send] = useSends(event)
-    send(format(Text('该平台不支持此类消息')))
+    const [message] = useMessage(event)
+    message.send(format(Text('该平台不支持此类消息')))
   }
 })
-```
-
-```ts title="./kook.res.ts"
-import { client } from '@alemonjs/kook'
-export const selects = onSelects(['message.create'])
-export default onResponse(selects, (event, next) => {
-  // 使用.value获取原生数据
-  const e = event.value
-  //   client.postMessage ....
-  console.log('event', e)
-  console.log('client', client)
-})
-```
-
-```ts
-import {
-  platform,
-  client,
-  type Client
-} from '@alemonjs/kook'
-// platform 和 client 是平台包固定的两个变量, 具体可阅读“自定义平台”
 ```
