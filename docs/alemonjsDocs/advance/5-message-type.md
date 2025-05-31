@@ -5,16 +5,11 @@ sidebar_position: 5
 # 事件
 
 ```ts
-// 携带有消息体的
-export type AEventsMsg = {
+export type Events = {
   // 公有事件-消息创建
   'message.create': PublicEventMessageCreate
   // 私有事件-消息创建
   'private.message.create': PrivateEventMessageCreate
-}
-
-//
-export type AEvents = {
   // 消息更新（重编辑）
   'message.update': PublicEventMessageUpdate
   // 消息删除（撤回）
