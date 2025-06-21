@@ -16,17 +16,22 @@ sidebar_position: 3
 import { definePlatform } from 'alemonjs'
 import { getConfigValue, User } from 'alemonjs'
 
-export const platform = 'bot-name'
+const platform = 'bot-name'
+
+class API {}
+
+export { platform, API }
 
 export default () => {
   // 得到自定义配置
-  const value = getConfigValue()
-  const config = value[platform]
+  const value = getConfigValue() || {}
+  const config = value[platform] || {}
 
   /**
    * 连接 dbp 服务器。推送标准信息。
    */
-  const url = `ws://127.0.0.1:${process.env?.port || 17117}`
+  const port = process.env?.port || 17117
+  const url = `ws://127.0.0.1:${port}`
   const cbp = cbpPlatform(url)
 
   const onmessage = data => {
@@ -58,6 +63,19 @@ export default () => {
       const event = data.payload.event
       // const res = await api.use.mention(event)
       // consume(res)
+    }
+  })
+
+  // 处理 api 调用
+  cbp.onapis(async (data, consume) => {
+    const key = data.payload?.key
+    if (client[key]) {
+      // 如果 client 上有对应的 key，直接调用。
+      const params = data.payload.params
+      const res = await client[key](...params)
+      consume([
+        createResult(ResultCode.Ok, '请求完成', res)
+      ])
     }
   })
 }

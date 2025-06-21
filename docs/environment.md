@@ -52,6 +52,26 @@ sidebar_position: 5
 [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg
 [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram
 
+### Wechat
+
+| Project            | Status                  | Description |
+| ------------------ | ----------------------- | ----------- |
+| [@alemonjs/wechat] | [![wechat-s]][wechat-p] | 企业微信    |
+
+[@alemonjs/wechat]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/wechat
+[wechat-s]: https://img.shields.io/npm/v/@alemonjs/wechat.svg
+[wechat-p]: https://www.npmjs.com/package/@alemonjs/wechat
+
+### Feishu
+
+| Project            | Status                  | Description |
+| ------------------ | ----------------------- | ----------- |
+| [@alemonjs/feishu] | [![feishu-s]][feishu-p] | feishu      |
+
+[@alemonjs/feishu]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/feishu
+[feishu-s]: https://img.shields.io/npm/v/@alemonjs/feishu.svg
+[feishu-p]: https://www.npmjs.com/package/@alemonjs/feishu
+
 ## 三方
 
 :::warning 注意事项
@@ -59,16 +79,6 @@ sidebar_position: 5
 第三方协议具有一定的风险性，请谨慎使用。
 
 :::
-
-### QQ
-
-| Project        | Status          | Description |
-| -------------- | --------------- | ----------- |
-| [@alemonjs/qq] | [![qq-s]][qq-p] | QQ          |
-
-[@alemonjs/qq]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq
-[qq-s]: https://img.shields.io/npm/v/@alemonjs/qq.svg
-[qq-p]: https://www.npmjs.com/package/@alemonjs/qq
 
 ### OneBot
 
@@ -80,12 +90,12 @@ sidebar_position: 5
 [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg
 [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot
 
-### Wechat
+### milky
 
-| Project            | Status                  | Description |
-| ------------------ | ----------------------- | ----------- |
-| [@alemonjs/wechat] | [![wechat-s]][wechat-p] | 微信        |
+| Project           | Status                | Description |
+| ----------------- | --------------------- | ----------- |
+| [@alemonjs/milky] | [![milky-s]][milky-p] | milky       |
 
-[@alemonjs/wechat]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/wechat
-[wechat-s]: https://img.shields.io/npm/v/@alemonjs/wechat.svg
-[wechat-p]: https://www.npmjs.com/package/@alemonjs/wechat
+[@alemonjs/milky]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/milky
+[milky-s]: https://img.shields.io/npm/v/@alemonjs/milky.svg
+[milky-p]: https://www.npmjs.com/package/@alemonjs/milky

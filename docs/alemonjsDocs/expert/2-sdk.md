@@ -17,18 +17,15 @@ sidebar_position: 2
 因此，你需要根据不同的平台来进行调整
 
 ```ts title="src/response/**/*/res.ts"
-import { Text, useMessage } from 'alemonjs'
-import { platform } from '@alemonjs/kook'
-import kookResponse from './kook.res'
+import {
+  platform as qqbot,
+  useClient
+} from '@alemonjs/qq-bot'
 export const selects = onSelects(['message.create'])
-export default onResponse(selects, (event, next) => {
-  // 判断平台
-  if (event.Platform == platform) {
-    console.log('platform', platform)
-    kookResponse.current(event, next)
-  } else {
-    const [message] = useMessage(event)
-    message.send(format(Text('该平台不支持此类消息')))
+export default onResponse(selects, event => {
+  if (event.platform === qqbot) {
+    const [client, value] = useClient(event)
+    // 使用原生api和数据
   }
 })
 ```
