@@ -112,45 +112,72 @@ export default onResponse(selects, event => {
 ```
 
 ```ts title="response/**/*/res.ts"
-const [subscribe] = useSubscribe(event, <select event type>)
-subscribe.create(Res.current, []) // res 创建之后
-subscribe.monut(Res.current, []) // res 响应之前
-subscribe.unmonut(Res.current, []) // res 响应之后
+import { useSubscribe } from 'alemonjs'
+
+export const selects = onSelects(['message.create'])
+
+const res$1 = onResponse(selects, (event, next) => {
+  // 创建
+})
+
+const res$2 = onResponse(selects, (event, next) => {
+  // 响应之前
+})
+
+const res$3 = onResponse(selects, (event, next) => {
+  // 响应之后
+})
+
+export default onResponse(selects, (event, next) => {
+  const [subscribe] = useSubscribe(event, selects)
+  subscribe.create(res$1.current, [])
+  subscribe.mount(res$2.current, [])
+  subscribe.unmount(res$3.current, [])
+})
 ```
 
 ```ts title="middleware/**/*/res.ts"
-import { Text, useSubscribe, useMessage } from 'alemonjs'
-import LoginRes from './login'
-export const selects = onSelects(['message.create'])
-// 中间件，在所有apps响应之前。
-export default onMiddleware(selects, (event, next) => {
-  // 非约定前缀
-  if (!/^#xx/.test(event.MessageText)) {
-    next()
-    return
-  }
-
-  // 不是
-  if (!/^xx login/.test()) {
-    // 根据userid/userkey请求获得email
-    const email = ''
-    if (!email) {
-      next()
-      return
-    }
-    // 拥有数据，携带字段
-    event['xx_emeil'] = email
-    next()
-    return
-  }
-
-  // 创建
+import { Text, useMessage, useSubscribe } from 'alemonjs'
+export const regular = /^(#|\/)?login$/
+export const selects = onSelects([
+  'message.create',
+  'private.message.create'
+])
+export default onResponse(selects, event => {
   const [message] = useMessage(event)
-  message.send(format(Text('请输入 #xx email,password ')))
+  const [subscribe] = useSubscribe(event, selects)
 
-  // 在中间件响应之前，观察该用户
-  const [subscribe] = useSubscribe(e, selects)
-  subscribe.create(LoginRes.current, ['UserId'])
+  message.send(format(Text('请输入密码'), Text('123456')))
+
+  // 订阅 res 挂载之前的
+  const sub = subscribe.mount(
+    (event, next) => {
+      // 创建
+      const [message] = useMessage(event)
+      // 获取文本
+      const text = event.MessageText
+      // 检查
+      if (text === '123456') {
+        message.send(format(Text('密码正确')))
+        clearTimeout(timeout)
+      } else if (text == '/close') {
+        message.send(format(Text('取消登录')))
+        clearTimeout(timeout)
+      } else {
+        message.send(format(Text('密码不正确')))
+        // 继续
+        next()
+      }
+    },
+    ['UserId']
+  )
+
+  const timeout = setTimeout(() => {
+    // 取消订阅
+    subscribe.cancel(sub)
+    // 发送消息
+    message.send(format(Text('登录超时')))
+  }, 1000 * 10)
 })
 ```
 
@@ -205,8 +232,13 @@ export default onResponse(selects, (event, next) => {
 
 ```ts title="response/**/*/res.ts"
 import { onState, unState } from 'alemonjs'
-onState('main:response:login', state => {
-  //
-})
-unState('main:response:login')
+
+const key = 'main:response:login'
+
+const state = (val: boolean) => {
+  // 订阅 key 的状态变化
+}
+
+onState(key, state)
+unState(key, state)
 ```

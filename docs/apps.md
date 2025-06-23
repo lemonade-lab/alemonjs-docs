@@ -34,14 +34,6 @@ sidebar_position: 6
 [xianyu-s]: https://img.shields.io/npm/v/alemonjs-xianyu.svg
 [xianyu-p]: https://www.npmjs.com/package/alemonjs-xianyu
 
-### IP
-
-| 项目名            | 类型  | 说明     |
-| ----------------- | ----- | -------- |
-| [alemonjs-kuromc] | local | 鸣潮WIKI |
-
-[alemonjs-kuromc]: https://github.com/xiuxianjs/kuromc
-
 ### AI
 
 | 项目名            | 类型                    | 说明                 |
@@ -51,9 +43,3 @@ sidebar_position: 6
 [alemonjs-openai]: https://github.com/xiuxianjs/ollama
 [openai-s]: https://img.shields.io/npm/v/alemonjs-openai.svg
 [openai-p]: https://www.npmjs.com/package/alemonjs-openai
-
-### script
-
-| 项目名                                             | 类型  | 说明                    |
-| -------------------------------------------------- | ----- | ----------------------- |
-| [visible](https://github.com/lemonade-lab/visible) | shell | linux系统图形化安装脚本 |

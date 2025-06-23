@@ -16,10 +16,13 @@ sidebar_position: 4
 
 ```ts
 import { sendToChannel, sendToUser, Text } from 'alemonjs'
-// 向指定频道发送消息
-sendToChannel('ChannelID', format(Text('hello word')))
-// 向指定用户发送消息
-sendToUser('UserID', format(Text('hello word')))
+
+const data = format(Text('hello word'))
+
+// 向指定频道发送消息 。SpaceId 从消息中获得，注意这可能不是 ChannelId
+sendToChannel('SpaceId', data)
+// 向指定用户发送消息  OpenID 从消息中获得，注意这可能不是 UserId
+sendToUser('OpenID', data)
 ```
 
 - 数据格式

@@ -47,6 +47,7 @@ export default onResponse(selects, event => {
 ```ts title="src/response/**/*/res.ts"
 import { useMessage, Image } from 'alemonjs'
 import url from '@src/assets/test.jpeg'
+import { readFileSync } from 'node:fs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const [message] = useMessage(event)
@@ -125,21 +126,18 @@ const response = onResponse(selects, event => {
   )
 
   // 更多类型
-  send(
+  message.send(
     format(
       BT.group(
         // link
         BT.row(
           BT('访问文档', 'https://alemonjs.com/', {
-            isLink: true
+            type: 'link'
           })
         ),
-        // 回调
         BT.row(
-          BT('是否同意', {
-            click: '/同意',
-            confirm: '/同意',
-            cancel: '/不同意'
+          BT('是否同意', '/同意', {
+            type: 'call'
           })
         ),
         // 自动发送 + 显示字频道list + 禁用提示
@@ -222,13 +220,7 @@ const response = onResponse(selects, event => {
 
   // 向申请的模板注入参数
   message.send(
-    format(
-      MD.template('template_id', {
-        title: '你好',
-        image: 'https://www.baidu.com/img/bd_logo1.png',
-        para1: 'hello word'
-      })
-    )
+    format(MD.template('template_id', { title: '你好' }))
   )
 })
 export default response
@@ -243,7 +235,7 @@ export default response
 :::
 
 ```ts title="response/**/*/res.ts"
-import { useMessage } from 'alemonjs'
+import { Ark, useMessage } from 'alemonjs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const [message] = useMessage(event)

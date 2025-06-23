@@ -29,7 +29,7 @@ export default defineConfig({
     localeConfigs: {
       'zh-CN': {
         label: '简体中文',
-        direction: 'ltr',
+        // direction: 'ltr',
         htmlLang: 'zh-CN',
         path: './zh-CN/'
         // ... other locales you want to support
@@ -81,11 +81,11 @@ export default defineConfig({
           position: 'right',
           label: '编辑',
           href: 'https://github.com/lemonade-lab/alemonjs-docs/blob/main/docs/intro.md'
-        },
-        {
-          position: 'right',
-          type: 'localeDropdown'
         }
+        // {
+        //   position: 'right',
+        //   type: 'localeDropdown'
+        // }
       ]
     },
     footer: {
@@ -161,7 +161,8 @@ export default defineConfig({
         indexBlog: false,
         indexPages: true,
         hashed: true,
-        language: ['en', 'zh'],
+        // language: ['en', 'zh'],
+        language: ['zh'],
         searchResultLimits: 10,
         searchResultContextMaxLength: 50
       }

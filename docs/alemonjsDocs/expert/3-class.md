@@ -45,8 +45,11 @@ const stateList = new StateSubscribe(
   'create',
   'message.create'
 )
-stateList.on(() => {}) // onState
-stateList.un(() => {}) // unState
+const callback = () => {
+  //
+}
+stateList.on(callback) // onState
+stateList.un(callback) // unState
 const stateSubscribe = stateList.value
 ```
 

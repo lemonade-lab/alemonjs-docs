@@ -5,38 +5,31 @@ sidebar_position: 5
 # 事件
 
 ```ts
-export type Events = {
-  // 公有事件-消息创建
+export type EventsMessageCreate = {
   'message.create': PublicEventMessageCreate
-  // 私有事件-消息创建
   'private.message.create': PrivateEventMessageCreate
-  // 消息更新（重编辑）
+  'interaction.create': PublicEventInteractionCreate
+  'private.interaction.create': PrivateEventInteractionCreate
+}
+
+export type Events = {
   'message.update': PublicEventMessageUpdate
-  // 消息删除（撤回）
   'message.delete': PublicEventMessageDelete
-  // 消息表态 添加
   'message.reaction.add': PublicEventMessageReactionAdd
-  // 消息表态 移除
   'message.reaction.remove': PublicEventMessageReactionRemove
-  // 公有事件 - 频道成员添加
-  'member.add': PublicEventMemberAdd
-  // 公有事件 - 频道成员移除（退出）
-  'member.remove': PublicEventMemberRemove
-  // 子频道创建
   'channal.create': PublicEventChannalCreate
-  // 子频道删除
   'channal.delete': PublicEventChannalDelete
-  // 公有事件 - 频道加入
   'guild.join': PublicEventGuildJoin
-  // 公有事件 - 频道退出
   'guild.exit': PublicEventGuildExit
-  // 私有事件 - 消息更新
+  'member.add': PublicEventMemberAdd
+  'member.remove': PublicEventMemberRemove
   'private.message.update': PrivateEventMessageUpdate
-  // 私有事件 - 消息删除（撤回）
   'private.message.delete': PrivateEventMessageDelete
-  // 私有事件 - 朋友添加请求
   'private.friend.add': PrivateEventRequestFriendAdd
-  // 私有事件 - 频道添加请求
   'private.guild.add': PrivateEventRequestGuildAdd
-} & AEventsMsg
+} & EventsMessageCreate
+
+export type EventKeys = keyof Events
+
+export type EventsEnum = Events[EventKeys]
 ```

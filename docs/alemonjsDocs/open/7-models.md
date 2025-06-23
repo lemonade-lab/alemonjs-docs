@@ -37,40 +37,10 @@ yarn install
 > 框架配置设置`apps`
 
 ```yaml title="alemon.config.yaml"
+# 加载模块, 具体见文档后续内容
 apps:
   - 'pkg-name'
-```
-
-> 如果拉取到仓库分支属于源码，你可能还需要进行编译
-
-```json
-{
-  "name": "pkg-name",
-  "scripts": {
-    // 需要确保该仓库pkg配置了build
-    "build": "npx lvyjs build"
-  }
-}
-```
-
-> 安装工具`lerna`
-
-```sh
-npm install lerna -g
-```
-
-> 配置
-
-```json title="lerna.json"
-{
-  "version": "independent",
-  "packages": ["packages/*"],
-  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
-}
-```
-
-> 全部打包
-
-```sh
-npx lerna run build
+# 模块配置, 约定。模块对应的配置名，应是模块名。
+# pkg-name:
+#   token: '假设该包需要设置token才能使用'
 ```

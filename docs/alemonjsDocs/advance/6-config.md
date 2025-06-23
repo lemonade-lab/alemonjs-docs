@@ -11,8 +11,8 @@ sidebar_position: 6
 :::
 
 ```yaml title="alemon.config.yaml"
-gui:
-  port: 17127
+port: 17117 # 端口，快捷参数 --port
+input: 'lib/index.js' # 入口地址，快捷参数 --input
 ```
 
 使用例子
@@ -20,7 +20,7 @@ gui:
 ```ts title="src/index.ts"
 import { getConfigValue } from 'alemonjs'
 const value = getConfigValue()
-console.log('port', value.gui.port) // port 17127
+console.log('port', value.port) // port 17117
 ```
 
 更多调用
