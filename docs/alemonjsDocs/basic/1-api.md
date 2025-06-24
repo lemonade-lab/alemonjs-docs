@@ -44,6 +44,26 @@ export default onResponse(selects, event => {
 })
 ```
 
+```ts title="src/response/**/*/res.ts"
+import { Regular } from 'alemonjs/utils'
+
+// 如果想要同时匹配多个正则
+const regular$1 = /^(#|\/)?hello$/
+const regular$2 = /^(#|\/)?word$/
+
+export const regular = Regular.and(regular$1, regular$2)
+
+export const selects = onSelects(['message.create'])
+
+export default onResponse(selects, event => {
+  if (regular$1.test(event.MessageText)) {
+    //
+  } else if (regular$2.test(event.MessageText)) {
+    //
+  }
+})
+```
+
 ### 分组
 
 > 共用一个next
