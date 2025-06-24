@@ -51,7 +51,7 @@ import { Regular } from 'alemonjs/utils'
 const regular$1 = /^(#|\/)?hello$/
 const regular$2 = /^(#|\/)?word$/
 
-export const regular = Regular.and(regular$1, regular$2)
+export const regular = Regular.or(regular$1, regular$2)
 
 export const selects = onSelects(['message.create'])
 

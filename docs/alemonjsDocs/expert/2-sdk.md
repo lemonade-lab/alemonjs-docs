@@ -10,11 +10,13 @@ sidebar_position: 2
 
 :::
 
-## KOOK
-
 非所有的平台都能描述完所有的功能
 
 因此，你需要根据不同的平台来进行调整
+
+## useClient
+
+这是一个用来映射平台接口类的函数
 
 ```ts title="src/response/**/*/res.ts"
 import {
@@ -29,3 +31,5 @@ export default onResponse(selects, event => {
   }
 })
 ```
+
+注意`platform`和`useClient`被约定为必须拥有的导出
