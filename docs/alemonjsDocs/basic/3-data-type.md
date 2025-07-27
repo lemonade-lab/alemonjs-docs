@@ -46,17 +46,18 @@ export default onResponse(selects, event => {
 
 ```ts title="src/response/**/*/res.ts"
 import { useMessage, Image } from 'alemonjs'
-import url from '@src/assets/test.jpeg'
+import jpgURL from '@src/assets/test.jpeg'
 import { readFileSync } from 'node:fs'
 export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const [message] = useMessage(event)
-  // 发送本地图片文件
-  message.send(format(Image.file(url)))
+  const { url, file } = Image
+  // file
+  message.send(format(file(jpgURL)))
   // url
-  message.send(format(Image.url('https://xxx.com/yyy.png')))
+  message.send(format(url('https://xxx.com/yyy.png')))
   // buffer
-  const img = readFileSync(url)
+  const img = readFileSync(jpgURL)
   message.send(format(Image(img)))
 })
 ```
@@ -97,11 +98,13 @@ const selects = onSelects(['message.create'])
 const response = onResponse(selects, event => {
   const [message] = useMessage(event)
 
+  const { group, row } = BT
+
   // 一行多个
   message.send(
     format(
-      BT.group(
-        BT.row(
+      group(
+        row(
           BT('开始', '/开始游戏'),
           BT('结束', '/结束游戏')
         )
@@ -112,12 +115,12 @@ const response = onResponse(selects, event => {
   // 多行多个
   message.send(
     format(
-      BT.group(
-        BT.row(
+      group(
+        row(
           BT('开始', '/开始游戏'),
           BT('结束', '/结束游戏')
         ),
-        BT.row(
+        row(
           BT('退出', '/退出游戏'),
           BT('注销', '/注销账户')
         )
@@ -128,20 +131,20 @@ const response = onResponse(selects, event => {
   // 更多类型
   message.send(
     format(
-      BT.group(
+      group(
         // link
-        BT.row(
+        row(
           BT('访问文档', 'https://alemonjs.com/', {
             type: 'link'
           })
         ),
-        BT.row(
+        row(
           BT('是否同意', '/同意', {
             type: 'call'
           })
         ),
         // 自动发送 + 显示字频道list + 禁用提示
-        BT.row(
+        row(
           BT('哈哈', '/哈哈', {
             autoEnter: false,
             showList: true,
@@ -152,11 +155,13 @@ const response = onResponse(selects, event => {
     )
   )
 
+  const { template } = BT
+
   // 使用申请好的模板（特定平台下使用）
-  message.send(format(BT.template('template_id')))
+  message.send(format(template('template_id')))
 
   // 向申请的模板注入参数
-  message.send(format(BT.template('template_id')))
+  message.send(format(template('template_id')))
 })
 export default response
 ```
@@ -168,59 +173,77 @@ import { MD, useMessage } from 'alemonjs'
 const selects = onSelects(['message.create'])
 const response = onResponse(selects, event => {
   const [message] = useMessage(event)
+
+  const {
+    text,
+    title,
+    bold,
+    italicStar,
+    strikethrough,
+    link,
+    image,
+    list,
+    listItem,
+    blockquote,
+    divider,
+    newline
+  } = MD
+
   message.send(
     format(
       MD(
-        MD.text('普通文本'),
+        text('普通文本'),
         // 标题
-        MD.title('标题！！'),
+        title('标题！！'),
         // 副标题
-        MD.subtitle('子标题'),
+        subtitle('子标题'),
         // 加粗
-        MD.bold('加粗'),
+        bold('加粗'),
         // 斜体
-        MD.italic('斜体'),
+        italic('斜体'),
         // 星号斜体
-        MD.italicStar('星号斜体'),
+        italicStar('星号斜体'),
         // 删除线
-        MD.strikethrough('删除线'),
+        strikethrough('删除线'),
         // 链接
-        MD.link('链接', 'https://www.baidu.com'),
+        link('链接', 'https://www.baidu.com'),
         // 图片
-        MD.image('https://www.baidu.com/img/bd_logo1.png', {
+        image('https://www.baidu.com/img/bd_logo1.png', {
           width: 100,
           height: 100
         }),
         // 有序列表
-        MD.list(
-          MD.listItem(1, '有序列表'),
-          MD.listItem(2, '有序列表'),
-          MD.listItem(3, '有序列表'),
-          MD.listItem(4, '有序列表')
+        list(
+          listItem(1, '有序列表'),
+          listItem(2, '有序列表'),
+          listItem(3, '有序列表'),
+          listItem(4, '有序列表')
         ),
         // 无序列表
-        MD.list(
-          MD.listItem('无序列表'),
-          MD.listItem('无序列表'),
-          MD.listItem('无序列表'),
-          MD.listItem('无序列表'),
-          MD.listItem('无序列表')
+        list(
+          listItem('无序列表'),
+          listItem('无序列表'),
+          listItem('无序列表'),
+          listItem('无序列表'),
+          listItem('无序列表')
         ),
         // 块引用
-        MD.blockquote('块引用'),
+        blockquote('块引用'),
         // 水平分割线
-        MD.divider(),
+        divider(),
         // 换行
-        MD.newline(),
+        newline(),
         // 换多行
-        MD.newline(true)
+        newline(true)
       )
     )
   )
 
+  const { template } = MD
+
   // 向申请的模板注入参数
   message.send(
-    format(MD.template('template_id', { title: '你好' }))
+    format(template('template_id', { title: '你好' }))
   )
 })
 export default response
@@ -240,10 +263,12 @@ export const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const [message] = useMessage(event)
 
+  const { Card, BigCard } = Ark
+
   // 普通卡片
   message.send(
     format(
-      Ark.Card({
+      Card({
         decs: '你是谁',
         title: '收你来啦',
         prompt: '通知信息！！',
@@ -259,7 +284,7 @@ export default onResponse(selects, event => {
   // 大图卡片
   message.send(
     format(
-      Ark.BigCard({
+      BigCard({
         title: '收你来啦',
         prompt: '通知信息！！',
         cover:
@@ -270,26 +295,28 @@ export default onResponse(selects, event => {
     )
   )
 
+  const { listTip, list, listContent, listItem } = Ark
+
   // 列表
   message.send(
     format(
-      Ark.list(
-        Ark.listTip({
+      list(
+        listTip({
           desc: '状态扭转',
           prompt: '状态扭转'
         }),
-        Ark.listContent(
-          Ark.listItem('需求标题：UI问题解决'),
-          Ark.listItem('点击下列动作直接扭转状态到：'),
-          Ark.listItem({
+        listContent(
+          listItem('需求标题：UI问题解决'),
+          listItem('点击下列动作直接扭转状态到：'),
+          listItem({
             title: '状态1',
             link: 'https://alemonjs.com?status=1'
           }),
-          Ark.listItem({
+          listItem({
             title: '状态2',
             link: 'https://alemonjs.com?status=2'
           }),
-          Ark.listItem('请关注')
+          listItem('请关注')
         )
       )
     )

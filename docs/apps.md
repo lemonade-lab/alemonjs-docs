@@ -14,7 +14,15 @@ sidebar_position: 6
 
 ## 分类
 
-### recreation
+## 开发者
+
+| 项目名          | 类型  | 说明     |
+| --------------- | ----- | -------- |
+| [alemonjs-code] | local | 订阅代码 |
+
+[alemonjs-code]: https://github.com/lemonade-lab/subscribe-code
+
+### 功能
 
 | 项目名            | 类型                    | 说明          |
 | ----------------- | ----------------------- | ------------- |
@@ -24,15 +32,17 @@ sidebar_position: 6
 [cheese-s]: https://img.shields.io/npm/v/alemonjs-cheese.svg
 [cheese-p]: https://www.npmjs.com/package/alemonjs-cheese
 
-### game
+### 游戏
 
-| 项目名            | 类型                    | 说明         |
-| ----------------- | ----------------------- | ------------ |
-| [alemonjs-xianyu] | [![xianyu-s]][xianyu-p] | 扫雷等小游戏 |
+| 项目名             | 类型                    | 说明         |
+| ------------------ | ----------------------- | ------------ |
+| [alemonjs-xianyu]  | [![xianyu-s]][xianyu-p] | 扫雷等小游戏 |
+| [alemonjs-xiuxian] | local                   | 修仙文游     |
 
 [alemonjs-xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/
 [xianyu-s]: https://img.shields.io/npm/v/alemonjs-xianyu.svg
 [xianyu-p]: https://www.npmjs.com/package/alemonjs-xianyu
+[alemonjs-xianyu]: https://github.com/xiuxianjs/xiuxian-plugin
 
 ### AI
 

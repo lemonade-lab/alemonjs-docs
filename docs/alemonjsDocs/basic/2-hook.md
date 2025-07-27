@@ -73,6 +73,8 @@ export default onResponse(selects, async (event, next) => {
 
 > 订阅模式，在某个事件周期中进行观察
 
+> ! 不可以在 回调中调用 subscribe.cancel(sub)
+
 <Tabs>
   <TabItem value="0" label="V2.1+" default>
 
@@ -108,6 +110,7 @@ export default onResponse(selects, event => {
         // 继续
         next()
       }
+      // 回调内不可调用 subscribe.cancel(sub)
     },
     ['UserId']
   )
@@ -219,24 +222,80 @@ unmonut(Res.current, [])
 
 :::
 
+<Tabs>
+  <TabItem value="0" label="停用" default>
+
 ```ts title="response/**/*/res.ts"
-import { Text, useSends, useState } from 'alemonjs'
+import { Text, useMessage, useState } from 'alemonjs'
+import { createRequire } from 'module'
 export const regular = /^(#|\/)?close:/
-export const selects = onSelects(['message.create'])
+export const selects = onSelects([
+  'message.create',
+  'private.message.create'
+])
+const requre = createRequire(import.meta.url)
+const pkg = requre('../../../package.json') as {
+  name: string
+}
 export default onResponse(selects, (event, next) => {
-  //   /close:login
+  if (!event.IsMaster) {
+    return
+  }
   const name = event.MessageText.replace(regular, '')
+  if (!new RegExp(`^${pkg.name}:`).test(name)) {
+    return
+  }
+  const [state, setState] = useState(name)
+  if (!state) {
+    next()
+    return
+  }
+  setState(false)
+  const [message] = useMessage(event)
+  message.send(format(Text('关闭成功')))
+  return
+})
+```
+
+  </TabItem>
+
+  <TabItem value="1" label="启用" >
+
+```ts title="response/**/*/res.ts"
+import { Text, useMessage, useState } from 'alemonjs'
+import { createRequire } from 'module'
+export const regular = /^(#|\/)?open:/
+export const selects = onSelects([
+  'message.create',
+  'private.message.create'
+])
+const requre = createRequire(import.meta.url)
+const pkg = requre('../../../../package.json') as {
+  name: string
+}
+export default onResponse(selects, (event, next) => {
+  if (!event.IsMaster) {
+    return
+  }
+  const name = event.MessageText.replace(regular, '')
+  if (!new RegExp(`^${pkg.name}:`).test(name)) {
+    return
+  }
   const [state, setState] = useState(name)
   if (state) {
     next()
     return
   }
-  setState(false)
-  const [send] = useSends(event)
-  send(format(Text('关闭成功')))
+  setState(true)
+  const [message] = useMessage(event)
+  message.send(format(Text('开启成功')))
   return
 })
 ```
+
+  </TabItem>
+
+</Tabs>
 
 > 可以在任意地方订阅状态的更改。
 
