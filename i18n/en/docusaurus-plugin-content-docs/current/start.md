@@ -59,11 +59,11 @@ gui:
 
 ## Start
 
-> Select GUI experience effect
+> Select TestOne experience effect
 
 > download [`Visual Studio Code`](https://code.visualstudio.com/)
 
-> download [`ALemonJS GUI`](https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui)
+> download [`ALemonTestOne`](https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone)
 
 > Select the Status Bar ALemonJS button at the bottom to open the sidebar
 

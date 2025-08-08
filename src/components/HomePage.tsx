@@ -17,7 +17,7 @@ const items = [
     title: '测试环境',
     docs: '不必登录平台即可测试代码',
     position: 'left',
-    link: 'https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui'
+    link: 'https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone'
   },
   {
     url: require('@site/static/img/dt/home.png').default,

@@ -29,11 +29,6 @@ import TabItem from '@theme/TabItem';
 npm install yarn -g 
 ```
 
-```sh
-npm init -y
-yarn add alemonjs  @alemonjs/gui
-```
-
   </TabItem>
 
   <TabItem value="1" label="npmmirror">
@@ -44,7 +39,7 @@ npm install yarn -g --registry=https://registry.npmmirror.com
 
 ```sh
 npm init -y
-yarn add alemonjs  @alemonjs/gui --registry=https://registry.npmmirror.com
+yarn add alemonjs --registry=https://registry.npmmirror.com
 ```
 
   </TabItem>
@@ -88,10 +83,10 @@ yarn app
 
 > 下载编辑器 [`Visual Studio Code`](https://code.visualstudio.com/)
 
-> 下载编辑器扩展 [`ALemonJS GUI`](https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui)
+> 下载编辑器扩展 [`ALemonTestOne`](https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone)
 
 ```sh
-yarn app --login gui
+yarn app
 ```
 
 ## 配置文件
@@ -99,7 +94,7 @@ yarn app --login gui
 ```yaml title="alemon.config.yaml"
 port: 17117 # 端口，快捷参数 --port
 input: 'lib/index.js' # 入口地址，快捷参数 --input
-# login: 'gui' # 选择登录的平台，快捷参数 --login
+# login: 'discord' # 选择登录的平台，快捷参数 --login
 # 可连接 另一个 alemonjs 服务，并全量接收消息
 # url: 'ws://127.0.0.1:17117' # 连接URL，快捷参数 --url
 # 不全量接收消息（用于分流处理，需确保连接端拥有相同的处理能力）
@@ -117,8 +112,6 @@ input: 'lib/index.js' # 入口地址，快捷参数 --input
 - 框架服务端口约定 [17100-17299]
 
 > 17117: 框架默认端口
-
-> 17127: GUI默认端口
 
 > 17187: WEB面板默认端口
 

@@ -130,7 +130,7 @@ export default defineConfig({
             },
             {
               label: 'vscode-extend',
-              href: 'https://marketplace.visualstudio.com/items?itemName=lemonade-x.alemonjs-gui'
+              href: 'https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone'
             },
             {
               label: 'desktop',
