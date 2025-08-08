@@ -81,9 +81,15 @@ yarn app
 
 ## 测试平台
 
-> 下载编辑器 [`Visual Studio Code`](https://code.visualstudio.com/)
+- 方式1: 下载vscode并使用ALemonTestOne扩展
 
-> 下载编辑器扩展 [`ALemonTestOne`](https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone)
+[`Visual Studio Code`](https://code.visualstudio.com/)
+
+[`ALemonTestOne`](https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone)
+
+- 方式2: 打开访问在线模式
+
+[htts://alemonjs.com/testone/](https://alemonjs.com/testone/)
 
 ```sh
 yarn app
