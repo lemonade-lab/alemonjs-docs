@@ -47,13 +47,30 @@ node_modules/                 // Node.js 依赖包
   },
   "export": {
     ".": "./lib/index.js", // *
-    "./package": "./package.json", // *
-    "./desktop": "./lib/desktop.js" // 可选（桌面扩展入口脚本)
+    "./package": "./package.json" // *
   },
   "keywords": ["alemonjs"], // *
   "publishConfig": {
     "registry": "https://registry.npmjs.org", // *
     "access": "public" // *
+  },
+  "alemonjs": {
+    // alemonjs 相关配置，依赖于 package 导出进行读取
+  }
+  // 要发布模块，请确保没有以下内容。
+  // "private": true,
+  // "workspaces": ["packages/*"]
+}
+```
+
+## 桌面
+
+### 配置
+
+```json title="package.json"
+{
+  "export": {
+    "./desktop": "./lib/desktop.js" // 桌面扩展入口脚本
   },
   "alemonjs": {
     "desktop": {
@@ -88,20 +105,15 @@ node_modules/                 // Node.js 依赖包
       ]
     }
   }
-  // 要发布模块，请确保没有以下内容。
-  // "private": true,
-  // "workspaces": ["packages/*"]
 }
 ```
 
-## 周期
+### 周期
 
 ```js title="package.js"
 // 被激活的时候。
 export const activate = context => {}
 ```
-
-## webview
 
 ### 渲染
 
@@ -190,7 +202,7 @@ API.onMessage(data => {
 })
 ```
 
-## 资源路径
+### 资源路径
 
 ```js title="desktop.js"
 import { dirname, join } from 'path'
@@ -209,7 +221,7 @@ export const activate = context => {
 }
 ```
 
-## 通知推送
+### 通知推送
 
 ```js title="desktop.js"
 export const activate = context => {
